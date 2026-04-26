@@ -32,15 +32,15 @@ const About = () => (
           Jádson Castro Santana
         </h2>
         <p className="mt-2 font-medium text-muted-foreground">
-          Engenheiro Civil — Especialista em Engenharia e Arquitetura Legal — CREA-BA 051598661-5
+          Engenheiro Civil | Especialista em Regularização de Imóveis
         </p>
 
         <div className="mt-6 space-y-4 text-foreground/80">
           <p>
-            Engenheiro civil com atuação voltada para regularização de imóveis urbanos, análise técnica de obras e interpretação da legislação urbanística aplicada à regularização de construções.
+            Engenheiro civil, pós-graduado em Arquitetura e Engenharia Legal e pós-graduando em Building Information Modeling (Master BIM).
           </p>
           <p>
-            A proposta de trabalho é traduzir processos técnicos e exigências legais em orientações claras e objetivas para proprietários e profissionais da construção.
+            Atua na orientação e condução de processos de regularização de imóveis urbanos, simplificando um tema técnico que muitas vezes é tratado com excesso de burocracia.
           </p>
         </div>
 
