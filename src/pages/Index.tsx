@@ -2,6 +2,8 @@ import Header from "@/components/sections/Header";
 import Hero from "@/components/sections/Hero";
 import Problem from "@/components/sections/Problem";
 import Services from "@/components/sections/Services";
+import InitialAnalysis from "@/components/sections/InitialAnalysis";
+import Calculator from "@/components/sections/Calculator";
 import About from "@/components/sections/About";
 import Differentials from "@/components/sections/Differentials";
 import Process from "@/components/sections/Process";
@@ -16,8 +18,10 @@ const Index = () => (
     <Header />
     <main>
       <Hero />
-      <Problem />
       <Services />
+      <InitialAnalysis />
+      <Problem />
+      <Calculator />
       <About />
       <Differentials />
       <Process />

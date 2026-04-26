@@ -1,4 +1,4 @@
-import portrait from "@/assets/engineer-portrait.jpg";
+import portrait from "@/assets/jadson-portrait.jpg";
 import { Award, MessageSquare, Sparkles } from "lucide-react";
 
 const pillars = [
@@ -32,18 +32,15 @@ const About = () => (
           Jádson Castro Santana
         </h2>
         <p className="mt-2 font-medium text-muted-foreground">
-          Engenheiro Civil — Especialista em Engenharia e Arquitetura Legal
+          Engenheiro Civil — Especialista em Engenharia e Arquitetura Legal — CREA-BA 051598661-5
         </p>
 
         <div className="mt-6 space-y-4 text-foreground/80">
           <p>
-            Jádson Castro Santana é engenheiro civil com especialização em Engenharia e Arquitetura Legal e atuação voltada para regularização de imóveis urbanos.
+            Engenheiro civil com atuação voltada para regularização de imóveis urbanos, análise técnica de obras e interpretação da legislação urbanística aplicada à regularização de construções.
           </p>
           <p>
-            Sua experiência envolve análise técnica de obras, processos administrativos e interpretação da legislação urbanística aplicada à regularização de construções.
-          </p>
-          <p>
-            A partir dessa vivência prática, desenvolveu uma abordagem baseada em três pilares que traduzem normas e exigências em orientações claras e aplicáveis.
+            A proposta de trabalho é traduzir processos técnicos e exigências legais em orientações claras e objetivas para proprietários e profissionais da construção.
           </p>
         </div>
 
