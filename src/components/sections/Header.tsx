@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { whatsappLink } from "@/lib/contact";
+import { socials } from "@/lib/social";
 import logo from "@/assets/hbs-logo.png";
 
 const Header = () => {
@@ -20,9 +21,25 @@ const Header = () => {
           <a href="#sobre" className="transition-smooth hover:text-primary">Sobre</a>
           <a href="#contato" className="transition-smooth hover:text-primary">Contato</a>
         </nav>
-        <Button asChild size="sm" className="hidden sm:inline-flex">
-          <a href={whatsappLink()} target="_blank" rel="noopener noreferrer">Fale conosco</a>
-        </Button>
+        <div className="flex items-center gap-2">
+          <div className="hidden items-center gap-1 md:flex">
+            {socials.map(({ name, url, icon: Icon }) => (
+              <a
+                key={name}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={name}
+                className="flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground transition-smooth hover:bg-accent/10 hover:text-accent"
+              >
+                <Icon className="h-4 w-4" />
+              </a>
+            ))}
+          </div>
+          <Button asChild size="sm" className="hidden sm:inline-flex">
+            <a href={whatsappLink()} target="_blank" rel="noopener noreferrer">Fale conosco</a>
+          </Button>
+        </div>
       </div>
     </header>
   );
