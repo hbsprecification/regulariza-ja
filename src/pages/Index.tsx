@@ -12,9 +12,12 @@ import Structure from "@/components/sections/Structure";
 import ContactForm from "@/components/sections/ContactForm";
 import Footer from "@/components/sections/Footer";
 import WhatsappFloat from "@/components/WhatsappFloat";
+import PromoBanner from "@/components/PromoBanner";
+import ConsultPopup from "@/components/ConsultPopup";
 
 const Index = () => (
   <div className="min-h-screen bg-background">
+    <PromoBanner />
     <Header />
     <main>
       <Hero />
@@ -31,6 +34,7 @@ const Index = () => (
     </main>
     <Footer />
     <WhatsappFloat />
+    <ConsultPopup />
   </div>
 );
 
