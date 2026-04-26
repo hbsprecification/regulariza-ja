@@ -4,7 +4,7 @@ import logo from "@/assets/hbs-logo.png";
 
 const Header = () => {
   return (
-    <header className="fixed top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
+    <header className="fixed top-[44px] z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur-md sm:top-[40px]">
       <div className="container flex h-16 items-center justify-between">
         <a href="#hero" className="flex items-center gap-3">
           <img src={logo} alt="HBS Engenharia" className="h-10 w-auto" />
