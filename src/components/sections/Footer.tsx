@@ -1,5 +1,6 @@
 import { MessageCircle } from "lucide-react";
 import { whatsappLink } from "@/lib/contact";
+import { socials } from "@/lib/social";
 import logo from "@/assets/hbs-logo.png";
 
 const Footer = () => (
@@ -13,6 +14,23 @@ const Footer = () => (
           <p className="mt-4 text-sm text-primary-foreground/70">
             HBS Engenharia — consultoria técnica em regularização de obras e imóveis urbanos.
           </p>
+          <div className="mt-5">
+            <p className="text-[11px] font-semibold uppercase tracking-wider text-primary-foreground/60">Redes sociais</p>
+            <div className="mt-3 flex items-center gap-3">
+              {socials.map(({ name, url, icon: Icon }) => (
+                <a
+                  key={name}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={name}
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-primary-foreground transition-smooth hover:bg-accent hover:text-accent-foreground"
+                >
+                  <Icon className="h-5 w-5" />
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div>
@@ -28,6 +46,19 @@ const Footer = () => (
             <MessageCircle className="h-4 w-4" /> Falar no WhatsApp
           </a>
           <a href="#contato" className="mt-3 block text-sm text-primary-foreground/70 transition-smooth hover:text-primary-foreground">Formulário de contato →</a>
+          <div className="mt-4 space-y-1.5">
+            {socials.map(({ name, url, handle, icon: Icon }) => (
+              <a
+                key={name}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-primary-foreground/70 transition-smooth hover:text-primary-foreground"
+              >
+                <Icon className="h-4 w-4" /> {handle}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
 
