@@ -1,19 +1,17 @@
-import { Building2, MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { whatsappLink } from "@/lib/contact";
+import logo from "@/assets/hbs-logo.png";
 
 const Footer = () => (
   <footer className="border-t border-border bg-primary text-primary-foreground">
     <div className="container py-14">
       <div className="grid gap-10 md:grid-cols-3">
         <div>
-          <div className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg gradient-accent">
-              <Building2 className="h-5 w-5 text-primary-foreground" />
-            </div>
-            <p className="font-display text-lg font-bold">Jádson Castro</p>
+          <div className="inline-block rounded-lg bg-white/95 p-3">
+            <img src={logo} alt="HBS Engenharia" className="h-10 w-auto" />
           </div>
           <p className="mt-4 text-sm text-primary-foreground/70">
-            Consultoria técnica em regularização de obras e imóveis urbanos.
+            HBS Engenharia — consultoria técnica em regularização de obras e imóveis urbanos.
           </p>
         </div>
 

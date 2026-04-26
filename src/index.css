@@ -8,28 +8,29 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Brand: deep professional blue + clean grays */
+    /* HBS Engenharia: graphite/charcoal + rust copper accent */
     --background: 0 0% 100%;
-    --foreground: 215 30% 14%;
+    --foreground: 0 0% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 215 30% 14%;
+    --card-foreground: 0 0% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 30% 14%;
+    --popover-foreground: 0 0% 12%;
 
-    --primary: 214 88% 27%;
+    --primary: 0 0% 12%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 210 90% 45%;
+    --primary-glow: 0 0% 22%;
 
-    --secondary: 210 30% 96%;
-    --secondary-foreground: 215 30% 14%;
+    --secondary: 30 15% 96%;
+    --secondary-foreground: 0 0% 12%;
 
-    --muted: 210 25% 96%;
-    --muted-foreground: 215 15% 42%;
+    --muted: 30 10% 96%;
+    --muted-foreground: 0 0% 38%;
 
-    --accent: 200 95% 45%;
+    --accent: 24 80% 27%;
     --accent-foreground: 0 0% 100%;
+    --accent-glow: 24 70% 40%;
 
     --whatsapp: 142 70% 45%;
     --whatsapp-foreground: 0 0% 100%;
@@ -37,19 +38,19 @@ All colors MUST be HSL.
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214 25% 90%;
-    --input: 214 25% 90%;
-    --ring: 214 88% 27%;
+    --border: 30 10% 88%;
+    --input: 30 10% 88%;
+    --ring: 24 80% 27%;
 
     --radius: 0.75rem;
 
-    --gradient-hero: linear-gradient(135deg, hsl(214 88% 18%) 0%, hsl(214 88% 27%) 50%, hsl(210 90% 38%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(210 30% 98%) 0%, hsl(0 0% 100%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(214 88% 27%), hsl(200 95% 45%));
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 8%) 0%, hsl(0 0% 14%) 50%, hsl(20 25% 18%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(30 15% 98%) 0%, hsl(0 0% 100%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(24 80% 27%), hsl(24 70% 40%));
 
-    --shadow-soft: 0 4px 20px -8px hsl(214 88% 27% / 0.15);
-    --shadow-elegant: 0 20px 50px -20px hsl(214 88% 27% / 0.25);
-    --shadow-card: 0 2px 12px -4px hsl(215 30% 14% / 0.08);
+    --shadow-soft: 0 4px 20px -8px hsl(0 0% 0% / 0.15);
+    --shadow-elegant: 0 20px 50px -20px hsl(0 0% 0% / 0.30);
+    --shadow-card: 0 2px 12px -4px hsl(0 0% 0% / 0.08);
 
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
