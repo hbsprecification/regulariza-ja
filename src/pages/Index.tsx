@@ -1,16 +1,33 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Header from "@/components/sections/Header";
+import Hero from "@/components/sections/Hero";
+import Problem from "@/components/sections/Problem";
+import Services from "@/components/sections/Services";
+import About from "@/components/sections/About";
+import Differentials from "@/components/sections/Differentials";
+import Process from "@/components/sections/Process";
+import CTA from "@/components/sections/CTA";
+import Structure from "@/components/sections/Structure";
+import ContactForm from "@/components/sections/ContactForm";
+import Footer from "@/components/sections/Footer";
+import WhatsappFloat from "@/components/WhatsappFloat";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
-  return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
-    </div>
-  );
-};
-
-const Index = PlaceholderIndex;
+const Index = () => (
+  <div className="min-h-screen bg-background">
+    <Header />
+    <main>
+      <Hero />
+      <Problem />
+      <Services />
+      <About />
+      <Differentials />
+      <Process />
+      <CTA />
+      <Structure />
+      <ContactForm />
+    </main>
+    <Footer />
+    <WhatsappFloat />
+  </div>
+);
 
 export default Index;
