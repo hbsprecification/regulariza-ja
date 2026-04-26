@@ -1,84 +1,83 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Calculator as CalcIcon, ArrowRight, RotateCcw, AlertTriangle, CheckCircle2, FileSearch } from "lucide-react";
+import { consultLink } from "@/lib/contact";
+import { Calculator as CalcIcon, ArrowRight, RotateCcw, AlertTriangle, CheckCircle2, FileSearch, MessageCircle } from "lucide-react";
 
 type Answer = "sim" | "nao" | "nao-sei";
 
 type Question = {
   id: string;
   text: string;
-  options: { label: string; value: Answer }[];
-  /** Which answer indicates a potential irregularity */
+  subtitle?: string;
+  options: { label: string; value: Answer; emoji: string }[];
   riskAnswers: Answer[];
-  /** Answers that indicate uncertainty */
   uncertainAnswers?: Answer[];
 };
 
 const questions: Question[] = [
   {
     id: "q1",
-    text: "O imóvel possui construção ou ampliação que não consta no registro do cartório?",
+    text: "O imóvel possui planta aprovada na prefeitura?",
+    subtitle: "Projeto arquitetônico ou planta que foi aprovado pelo município",
     options: [
-      { label: "Sim", value: "sim" },
-      { label: "Não", value: "nao" },
-      { label: "Não sei", value: "nao-sei" },
+      { label: "Sim, tem planta aprovada", value: "sim", emoji: "✅" },
+      { label: "Não tem planta aprovada", value: "nao", emoji: "❌" },
+      { label: "Não sei", value: "nao-sei", emoji: "🤷" },
     ],
-    riskAnswers: ["sim"],
+    riskAnswers: ["nao"],
     uncertainAnswers: ["nao-sei"],
   },
   {
     id: "q2",
-    text: "O imóvel possui habite-se ou alvará de conclusão?",
+    text: "A construção está igual ao projeto?",
+    subtitle: "O imóvel foi construído exatamente conforme a planta aprovada",
     options: [
-      { label: "Sim", value: "sim" },
-      { label: "Não", value: "nao" },
-      { label: "Não sei", value: "nao-sei" },
+      { label: "Sim, está igual", value: "sim", emoji: "✅" },
+      { label: "Não, há diferenças", value: "nao", emoji: "❌" },
+      { label: "Não sei", value: "nao-sei", emoji: "🤷" },
     ],
     riskAnswers: ["nao"],
     uncertainAnswers: ["nao-sei"],
   },
   {
     id: "q3",
-    text: "O projeto aprovado na prefeitura corresponde exatamente ao que foi construído?",
+    text: "O imóvel está averbado no cartório?",
+    subtitle: "A construção aparece registrada na matrícula do imóvel",
     options: [
-      { label: "Sim", value: "sim" },
-      { label: "Não", value: "nao" },
-      { label: "Não sei", value: "nao-sei" },
+      { label: "Sim, está averbado", value: "sim", emoji: "✅" },
+      { label: "Não está averbado", value: "nao", emoji: "❌" },
+      { label: "Não sei", value: "nao-sei", emoji: "🤷" },
     ],
     riskAnswers: ["nao"],
     uncertainAnswers: ["nao-sei"],
   },
   {
     id: "q4",
-    text: "O imóvel já passou por reformas ou ampliações ao longo do tempo?",
+    text: "O imóvel possui habite-se?",
+    subtitle: "Documento emitido pela prefeitura que certifica que a obra foi concluída",
     options: [
-      { label: "Sim", value: "sim" },
-      { label: "Não", value: "nao" },
+      { label: "Sim, possui habite-se", value: "sim", emoji: "✅" },
+      { label: "Não possui", value: "nao", emoji: "❌" },
+      { label: "Não sei", value: "nao-sei", emoji: "🤷" },
     ],
-    riskAnswers: ["sim"],
+    riskAnswers: ["nao"],
+    uncertainAnswers: ["nao-sei"],
   },
   {
     id: "q5",
-    text: "Você sabe se o imóvel possui pendências na prefeitura?",
+    text: "O imóvel passou por reformas ou ampliações?",
+    subtitle: "Qualquer mudança feita após a construção original",
     options: [
-      { label: "Sim", value: "sim" },
-      { label: "Não", value: "nao" },
-      { label: "Não sei", value: "nao-sei" },
+      { label: "Sim, foi reformado/ampliado", value: "sim", emoji: "🔨" },
+      { label: "Não, nunca foi alterado", value: "nao", emoji: "✅" },
     ],
     riskAnswers: ["sim"],
-    uncertainAnswers: ["nao-sei"],
   },
 ];
 
-type Result = {
-  level: "regular" | "atencao" | "analise";
-  title: string;
-  description: string;
-  icon: typeof CheckCircle2;
-  toneClass: string;
-};
+type ResultLevel = "regular" | "atencao" | "critico";
 
-const computeResult = (answers: Record<string, Answer>): Result => {
+const computeResult = (answers: Record<string, Answer>): { level: ResultLevel; risk: number; uncertain: number } => {
   let risk = 0;
   let uncertain = 0;
   questions.forEach((q) => {
@@ -87,32 +86,8 @@ const computeResult = (answers: Record<string, Answer>): Result => {
     if (q.riskAnswers.includes(a)) risk++;
     if (q.uncertainAnswers?.includes(a)) uncertain++;
   });
-
-  if (risk >= 2) {
-    return {
-      level: "analise",
-      title: "Situação que pode exigir análise técnica",
-      description: "Foram identificados indícios significativos de irregularidades. Uma análise técnica é recomendada para identificar com precisão a situação e os caminhos para regularização.",
-      icon: AlertTriangle,
-      toneClass: "bg-accent/10 border-accent/40 text-accent",
-    };
-  }
-  if (risk >= 1 || uncertain >= 2) {
-    return {
-      level: "atencao",
-      title: "Possível necessidade de regularização",
-      description: "Existem indícios que apontam possíveis pendências. Vale a pena realizar uma análise técnica para confirmar a situação do imóvel.",
-      icon: FileSearch,
-      toneClass: "bg-accent/10 border-accent/30 text-accent",
-    };
-  }
-  return {
-    level: "regular",
-    title: "Situação aparentemente regular",
-    description: "As respostas não indicaram irregularidades evidentes. Ainda assim, uma análise técnica pode confirmar a situação documental e construtiva do imóvel.",
-    icon: CheckCircle2,
-    toneClass: "bg-secondary border-border text-foreground",
-  };
+  const level: ResultLevel = risk >= 2 ? "critico" : risk >= 1 || uncertain >= 2 ? "atencao" : "regular";
+  return { level, risk, uncertain };
 };
 
 const Calculator = () => {
@@ -122,14 +97,15 @@ const Calculator = () => {
 
   const current = questions[step];
   const total = questions.length;
+  const progress = Math.round((step / total) * 100);
 
   const select = (value: Answer) => {
     const next = { ...answers, [current.id]: value };
     setAnswers(next);
     if (step < total - 1) {
-      setStep(step + 1);
+      setTimeout(() => setStep(step + 1), 200);
     } else {
-      setShowResult(true);
+      setTimeout(() => setShowResult(true), 200);
     }
   };
 
@@ -140,97 +116,136 @@ const Calculator = () => {
   };
 
   const result = showResult ? computeResult(answers) : null;
-  const ResultIcon = result?.icon;
+
+  const resultConfig = {
+    regular: {
+      icon: CheckCircle2,
+      title: "Situação aparentemente regular",
+      message: "As respostas não indicaram irregularidades evidentes. Ainda assim, uma análise técnica pode confirmar a situação e prevenir problemas futuros.",
+      color: "border-green-200 bg-green-50 text-green-800",
+      iconColor: "text-green-600",
+      cta: "Confirmar situação do imóvel",
+    },
+    atencao: {
+      icon: FileSearch,
+      title: "⚠️ Possível necessidade de regularização",
+      message: "Existem indícios de pendências no seu imóvel. Uma análise técnica gratuita pode confirmar a situação e indicar os próximos passos.",
+      color: "border-accent/30 bg-accent/5 text-accent",
+      iconColor: "text-accent",
+      cta: "Solicitar análise técnica gratuita",
+    },
+    critico: {
+      icon: AlertTriangle,
+      title: "⛔ Situação que pode exigir regularização urgente",
+      message: "Foram identificados múltiplos indícios de irregularidade. Isso pode impedir venda, financiamento ou transferência do imóvel. Uma análise técnica é recomendada o quanto antes.",
+      color: "border-red-200 bg-red-50 text-red-800",
+      iconColor: "text-red-600",
+      cta: "Quero minha consultoria gratuita",
+    },
+  };
 
   return (
-    <section id="calculadora" className="py-20 lg:py-28">
+    <section id="calculadora" className="py-20 lg:py-28" aria-labelledby="calc-heading">
       <div className="container">
         <div className="mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent">
-            <CalcIcon className="h-3.5 w-3.5" /> Ferramenta interativa
+            <CalcIcon className="h-3.5 w-3.5" /> Ferramenta gratuita
           </span>
-          <h2 className="mt-4 font-display text-3xl font-bold text-primary sm:text-4xl">
+          <h2 id="calc-heading" className="mt-4 font-display text-3xl font-bold text-primary sm:text-4xl">
             Calculadora de Irregularidade do Imóvel
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Responda algumas perguntas rápidas para identificar possíveis irregularidades no imóvel.
+            Responda 5 perguntas rápidas e descubra se seu imóvel pode precisar de regularização.
           </p>
         </div>
 
-        <div className="mx-auto mt-12 max-w-2xl rounded-2xl border border-border bg-card p-6 shadow-elegant sm:p-10">
+        <div className="mx-auto mt-10 max-w-2xl rounded-2xl border border-border bg-card shadow-elegant">
           {!showResult && current && (
-            <>
-              <div className="mb-6">
-                <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            <div className="p-7 sm:p-10">
+              {/* Progress */}
+              <div className="mb-7">
+                <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
                   <span>Pergunta {step + 1} de {total}</span>
-                  <span>{Math.round(((step) / total) * 100)}%</span>
+                  <span>{progress}% concluído</span>
                 </div>
-                <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-muted">
-                  <div className="h-full gradient-accent transition-smooth" style={{ width: `${(step / total) * 100}%` }} />
+                <div className="h-2 overflow-hidden rounded-full bg-muted">
+                  <div
+                    className="h-full gradient-accent transition-all duration-500"
+                    style={{ width: `${progress}%` }}
+                    role="progressbar"
+                    aria-valuenow={progress}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                  />
                 </div>
               </div>
 
               <h3 className="font-display text-xl font-bold text-primary sm:text-2xl">{current.text}</h3>
+              {current.subtitle && (
+                <p className="mt-1 text-sm text-muted-foreground">{current.subtitle}</p>
+              )}
 
               <div className="mt-6 grid gap-3">
-                {current.options.map((opt) => {
-                  const selected = answers[current.id] === opt.value;
-                  return (
-                    <button
-                      key={opt.value}
-                      type="button"
-                      onClick={() => select(opt.value)}
-                      className={`flex items-center justify-between rounded-xl border p-4 text-left font-medium transition-smooth ${
-                        selected
-                          ? "border-accent bg-accent/5 text-foreground"
-                          : "border-border bg-background text-foreground hover:border-accent/50 hover:bg-accent/5"
-                      }`}
-                    >
-                      {opt.label}
-                      <ArrowRight className="h-4 w-4 text-accent" />
-                    </button>
-                  );
-                })}
+                {current.options.map((opt) => (
+                  <button
+                    key={opt.value}
+                    type="button"
+                    id={`calc-opt-${current.id}-${opt.value}`}
+                    onClick={() => select(opt.value)}
+                    className="flex items-center gap-4 rounded-xl border border-border bg-background p-4 text-left font-medium transition-all hover:border-accent/50 hover:bg-accent/5 hover:shadow-sm active:scale-[0.99]"
+                  >
+                    <span className="text-xl">{opt.emoji}</span>
+                    <span className="text-sm font-medium text-foreground">{opt.label}</span>
+                    <ArrowRight className="ml-auto h-4 w-4 text-accent opacity-50" />
+                  </button>
+                ))}
               </div>
 
               {step > 0 && (
                 <button
                   type="button"
                   onClick={() => setStep(step - 1)}
-                  className="mt-6 text-sm text-muted-foreground transition-smooth hover:text-primary"
+                  className="mt-5 text-sm text-muted-foreground transition-colors hover:text-primary"
                 >
                   ← Voltar
                 </button>
               )}
-            </>
-          )}
-
-          {showResult && result && ResultIcon && (
-            <div>
-              <div className={`flex items-start gap-4 rounded-xl border p-5 ${result.toneClass}`}>
-                <ResultIcon className="h-8 w-8 flex-shrink-0" />
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider opacity-80">Resultado</p>
-                  <p className="mt-1 font-display text-lg font-bold">{result.title}</p>
-                </div>
-              </div>
-
-              <p className="mt-6 text-foreground/80">{result.description}</p>
-
-              <div className="mt-6 rounded-xl bg-secondary/70 p-5 text-sm text-muted-foreground">
-                Cada imóvel possui características específicas. Uma análise técnica pode identificar com precisão a situação do imóvel e indicar o melhor caminho para regularização.
-              </div>
-
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <Button asChild size="lg" className="bg-accent font-semibold text-accent-foreground hover:bg-accent/90">
-                  <a href="#contato">Solicitar análise técnica do imóvel <ArrowRight className="ml-1 h-4 w-4" /></a>
-                </Button>
-                <Button type="button" variant="outline" size="lg" onClick={reset} className="font-semibold">
-                  <RotateCcw className="mr-1 h-4 w-4" /> Refazer
-                </Button>
-              </div>
             </div>
           )}
+
+          {showResult && result && (() => {
+            const cfg = resultConfig[result.level];
+            const ResultIcon = cfg.icon;
+            return (
+              <div className="p-7 sm:p-10">
+                <div className={`flex items-start gap-4 rounded-xl border p-5 ${cfg.color}`}>
+                  <ResultIcon className={`h-8 w-8 flex-shrink-0 ${cfg.iconColor}`} />
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-wider opacity-70">Resultado da análise</p>
+                    <p className="mt-1 font-display text-lg font-bold">{cfg.title}</p>
+                  </div>
+                </div>
+
+                <p className="mt-5 text-foreground/80 leading-relaxed">{cfg.message}</p>
+
+                <div className="mt-5 rounded-xl bg-secondary/70 p-4 text-sm text-muted-foreground">
+                  💡 <strong className="text-foreground">Lembre-se:</strong> cada imóvel é único. Apenas uma análise técnica personalizada pode confirmar a situação com precisão.
+                </div>
+
+                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                  <Button asChild size="lg" className="bg-accent font-bold text-accent-foreground hover:bg-accent/90 flex-1" id="calc-result-cta">
+                    <a href={consultLink()} target="_blank" rel="noopener noreferrer">
+                      <MessageCircle className="mr-2 h-4 w-4" />
+                      {cfg.cta}
+                    </a>
+                  </Button>
+                  <Button type="button" variant="outline" size="lg" onClick={reset} className="font-semibold">
+                    <RotateCcw className="mr-1 h-4 w-4" /> Refazer
+                  </Button>
+                </div>
+              </div>
+            );
+          })()}
         </div>
       </div>
     </section>

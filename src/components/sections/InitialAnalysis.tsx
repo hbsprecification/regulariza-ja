@@ -1,56 +1,86 @@
 import { Button } from "@/components/ui/button";
-import { whatsappLink } from "@/lib/contact";
-import { ArrowRight, MessageCircle, FileSearch, CheckCircle2 } from "lucide-react";
+import { consultLink, whatsappLink } from "@/lib/contact";
+import { MessageCircle, ArrowRight } from "lucide-react";
 
-const outcomes = [
-  "se o imóvel pode ser regularizado",
-  "quais etapas serão necessárias",
-  "quais documentos podem ser exigidos",
-  "quais caminhos técnicos são possíveis",
+const steps = [
+  {
+    number: "1",
+    emoji: "💬",
+    title: "Você explica sua situação",
+    desc: "Me conta sobre o imóvel: se tem projeto aprovado, se foi reformado, se está averbado no cartório. Sem burocracia, sem jargões técnicos.",
+    highlight: null,
+  },
+  {
+    number: "2",
+    emoji: "🔍",
+    title: "Recebe uma análise técnica inicial",
+    desc: "Faço uma análise técnica da situação e identifico as possíveis irregularidades do seu imóvel com clareza e objetividade.",
+    highlight: "100% gratuita",
+  },
+  {
+    number: "3",
+    emoji: "🗺️",
+    title: "Descobre os caminhos possíveis",
+    desc: "Você entende exatamente o que precisa ser feito para regularizar seu imóvel: etapas, documentos e os melhores caminhos técnicos.",
+    highlight: null,
+  },
 ];
 
 const InitialAnalysis = () => (
-  <section id="analise" className="relative overflow-hidden bg-primary py-20 text-primary-foreground lg:py-28">
-    <div className="absolute inset-0 opacity-[0.06]" aria-hidden style={{
+  <section id="analise" className="relative overflow-hidden bg-primary py-20 text-primary-foreground lg:py-28" aria-labelledby="analysis-heading">
+    <div className="absolute inset-0 opacity-[0.05]" aria-hidden style={{
       backgroundImage: "linear-gradient(hsl(0 0% 100%) 1px, transparent 1px), linear-gradient(90deg, hsl(0 0% 100%) 1px, transparent 1px)",
       backgroundSize: "56px 56px",
     }} />
-    <div className="container relative grid gap-12 lg:grid-cols-2 lg:items-center">
-      <div>
-        <span className="inline-flex items-center gap-2 rounded-full bg-accent/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent-foreground ring-1 ring-accent/40">
-          <FileSearch className="h-3.5 w-3.5" /> Etapa inicial
-        </span>
-        <h2 className="mt-4 font-display text-3xl font-extrabold sm:text-4xl lg:text-5xl">
-          Análise Técnica Inicial do Imóvel
-        </h2>
-        <div className="mt-6 space-y-4 text-primary-foreground/85">
-          <p>Antes de iniciar qualquer processo de regularização, é fundamental compreender a situação real do imóvel.</p>
-          <p>Nesta etapa é realizada uma análise inicial da situação do imóvel, identificando possíveis irregularidades e indicando os caminhos técnicos para regularização.</p>
-          <p>Essa análise permite entender com clareza quais etapas serão necessárias para regularizar a construção ou documentação do imóvel.</p>
-        </div>
+    <div className="absolute right-0 top-0 h-80 w-80 rounded-full bg-accent/10 blur-3xl" aria-hidden />
 
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Button asChild size="lg" className="bg-accent font-semibold text-accent-foreground hover:bg-accent/90">
-            <a href="#contato">Solicitar análise do imóvel <ArrowRight className="ml-1 h-4 w-4" /></a>
-          </Button>
-          <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent font-semibold text-primary-foreground hover:bg-white/10 hover:text-primary-foreground">
-            <a href={whatsappLink()} target="_blank" rel="noopener noreferrer">
-              <MessageCircle className="mr-1 h-4 w-4" /> Falar no WhatsApp
-            </a>
-          </Button>
-        </div>
+    <div className="container relative">
+      <div className="mx-auto max-w-3xl text-center">
+        <span className="inline-flex items-center gap-2 rounded-full bg-accent/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent-foreground ring-1 ring-accent/40">
+          Como funciona
+        </span>
+        <h2 id="analysis-heading" className="mt-4 font-display text-3xl font-extrabold sm:text-4xl lg:text-5xl">
+          Como funciona a consultoria
+        </h2>
+        <p className="mt-4 text-lg text-primary-foreground/80">
+          Três passos simples — e o primeiro é <strong className="text-accent">100% gratuito.</strong>
+        </p>
       </div>
 
-      <div className="rounded-2xl border border-white/15 bg-white/5 p-8 backdrop-blur-sm">
-        <p className="font-display text-lg font-bold">Ao final da análise você entenderá:</p>
-        <ul className="mt-6 space-y-4">
-          {outcomes.map((o) => (
-            <li key={o} className="flex items-start gap-3">
-              <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-accent" />
-              <span className="text-primary-foreground/90">{o}</span>
-            </li>
-          ))}
-        </ul>
+      <div className="mt-14 grid gap-6 md:grid-cols-3">
+        {steps.map((step, i) => (
+          <div key={step.number} className="relative rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm transition-all hover:bg-white/10 hover:border-white/20">
+            {/* Connector line */}
+            {i < steps.length - 1 && (
+              <div className="absolute right-0 top-1/2 hidden -translate-y-1/2 translate-x-full items-center justify-center text-accent/50 md:flex" aria-hidden>
+                <ArrowRight className="h-6 w-6" />
+              </div>
+            )}
+            <div className="text-4xl">{step.emoji}</div>
+            <div className="mt-4 font-display text-6xl font-extrabold text-accent/30">{step.number}</div>
+            <h3 className="mt-2 font-display text-xl font-bold">{step.title}</h3>
+            {step.highlight && (
+              <span className="mt-2 inline-block rounded-full bg-accent/20 px-3 py-0.5 text-xs font-bold text-accent">
+                {step.highlight}
+              </span>
+            )}
+            <p className="mt-3 text-sm leading-relaxed text-primary-foreground/75">{step.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <Button asChild size="lg" className="bg-accent font-bold text-accent-foreground hover:bg-accent/90 shadow-lg shadow-accent/20 transition-all hover:scale-[1.02]" id="analysis-cta-primary">
+          <a href={consultLink()} target="_blank" rel="noopener noreferrer">
+            <MessageCircle className="mr-2 h-4 w-4" />
+            Quero minha consultoria gratuita
+          </a>
+        </Button>
+        <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent font-semibold text-primary-foreground hover:bg-white/10 hover:text-primary-foreground" id="analysis-cta-secondary">
+          <a href="#contato">
+            Preencher formulário <ArrowRight className="ml-1 h-4 w-4" />
+          </a>
+        </Button>
       </div>
     </div>
   </section>
