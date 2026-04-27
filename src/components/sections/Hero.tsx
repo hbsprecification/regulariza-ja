@@ -1,6 +1,6 @@
 import { consultLink } from "@/lib/contact";
 import { ArrowRight, MessageCircle, ShieldCheck, GraduationCap } from "lucide-react";
-import Hero3D from "@/components/Hero3D";
+import HeroImage from "@/components/HeroImage";
 
 const Hero = () => (
   <section id="hero" className="relative overflow-hidden pt-20 sm:pt-24" aria-labelledby="hero-heading">
@@ -16,8 +16,10 @@ const Hero = () => (
         backgroundSize: "48px 48px",
       }}
     />
-    {/* Accent glow */}
-    <div className="absolute -bottom-32 left-1/2 h-80 w-[600px] -translate-x-1/2 rounded-full bg-accent/15 blur-3xl" aria-hidden />
+    {/* Accent glow - rust */}
+    <div className="absolute -bottom-32 left-1/4 h-80 w-[600px] -translate-x-1/2 rounded-full bg-accent/15 blur-3xl px-10" aria-hidden />
+    {/* Accent glow - blue (for the photo side) */}
+    <div className="absolute -bottom-32 left-3/4 h-80 w-[600px] -translate-x-1/2 rounded-full bg-blue-500/10 blur-3xl px-10" aria-hidden />
 
     <div className="container relative">
       {/* CREA badge */}
@@ -92,15 +94,15 @@ const Hero = () => (
           </div>
         </div>
 
-        {/* Right — 3D Scroll Animation (hidden on mobile to prioritize CTA) */}
-        <div className="hidden lg:block">
-          <Hero3D />
+        {/* Right — Engineer Portrait with Technical Animation */}
+        <div className="flex flex-col items-center">
+          <HeroImage />
 
           {/* Specialization badge */}
-          <div className="mt-4 flex justify-center">
-            <div className="rounded-xl border border-white/15 bg-white/5 px-5 py-2.5 text-center backdrop-blur-sm">
-              <p className="text-[10px] font-semibold uppercase tracking-widest text-primary-foreground/50">Especialização</p>
-              <p className="font-display text-sm font-bold text-primary-foreground">Arquitetura & Engenharia Legal</p>
+          <div className="mt-6 flex justify-center">
+            <div className="rounded-xl border border-white/10 bg-white/5 px-5 py-2.5 text-center backdrop-blur-sm lg:mt-4">
+              <p className="text-[10px] font-semibold uppercase tracking-widest text-primary-foreground/40">Base de Operação</p>
+              <p className="font-display text-sm font-bold text-primary-foreground uppercase tracking-tight">Itabuna & Região Sul da Bahia</p>
             </div>
           </div>
         </div>
