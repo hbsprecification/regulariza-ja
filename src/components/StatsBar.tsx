@@ -1,17 +1,37 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { FileCheck2, Building2, GraduationCap, MapPin, type LucideIcon } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const stats = [
-  { value: 350, suffix: "+", label: "Imóveis analisados", icon: "🏠" },
-  { value: 120, suffix: "+", label: "Regularizações conduzidas", icon: "✅" },
-  { value: 9, suffix: " anos", label: "De experiência profissional", icon: "🎓" },
-  { value: 27, suffix: " estados", label: "Atendimento em todo o Brasil", icon: "🇧🇷" },
+type Stat = {
+  value: number | null;
+  prefix?: string;
+  suffix?: string;
+  staticLabel?: string;
+  label: string;
+  Icon: LucideIcon;
+};
+
+const stats: Stat[] = [
+  { value: 170, prefix: "+", label: "ARTs registradas", Icon: FileCheck2 },
+  { value: 350, prefix: "+", label: "Imóveis analisados", Icon: Building2 },
+  { value: 9, suffix: " anos", label: "De experiência profissional", Icon: GraduationCap },
+  { value: null, staticLabel: "Brasil", label: "Atendimento em todo o país", Icon: MapPin },
 ];
 
-function Counter({ target, suffix, started }: { target: number; suffix: string; started: boolean }) {
+function Counter({
+  target,
+  prefix = "",
+  suffix = "",
+  started,
+}: {
+  target: number;
+  prefix?: string;
+  suffix?: string;
+  started: boolean;
+}) {
   const [count, setCount] = useState(0);
   const rafRef = useRef<number | null>(null);
 
@@ -39,6 +59,7 @@ function Counter({ target, suffix, started }: { target: number; suffix: string; 
 
   return (
     <span>
+      {prefix}
       {count}
       {suffix}
     </span>
