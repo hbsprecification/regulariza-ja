@@ -2,11 +2,6 @@ import { consultLink } from "@/lib/contact";
 import { ArrowRight, MessageCircle, ShieldCheck, GraduationCap } from "lucide-react";
 import HeroAnimation from "@/components/HeroAnimation";
 
-// Detect if user prefers reduced motion (for SSR safety, default false)
-const prefersReducedMotion =
-  typeof window !== "undefined" &&
-  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
 const Hero = () => (
   <section id="hero" className="relative overflow-hidden pt-20 sm:pt-24" aria-labelledby="hero-heading">
     {/* Dark gradient background */}
@@ -99,7 +94,7 @@ const Hero = () => (
 
         {/* Right — GSAP Animation (hidden on mobile to prioritize CTA) */}
         <div className="hidden lg:block">
-          <HeroAnimation reducedMotion={prefersReducedMotion} />
+          <HeroAnimation />
 
           {/* Specialization badge */}
           <div className="mt-4 flex justify-center">

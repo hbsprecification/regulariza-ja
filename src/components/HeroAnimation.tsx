@@ -1,330 +1,441 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { FileText, Map, Home, CheckCircle2, ShieldCheck } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* ─── Stage visuals ────────────────────────────────────────────────── */
-
-/** Stage 1 — Technical documents pile */
-const StageDocuments = () => (
-  <div className="absolute inset-0 flex flex-col items-center justify-center bg-zinc-900 px-6">
-    {/* Stacked paper cards */}
-    <div className="relative h-56 w-full max-w-xs">
-      {/* Paper 3 — back */}
-      <div className="absolute inset-0 top-4 rotate-[-5deg] scale-95 rounded-xl border border-white/10 bg-zinc-800 p-5 shadow-lg">
-        <div className="h-2 w-16 rounded-full bg-white/20 mb-2" />
-        <div className="h-1.5 w-32 rounded-full bg-white/10 mb-1" />
-        <div className="h-1.5 w-24 rounded-full bg-white/10" />
-      </div>
-      {/* Paper 2 — middle */}
-      <div className="absolute inset-0 top-2 rotate-[2deg] rounded-xl border border-white/15 bg-zinc-700 p-5 shadow-lg">
-        <p className="text-[10px] font-bold uppercase tracking-widest text-accent/80 mb-2">Matrícula do Imóvel</p>
-        <div className="h-1.5 w-3/4 rounded-full bg-white/20 mb-1" />
-        <div className="h-1.5 w-1/2 rounded-full bg-white/15" />
-        <div className="mt-4 flex items-center gap-2">
-          <div className="h-8 w-8 rounded-full border-2 border-accent/40 flex items-center justify-center">
-            <ShieldCheck className="h-4 w-4 text-accent/60" />
-          </div>
-          <div className="h-1.5 w-20 rounded-full bg-white/15" />
-        </div>
-      </div>
-      {/* Paper 1 — front */}
-      <div className="absolute inset-0 rounded-xl border border-white/20 bg-zinc-600 p-5 shadow-xl">
-        <div className="flex items-start justify-between mb-3">
-          <div>
-            <p className="text-[10px] font-extrabold uppercase tracking-widest text-accent mb-1">Planta Técnica</p>
-            <div className="h-1.5 w-28 rounded-full bg-white/25 mb-1" />
-            <div className="h-1.5 w-20 rounded-full bg-white/15" />
-          </div>
-          <FileText className="h-8 w-8 text-accent/60" />
-        </div>
-        <div className="mt-3 grid grid-cols-3 gap-1">
-          {Array.from({ length: 9 }).map((_, i) => (
-            <div key={i} className="h-6 rounded border border-white/10 bg-white/5" />
-          ))}
-        </div>
-      </div>
-    </div>
-    <p className="mt-6 text-sm font-semibold text-white/60">📄 Documentação técnica</p>
-  </div>
-);
-
-/** Stage 2 — Blueprint / architectural drawing */
-const StageBlueprint = () => (
-  <div
-    className="absolute inset-0 flex flex-col items-center justify-center"
-    style={{ background: "#0d2144" }}
-  >
-    {/* Blueprint grid */}
-    <div
-      className="absolute inset-0 opacity-30"
-      style={{
-        backgroundImage:
-          "linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px)",
-        backgroundSize: "24px 24px",
-      }}
-    />
-    {/* House outline */}
-    <div className="relative z-10 flex flex-col items-center">
-      <svg viewBox="0 0 200 160" className="w-52 sm:w-64" fill="none" stroke="white" strokeWidth="1.5">
-        {/* Roof */}
-        <polyline points="20,80 100,20 180,80" strokeDasharray="6 3" />
-        {/* Walls */}
-        <rect x="35" y="80" width="130" height="75" strokeDasharray="6 3" />
-        {/* Door */}
-        <rect x="80" y="110" width="40" height="45" strokeDasharray="4 2" />
-        {/* Windows */}
-        <rect x="45" y="90" width="25" height="20" strokeDasharray="4 2" />
-        <rect x="130" y="90" width="25" height="20" strokeDasharray="4 2" />
-        {/* Measurements */}
-        <line x1="35" y1="168" x2="165" y2="168" stroke="rgba(255,255,255,0.4)" strokeWidth="0.5" />
-        <line x1="35" y1="165" x2="35" y2="171" stroke="rgba(255,255,255,0.4)" strokeWidth="0.5" />
-        <line x1="165" y1="165" x2="165" y2="171" stroke="rgba(255,255,255,0.4)" strokeWidth="0.5" />
-      </svg>
-      <p className="mt-1 text-[10px] text-white/40 tracking-widest uppercase">8.50m</p>
-    </div>
-    <p className="relative z-10 mt-5 text-sm font-semibold text-white/70">📐 Análise técnica da planta</p>
-  </div>
-);
-
-/** Stage 3 — Wireframe structure */
-const StageWireframe = () => (
-  <div className="absolute inset-0 flex flex-col items-center justify-center bg-zinc-950">
-    <div className="flex flex-col items-center">
-      <svg viewBox="0 0 220 180" className="w-52 sm:w-64" fill="none">
-        {/* 3D house wireframe */}
-        {/* Front face */}
-        <polyline points="30,90 110,30 190,90" stroke="#7A3E0E" strokeWidth="2" />
-        <rect x="45" y="90" width="130" height="80" stroke="#7A3E0E" strokeWidth="2" />
-        {/* Side face depth suggestion */}
-        <line x1="175" y1="90" x2="195" y2="70" stroke="#7A3E0E" strokeWidth="1.5" strokeDasharray="4 2" opacity="0.6" />
-        <line x1="175" y1="170" x2="195" y2="150" stroke="#7A3E0E" strokeWidth="1.5" strokeDasharray="4 2" opacity="0.6" />
-        <line x1="195" y1="70" x2="195" y2="150" stroke="#7A3E0E" strokeWidth="1.5" strokeDasharray="4 2" opacity="0.6" />
-        {/* Roof depth */}
-        <line x1="110" y1="30" x2="130" y2="10" stroke="#7A3E0E" strokeWidth="1.5" strokeDasharray="4 2" opacity="0.6" />
-        <line x1="130" y1="10" x2="195" y2="70" stroke="#7A3E0E" strokeWidth="1.5" strokeDasharray="4 2" opacity="0.6" />
-        {/* Door */}
-        <rect x="90" y="120" width="35" height="50" stroke="rgba(122,62,14,0.5)" strokeWidth="1.5" />
-        {/* Windows */}
-        <rect x="50" y="100" width="28" height="22" stroke="rgba(122,62,14,0.5)" strokeWidth="1.5" />
-        <rect x="140" y="100" width="28" height="22" stroke="rgba(122,62,14,0.5)" strokeWidth="1.5" />
-        {/* Grid dots at intersections */}
-        {[[30,90],[110,30],[190,90],[45,90],[175,90],[45,170],[175,170]].map(([cx,cy],i) => (
-          <circle key={i} cx={cx} cy={cy} r="3" fill="#7A3E0E" opacity="0.8" />
-        ))}
-      </svg>
-    </div>
-    <p className="mt-4 text-sm font-semibold text-white/60">🔧 Planejamento estrutural</p>
-  </div>
-);
-
-/** Stage 4 — House taking shape */
-const StageBuilding = () => (
-  <div className="absolute inset-0 flex flex-col items-center justify-center bg-zinc-900">
-    <div className="flex flex-col items-center">
-      <svg viewBox="0 0 200 170" className="w-52 sm:w-64">
-        {/* Filled walls */}
-        <rect x="30" y="90" width="140" height="75" fill="#3f3f46" stroke="#7A3E0E" strokeWidth="1.5" />
-        {/* Filled roof */}
-        <polygon points="15,90 100,22 185,90" fill="#52525b" stroke="#7A3E0E" strokeWidth="1.5" />
-        {/* Door — solid */}
-        <rect x="80" y="118" width="40" height="47" fill="#27272a" stroke="rgba(122,62,14,0.7)" strokeWidth="1.5" />
-        {/* Windows — lit up in accent */}
-        <rect x="38" y="98" width="30" height="24" fill="rgba(122,62,14,0.25)" stroke="#7A3E0E" strokeWidth="1.5" />
-        <rect x="132" y="98" width="30" height="24" fill="rgba(122,62,14,0.25)" stroke="#7A3E0E" strokeWidth="1.5" />
-        {/* Construction lines still visible */}
-        <line x1="30" y1="90" x2="15" y2="90" stroke="#7A3E0E" strokeWidth="1" strokeDasharray="3 2" opacity="0.4" />
-        <line x1="170" y1="90" x2="185" y2="90" stroke="#7A3E0E" strokeWidth="1" strokeDasharray="3 2" opacity="0.4" />
-      </svg>
-    </div>
-    <p className="mt-4 text-sm font-semibold text-white/60">🏗️ Regularização em andamento</p>
-  </div>
-);
-
-/** Stage 5 — Complete + Regularizado seal */
-const StageComplete = () => (
-  <div className="absolute inset-0 flex flex-col items-center justify-center bg-zinc-950">
-    <div className="flex flex-col items-center">
-      <svg viewBox="0 0 200 168" className="w-52 sm:w-64">
-        {/* House — fully solid, premium feel */}
-        <polygon points="14,90 100,20 186,90" fill="#7A3E0E" />
-        <rect x="28" y="90" width="144" height="75" fill="#5c2e08" />
-        {/* Door */}
-        <rect x="79" y="116" width="42" height="49" rx="3" fill="#3d1f05" />
-        <circle cx="117" cy="141" r="2.5" fill="rgba(255,255,255,0.4)" />
-        {/* Windows */}
-        <rect x="38" y="98" width="32" height="26" rx="2" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
-        <rect x="130" y="98" width="32" height="26" rx="2" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
-        {/* Shine on roof */}
-        <polygon points="14,90 100,20 186,90" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" />
-      </svg>
-      {/* Approved seal */}
-      <div className="mt-4 flex items-center gap-2.5 rounded-full border-2 border-emerald-500/60 bg-emerald-500/15 px-5 py-2 shadow-lg shadow-emerald-500/10">
-        <CheckCircle2 className="h-5 w-5 text-emerald-400 flex-shrink-0" />
-        <span className="text-sm font-extrabold tracking-wide text-emerald-300">
-          Imóvel Regularizado
-        </span>
-      </div>
-    </div>
-    <p className="mt-4 text-sm font-semibold text-white/60">🏠 Processo concluído</p>
-  </div>
-);
-
-/* ─── Main animation component ─────────────────────────────────────── */
-
-const stages = [
-  StageDocuments,
-  StageBlueprint,
-  StageWireframe,
-  StageBuilding,
-  StageComplete,
-] as const;
-
-const stageLabels = [
-  "Documentação",
-  "Análise técnica",
-  "Planejamento",
-  "Regularização",
-  "Concluído",
-];
-
-interface HeroAnimationProps {
-  /** If true, device prefers reduced motion — show static final stage */
-  reducedMotion?: boolean;
-}
-
-const HeroAnimation = ({ reducedMotion = false }: HeroAnimationProps) => {
+/**
+ * Blueprint house animation.
+ *
+ * Technique: SVG strokeDashoffset "draw" effect.
+ * Each <path> gets strokeDasharray = its own total length,
+ * and strokeDashoffset animated from length → 0, revealing
+ * the stroke progressively like a pen drawing.
+ *
+ * Order:
+ *  1. Grid / paper appear
+ *  2. Ground line
+ *  3. Left + right walls rise
+ *  4. Roof left + right slopes
+ *  5. Chimney
+ *  6. Door outline
+ *  7. Window outlines
+ *  8. Dimension lines
+ *  9. Annotations + title block
+ * 10. "Imóvel Regularizado" seal
+ */
+const HeroAnimation = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const stageRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const progressRef = useRef<HTMLDivElement>(null);
-  const [currentStage, setCurrentStage] = useState<number>(
-    reducedMotion ? stages.length - 1 : 0
-  );
-  const tlRef = useRef<gsap.core.Timeline | null>(null);
+  const sealRef = useRef<HTMLDivElement>(null);
+  const annotationsRef = useRef<SVGGElement>(null);
+
+  /* ── One ref per drawable path ─────────────────────────────── */
+  const rGround    = useRef<SVGPathElement>(null);
+  const rWallL     = useRef<SVGPathElement>(null);
+  const rWallR     = useRef<SVGPathElement>(null);
+  const rRoofL     = useRef<SVGPathElement>(null);
+  const rRoofR     = useRef<SVGPathElement>(null);
+  const rChimL     = useRef<SVGPathElement>(null);
+  const rChimR     = useRef<SVGPathElement>(null);
+  const rChimTop   = useRef<SVGPathElement>(null);
+  const rDoorL     = useRef<SVGPathElement>(null);
+  const rDoorR     = useRef<SVGPathElement>(null);
+  const rDoorTop   = useRef<SVGPathElement>(null);
+  const rWinL      = useRef<SVGPathElement>(null);
+  const rWinR      = useRef<SVGPathElement>(null);
+  const rDimH      = useRef<SVGPathElement>(null);
+  const rDimV      = useRef<SVGPathElement>(null);
 
   useEffect(() => {
-    if (reducedMotion || !containerRef.current) return;
+    const drawPaths: SVGPathElement[] = [
+      rGround, rWallL, rWallR,
+      rRoofL, rRoofR,
+      rChimL, rChimR, rChimTop,
+      rDoorL, rDoorR, rDoorTop,
+      rWinL, rWinR,
+      rDimH, rDimV,
+    ]
+      .map((r) => r.current)
+      .filter((el): el is SVGPathElement => el !== null);
 
-    const els = stageRefs.current.filter(Boolean) as HTMLDivElement[];
-    if (els.length !== stages.length) return;
+    /* ── 1. Measure & initialise stroke-dash ─────────────────── */
+    drawPaths.forEach((path) => {
+      try {
+        const len = path.getTotalLength();
+        if (len > 0) {
+          gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
+        }
+      } catch {
+        // Older environments: just show the path immediately
+        gsap.set(path, { opacity: 1 });
+      }
+    });
 
-    // Initial state — only stage 0 visible
-    gsap.set(els, { opacity: 0, scale: 1.03 });
-    gsap.set(els[0], { opacity: 1, scale: 1 });
+    // Hide annotations & seal initially
+    if (annotationsRef.current) gsap.set(annotationsRef.current, { opacity: 0 });
+    if (sealRef.current)        gsap.set(sealRef.current, { opacity: 0, scale: 0.85, y: 8 });
 
-    // Build timeline
+    /* ── 2. Helper: draw one path ────────────────────────────── */
+    const draw = (ref: React.RefObject<SVGPathElement | null>, dur = 0.35) =>
+      gsap.to(ref.current, {
+        strokeDashoffset: 0,
+        duration: dur,
+        ease: "power2.inOut",
+      });
+
+    /* ── 3. Build timeline ───────────────────────────────────── */
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
-        start: "top 70%",
+        start: "top 78%",
         once: true,
       },
-      onUpdate() {
-        // Update progress bar
-        if (progressRef.current) {
-          progressRef.current.style.width = `${tl.progress() * 100}%`;
-        }
-      },
     });
 
-    tlRef.current = tl;
+    tl
+      // Container fades in
+      .fromTo(
+        containerRef.current,
+        { opacity: 0, y: 18 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }
+      )
 
-    // Auto-play through stages: each stage visible for 1s, crossfade 0.5s
-    stages.forEach((_, i) => {
-      if (i === 0) return; // stage 0 already visible
-      tl.to(els[i - 1], { opacity: 0, scale: 0.97, duration: 0.5, ease: "power2.in" })
-        .to(
-          els[i],
-          {
-            opacity: 1,
-            scale: 1,
-            duration: 0.5,
-            ease: "power2.out",
-            onStart: () => setCurrentStage(i),
-          },
-          "<0.2"
-        )
-        .addPause(`+=${i === stages.length - 1 ? 0 : 1}`);
-    });
+      // Ground — anchor
+      .add(draw(rGround, 0.45))
+
+      // Walls rise (parallel, slightly staggered)
+      .add(draw(rWallL, 0.45), "<0.15")
+      .add(draw(rWallR, 0.45), "<0.05")
+
+      // Roof slopes (parallel)
+      .add(draw(rRoofL, 0.4), ">0.05")
+      .add(draw(rRoofR, 0.4), "<")
+
+      // Chimney (sequential, quick)
+      .add(draw(rChimL, 0.22), ">0.05")
+      .add(draw(rChimR, 0.22), "<")
+      .add(draw(rChimTop, 0.12), ">")
+
+      // Door
+      .add(draw(rDoorL, 0.22), ">0.08")
+      .add(draw(rDoorR, 0.22), "<")
+      .add(draw(rDoorTop, 0.15), ">")
+
+      // Windows (parallel)
+      .add(draw(rWinL, 0.3), ">0.08")
+      .add(draw(rWinR, 0.3), "<")
+
+      // Dimension lines (parallel)
+      .add(draw(rDimH, 0.3), ">0.08")
+      .add(draw(rDimV, 0.3), "<")
+
+      // Annotations block
+      .to(
+        annotationsRef.current,
+        { opacity: 1, duration: 0.35, ease: "power2.out" },
+        ">0.08"
+      )
+
+      // Seal pops in
+      .to(
+        sealRef.current,
+        { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(1.6)" },
+        ">0.1"
+      );
 
     return () => {
       tl.kill();
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
-  }, [reducedMotion]);
+  }, []);
+
+  /* ── SVG coordinate system ────────────────────────────────────
+   *  viewBox 0 0 400 310
+   *  Ground:   y=238
+   *  House:    x=65–335  (270px wide)
+   *  Walls:    height 118px  →  top y=120
+   *  Roof peak: x=200  y=38
+   *  Chimney:  x=255–278  y=72–120
+   *  Door:     x=176–224  y=185–238  (48px wide, 53px tall)
+   *  Win L:    x=88–132   y=148–180
+   *  Win R:    x=268–312  y=148–180
+   *  Dim H:    y=255
+   *  Dim V:    x=350
+   ─────────────────────────────────────────────────────────── */
 
   return (
-    <div className="flex flex-col gap-3">
-      {/* Animation container */}
-      <div
-        ref={containerRef}
-        className="relative overflow-hidden rounded-2xl shadow-elegant ring-1 ring-white/15"
-        style={{ aspectRatio: "4/3" }}
+    <div
+      ref={containerRef}
+      className="relative overflow-hidden rounded-2xl shadow-elegant ring-1 ring-white/10"
+      aria-label="Animação ilustrativa de projeto arquitetônico"
+      role="img"
+    >
+      {/* ── Blueprint dark paper ── */}
+      <div className="absolute inset-0 bg-[#0b1929]" aria-hidden />
+
+      {/* ── SVG drawing ─────────────────────────────────────── */}
+      <svg
+        viewBox="0 0 400 310"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative w-full"
       >
-        {stages.map((Stage, i) => (
-          <div
-            key={i}
-            ref={(el) => { stageRefs.current[i] = el; }}
-            className="absolute inset-0"
-            style={{
-              opacity: reducedMotion ? (i === stages.length - 1 ? 1 : 0) : i === 0 ? 1 : 0,
-            }}
-            aria-hidden={currentStage !== i}
-          >
-            <Stage />
-          </div>
-        ))}
-
-        {/* Progress bar */}
-        {!reducedMotion && (
-          <div className="absolute bottom-0 inset-x-0 h-0.5 bg-white/10">
-            <div
-              ref={progressRef}
-              className="h-full bg-accent transition-[width] duration-100"
-              style={{ width: "0%" }}
+        <defs>
+          {/* Fine grid */}
+          <pattern id="fine-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+            <path
+              d="M 20 0 L 0 0 0 20"
+              fill="none"
+              stroke="#3a6ea5"
+              strokeWidth="0.25"
+              opacity="0.55"
             />
-          </div>
-        )}
+          </pattern>
+          {/* Major grid */}
+          <pattern id="major-grid" width="100" height="100" patternUnits="userSpaceOnUse">
+            <path
+              d="M 100 0 L 0 0 0 100"
+              fill="none"
+              stroke="#3a6ea5"
+              strokeWidth="0.6"
+              opacity="0.35"
+            />
+          </pattern>
+        </defs>
 
-        {/* Floating badge — Consultoria gratuita */}
-        <div className="absolute right-3 top-3 rounded-lg bg-accent px-3 py-1.5 text-center shadow-lg">
-          <p className="text-[10px] font-extrabold uppercase tracking-wider text-accent-foreground">
-            Consultoria
-          </p>
-          <p className="text-sm font-extrabold text-accent-foreground leading-none">GRATUITA</p>
-        </div>
+        {/* Grid layers */}
+        <rect width="400" height="310" fill="url(#fine-grid)" />
+        <rect width="400" height="310" fill="url(#major-grid)" />
+
+        {/* ── STRUCTURAL PATHS (draw effect) ──────────────── */}
+
+        {/* Ground line */}
+        <path
+          ref={rGround}
+          d="M 28,238 L 372,238"
+          stroke="rgba(255,255,255,0.9)"
+          strokeWidth="2.2"
+          fill="none"
+          strokeLinecap="round"
+        />
+
+        {/* Left wall — M x,bottom L x,top  → draws upward */}
+        <path
+          ref={rWallL}
+          d="M 65,238 L 65,120"
+          stroke="rgba(255,255,255,0.9)"
+          strokeWidth="2"
+          fill="none"
+          strokeLinecap="round"
+        />
+
+        {/* Right wall */}
+        <path
+          ref={rWallR}
+          d="M 335,238 L 335,120"
+          stroke="rgba(255,255,255,0.9)"
+          strokeWidth="2"
+          fill="none"
+          strokeLinecap="round"
+        />
+
+        {/* Roof left slope */}
+        <path
+          ref={rRoofL}
+          d="M 65,120 L 200,38"
+          stroke="#c87941"
+          strokeWidth="2.5"
+          fill="none"
+          strokeLinecap="round"
+        />
+
+        {/* Roof right slope */}
+        <path
+          ref={rRoofR}
+          d="M 335,120 L 200,38"
+          stroke="#c87941"
+          strokeWidth="2.5"
+          fill="none"
+          strokeLinecap="round"
+        />
+
+        {/* Chimney left vertical */}
+        <path
+          ref={rChimL}
+          d="M 258,120 L 258,72"
+          stroke="#87ceeb"
+          strokeWidth="1.5"
+          fill="none"
+          strokeLinecap="round"
+        />
+
+        {/* Chimney right vertical */}
+        <path
+          ref={rChimR}
+          d="M 278,120 L 278,72"
+          stroke="#87ceeb"
+          strokeWidth="1.5"
+          fill="none"
+          strokeLinecap="round"
+        />
+
+        {/* Chimney top horizontal */}
+        <path
+          ref={rChimTop}
+          d="M 255,72 L 281,72"
+          stroke="#87ceeb"
+          strokeWidth="1.5"
+          fill="none"
+          strokeLinecap="round"
+        />
+
+        {/* Door left vertical */}
+        <path
+          ref={rDoorL}
+          d="M 176,238 L 176,185"
+          stroke="#87ceeb"
+          strokeWidth="1.6"
+          fill="none"
+          strokeLinecap="round"
+        />
+
+        {/* Door right vertical */}
+        <path
+          ref={rDoorR}
+          d="M 224,238 L 224,185"
+          stroke="#87ceeb"
+          strokeWidth="1.6"
+          fill="none"
+          strokeLinecap="round"
+        />
+
+        {/* Door top horizontal */}
+        <path
+          ref={rDoorTop}
+          d="M 176,185 L 224,185"
+          stroke="#87ceeb"
+          strokeWidth="1.6"
+          fill="none"
+          strokeLinecap="round"
+        />
+
+        {/* Window left (closed rectangle path) */}
+        <path
+          ref={rWinL}
+          d="M 88,148 L 132,148 L 132,180 L 88,180 L 88,148"
+          stroke="#87ceeb"
+          strokeWidth="1.5"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+
+        {/* Window right */}
+        <path
+          ref={rWinR}
+          d="M 268,148 L 312,148 L 312,180 L 268,180 L 268,148"
+          stroke="#87ceeb"
+          strokeWidth="1.5"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+
+        {/* Dimension line horizontal */}
+        <path
+          ref={rDimH}
+          d="M 65,256 L 335,256"
+          stroke="rgba(255,255,255,0.4)"
+          strokeWidth="0.8"
+          fill="none"
+          strokeLinecap="round"
+        />
+
+        {/* Dimension line vertical */}
+        <path
+          ref={rDimV}
+          d="M 352,120 L 352,238"
+          stroke="rgba(255,255,255,0.4)"
+          strokeWidth="0.8"
+          fill="none"
+          strokeLinecap="round"
+        />
+
+        {/* ── ANNOTATIONS (fade in) ────────────────────────── */}
+        <g ref={annotationsRef}>
+          {/* Dimension ticks horizontal */}
+          <line x1="65"  y1="253" x2="65"  y2="259" stroke="rgba(255,255,255,0.4)" strokeWidth="0.8" />
+          <line x1="335" y1="253" x2="335" y2="259" stroke="rgba(255,255,255,0.4)" strokeWidth="0.8" />
+          <text x="200" y="267" textAnchor="middle" fill="rgba(255,255,255,0.55)" fontSize="8.5" fontFamily="monospace">14.00m</text>
+
+          {/* Dimension ticks vertical */}
+          <line x1="349" y1="120" x2="355" y2="120" stroke="rgba(255,255,255,0.4)" strokeWidth="0.8" />
+          <line x1="349" y1="238" x2="355" y2="238" stroke="rgba(255,255,255,0.4)" strokeWidth="0.8" />
+          <text
+            x="365" y="179"
+            textAnchor="middle"
+            fill="rgba(255,255,255,0.55)"
+            fontSize="8.5"
+            fontFamily="monospace"
+            transform="rotate(90,365,179)"
+          >
+            5.90m
+          </text>
+
+          {/* Window cross-hairs (interior detail) */}
+          <line x1="110" y1="148" x2="110" y2="180" stroke="#87ceeb" strokeWidth="0.7" opacity="0.5" />
+          <line x1="88"  y1="164" x2="132" y2="164" stroke="#87ceeb" strokeWidth="0.7" opacity="0.5" />
+          <line x1="290" y1="148" x2="290" y2="180" stroke="#87ceeb" strokeWidth="0.7" opacity="0.5" />
+          <line x1="268" y1="164" x2="312" y2="164" stroke="#87ceeb" strokeWidth="0.7" opacity="0.5" />
+
+          {/* Door handle dot */}
+          <circle cx="218" cy="213" r="2.5" fill="#87ceeb" opacity="0.7" />
+
+          {/* Title block border */}
+          <rect x="10" y="275" width="380" height="28" fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth="0.6" />
+          <line x1="10" y1="283" x2="390" y2="283" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5" />
+
+          {/* Title block text */}
+          <text x="16" y="280" fill="rgba(255,255,255,0.5)" fontSize="6.5" fontFamily="monospace" letterSpacing="0.3">
+            PLANTA ARQUITETÔNICA
+          </text>
+          <text x="16" y="295" fill="rgba(255,255,255,0.35)" fontSize="6" fontFamily="monospace">
+            ENG. CIV. JÁDSON CASTRO SANTANA — CREA-BA 051598661-5
+          </text>
+          <text x="374" y="295" textAnchor="end" fill="rgba(255,255,255,0.35)" fontSize="6" fontFamily="monospace">
+            ESC. 1:50
+          </text>
+
+          {/* Label: Planta */}
+          <text x="100" y="135" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="7" fontFamily="monospace">
+            SALA
+          </text>
+          <text x="200" y="220" textAnchor="middle" fill="rgba(255,255,255,0.3)" fontSize="7" fontFamily="monospace">
+            CIRCULAÇÃO
+          </text>
+        </g>
+      </svg>
+
+      {/* ── Imóvel Regularizado seal ──────────────────────── */}
+      <div
+        ref={sealRef}
+        className="absolute bottom-12 right-4 flex items-center gap-2 rounded-full border-2 border-emerald-400/60 bg-emerald-500/20 px-4 py-2 shadow-lg backdrop-blur-sm"
+      >
+        <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-emerald-400" />
+        <span className="text-xs font-extrabold tracking-wide text-emerald-300">
+          Imóvel Regularizado
+        </span>
       </div>
 
-      {/* Stage indicator dots */}
-      {!reducedMotion && (
-        <div className="flex items-center justify-center gap-2" role="tablist" aria-label="Etapas da regularização">
-          {stageLabels.map((label, i) => (
-            <div
-              key={label}
-              role="tab"
-              aria-selected={currentStage === i}
-              aria-label={label}
-              title={label}
-              className={`h-1.5 rounded-full transition-all duration-500 ${
-                currentStage === i
-                  ? "w-6 bg-accent"
-                  : i < currentStage
-                  ? "w-3 bg-accent/50"
-                  : "w-3 bg-white/20"
-              }`}
-            />
-          ))}
-        </div>
-      )}
-
-      {/* Current stage label */}
-      {!reducedMotion && (
-        <p className="text-center text-xs font-medium text-primary-foreground/60">
-          {stageLabels[currentStage]}
+      {/* ── Consultoria gratuita badge ────────────────────── */}
+      <div className="absolute right-3 top-3 rounded-lg bg-accent px-3 py-1.5 text-center shadow-lg">
+        <p className="text-[10px] font-extrabold uppercase tracking-wider text-accent-foreground">
+          Consultoria
         </p>
-      )}
+        <p className="text-sm font-extrabold leading-none text-accent-foreground">
+          GRATUITA
+        </p>
+      </div>
     </div>
   );
 };
