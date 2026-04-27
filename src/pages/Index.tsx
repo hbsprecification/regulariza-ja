@@ -18,6 +18,7 @@ import WhatsappFloat from "@/components/WhatsappFloat";
 import MobileStickyCTA from "@/components/MobileStickyCTA";
 import PromoBanner from "@/components/PromoBanner";
 import ConsultPopup from "@/components/ConsultPopup";
+import BlueprintBackground from "@/components/BlueprintBackground";
 
 /**
  * CRO-optimized section order:
@@ -40,6 +41,7 @@ import ConsultPopup from "@/components/ConsultPopup";
  */
 const Index = () => (
   <div className="min-h-screen bg-background">
+    <BlueprintBackground />
     <PromoBanner />
     <Header />
     <main>
