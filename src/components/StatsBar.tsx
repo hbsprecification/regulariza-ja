@@ -98,27 +98,130 @@ const StatsBar = () => {
   return (
     <section
       ref={sectionRef}
-      className="border-y border-border bg-secondary/40 py-12 lg:py-16"
+      className="relative overflow-hidden border-y border-border bg-secondary/30 py-14 lg:py-20"
       aria-label="Números do profissional"
     >
-      <div className="container">
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-          {stats.map((stat, i) => (
-            <div
-              key={stat.label}
-              className="stat-card flex flex-col items-center gap-2 rounded-2xl border border-border bg-card px-4 py-6 text-center shadow-card opacity-0"
-            >
-              <span className="text-3xl">{stat.icon}</span>
-              <p className="font-display text-3xl font-extrabold text-accent sm:text-4xl">
-                <Counter target={stat.value} suffix={stat.suffix} started={started} />
-              </p>
-              <p className="text-xs font-medium leading-tight text-muted-foreground sm:text-sm">
-                {stat.label}
-              </p>
-            </div>
-          ))}
+      {/* Blueprint background — section-scoped */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <svg
+          className="absolute inset-0 h-full w-full opacity-[0.07]"
+          viewBox="0 0 1600 600"
+          preserveAspectRatio="xMidYMid slice"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <pattern id="sb-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+              <path d="M 32 0 L 0 0 0 32" fill="none" stroke="hsl(var(--accent))" strokeWidth="0.4" />
+            </pattern>
+            <pattern id="sb-grid-major" width="160" height="160" patternUnits="userSpaceOnUse">
+              <path d="M 160 0 L 0 0 0 160" fill="none" stroke="hsl(var(--accent))" strokeWidth="0.8" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#sb-grid)" />
+          <rect width="100%" height="100%" fill="url(#sb-grid-major)" opacity="0.6" />
+
+          <g stroke="hsl(var(--accent))" fill="none" strokeWidth="1.2">
+            <rect x="160" y="120" width="260" height="180" className="sb-draw sb-draw-1" />
+            <line x1="290" y1="120" x2="290" y2="220" className="sb-draw sb-draw-1" />
+            <line x1="160" y1="220" x2="290" y2="220" className="sb-draw sb-draw-1" />
+
+            <polyline
+              points="1180,140 1420,140 1420,300 1280,300 1280,360 1100,360 1100,220 1180,220 1180,140"
+              className="sb-draw sb-draw-2"
+            />
+
+            <rect x="700" y="380" width="200" height="120" className="sb-draw sb-draw-3" />
+            <line x1="800" y1="380" x2="800" y2="500" className="sb-draw sb-draw-3" />
+          </g>
+
+          <g stroke="hsl(var(--accent))" strokeWidth="0.7" strokeDasharray="5 8" opacity="0.55" fill="none">
+            <line x1="0" y1="300" x2="1600" y2="300" className="sb-dash" />
+            <line x1="800" y1="0" x2="800" y2="600" className="sb-dash sb-dash-2" />
+          </g>
+
+          <g fill="hsl(var(--accent))" className="sb-nodes">
+            {[
+              [160, 120], [420, 120], [160, 300], [420, 300], [290, 220],
+              [1180, 140], [1420, 140], [1420, 300], [1100, 360], [1280, 300],
+              [700, 380], [900, 380], [700, 500], [900, 500], [800, 440],
+            ].map(([cx, cy], i) => (
+              <circle key={i} cx={cx} cy={cy} r="2.4" style={{ animationDelay: `${(i * 0.5) % 6}s` }} />
+            ))}
+          </g>
+        </svg>
+        <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 via-transparent to-secondary/30" />
+      </div>
+
+      <div className="container relative">
+        <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
+          {stats.map((stat) => {
+            const Icon = stat.Icon;
+            return (
+              <div
+                key={stat.label}
+                className="stat-card group flex flex-col items-center gap-3 rounded-2xl border border-border/60 bg-card/80 px-5 py-8 text-center shadow-sm backdrop-blur-sm opacity-0 transition-all hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-md"
+              >
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                  <Icon className="h-5 w-5" strokeWidth={1.8} />
+                </span>
+                <p className="font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
+                  {stat.value !== null ? (
+                    <Counter
+                      target={stat.value}
+                      prefix={stat.prefix}
+                      suffix={stat.suffix}
+                      started={started}
+                    />
+                  ) : (
+                    <span>{stat.staticLabel}</span>
+                  )}
+                </p>
+                <p className="text-sm font-medium leading-tight text-muted-foreground">
+                  {stat.label}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
+
+      <style>{`
+        .sb-draw {
+          stroke-dasharray: 1400;
+          stroke-dashoffset: 1400;
+          animation: sb-draw-anim 28s ease-in-out infinite;
+        }
+        .sb-draw-1 { animation-delay: 0s; }
+        .sb-draw-2 { animation-delay: 4s; }
+        .sb-draw-3 { animation-delay: 9s; }
+        @keyframes sb-draw-anim {
+          0%   { stroke-dashoffset: 1400; opacity: 0; }
+          10%  { opacity: 1; }
+          45%  { stroke-dashoffset: 0; opacity: 1; }
+          100% { stroke-dashoffset: 0; opacity: 0.85; }
+        }
+        .sb-dash { animation: sb-dash-anim 24s linear infinite; }
+        .sb-dash-2 { animation-duration: 32s; animation-direction: reverse; }
+        @keyframes sb-dash-anim {
+          from { stroke-dashoffset: 0; }
+          to   { stroke-dashoffset: -80; }
+        }
+        .sb-nodes circle {
+          opacity: 0;
+          animation: sb-node-pulse 5s ease-in-out infinite;
+        }
+        @keyframes sb-node-pulse {
+          0%, 100% { opacity: 0; }
+          50%      { opacity: 0.85; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .sb-draw, .sb-dash, .sb-nodes circle {
+            animation: none !important;
+            stroke-dashoffset: 0 !important;
+            opacity: 0.6 !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };
