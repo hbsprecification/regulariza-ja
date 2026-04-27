@@ -1,9 +1,16 @@
 import { consultLink } from "@/lib/contact";
 import { ArrowRight, MessageCircle, ShieldCheck, GraduationCap } from "lucide-react";
 import HeroImage from "@/components/HeroImage";
+import { useInView } from "@/hooks/useInView";
 
-const Hero = () => (
-  <section id="hero" className="relative overflow-hidden pt-20 sm:pt-24" aria-labelledby="hero-heading">
+const Hero = () => {
+  const headingRef = useInView<HTMLHeadingElement>(0.2);
+  const subRef    = useInView<HTMLParagraphElement>(0.2);
+  const ctaRef    = useInView<HTMLDivElement>(0.2);
+  const cardRef   = useInView<HTMLDivElement>(0.2);
+
+  return (
+    <section id="hero" className="relative overflow-hidden pt-20 sm:pt-24" aria-labelledby="hero-heading">
     {/* Dark gradient background */}
     <div className="absolute inset-0 gradient-hero" aria-hidden />
     {/* Subtle grid texture */}
@@ -35,8 +42,9 @@ const Hero = () => (
         {/* Left — Copy */}
         <div className="text-center text-primary-foreground lg:text-left">
           <h1
+            ref={headingRef}
             id="hero-heading"
-            className="font-display text-3xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl lg:text-[3.2rem]"
+            className="reveal font-display text-3xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl lg:text-[3.2rem]"
           >
             Regularize seu imóvel com{" "}
             <span className="relative inline-block">
@@ -46,19 +54,19 @@ const Hero = () => (
             e sem burocracia.
           </h1>
 
-          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-primary-foreground/85 sm:text-lg lg:mx-0">
+          <p ref={subRef} className="reveal reveal-delay-1 mx-auto mt-5 max-w-xl text-base leading-relaxed text-primary-foreground/85 sm:text-lg lg:mx-0">
             Descubra de forma clara se seu imóvel precisa de regularização e quais caminhos podem resolver o problema —
             com análise técnica profissional e gratuita.
           </p>
 
-          {/* CTAs — mobile full-width */}
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:items-start">
+          {/* CTAs */}
+          <div ref={ctaRef} className="reveal reveal-delay-2 mt-8 flex flex-col items-center gap-3 sm:flex-row lg:items-start">
             <a
               href={consultLink()}
               target="_blank"
               rel="noopener noreferrer"
               id="hero-cta-primary"
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-accent px-6 py-4 text-base font-bold text-accent-foreground shadow-lg shadow-accent/30 transition-all hover:scale-[1.02] hover:bg-accent/90 hover:shadow-accent/50 sm:w-auto"
+              className="btn-glow flex w-full items-center justify-center gap-2 rounded-xl bg-accent px-6 py-4 text-base font-bold text-accent-foreground shadow-lg shadow-accent/30 sm:w-auto"
             >
               <MessageCircle className="h-5 w-5 flex-shrink-0" />
               Quero minha consultoria gratuita
@@ -77,7 +85,7 @@ const Hero = () => (
           </p>
 
           {/* Credentials card */}
-          <div className="mx-auto mt-8 max-w-sm rounded-2xl border border-white/10 bg-white/5 p-5 text-left backdrop-blur-sm lg:mx-0 lg:max-w-none">
+          <div ref={cardRef} className="reveal reveal-delay-3 card-hover mx-auto mt-8 max-w-sm rounded-2xl border border-white/10 bg-white/5 p-5 text-left backdrop-blur-sm lg:mx-0 lg:max-w-none">
             <p className="font-display text-sm font-bold text-primary-foreground">Jádson Castro Santana</p>
             <p className="text-xs text-primary-foreground/70">Engenheiro Civil — CREA-BA 051598661-5</p>
             <p className="mt-0.5 text-xs font-medium text-accent">Especialista em regularização de imóveis</p>
@@ -117,6 +125,7 @@ const Hero = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default Hero;
