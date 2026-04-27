@@ -18,11 +18,11 @@ export default function HeroImage() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power2.out", duration: 0.4 } });
 
-      // Entrance of the image - subtle fade in
+      // Entrance of the image - subtle fade in and soft zoom out
       tl.from(imageRef.current, {
-        scale: 1.05,
+        scale: 1.2,
         opacity: 0,
-        duration: 0.5,
+        duration: 0.6,
       });
 
       // Lines "drawing" animation
@@ -62,26 +62,26 @@ export default function HeroImage() {
   return (
     <div
       ref={containerRef}
-      className="group relative aspect-[4/4] w-full max-w-[500px] mx-auto overflow-hidden rounded-2xl bg-primary/20 shadow-2xl ring-1 ring-white/10 sm:aspect-[4/3] lg:max-w-none"
+      className="group relative aspect-[4/5] w-full max-w-[420px] mx-auto overflow-hidden rounded-2xl bg-primary/20 shadow-2xl ring-1 ring-white/10 lg:max-w-none"
     >
-      {/* Background Engineer Image */}
+      {/* Background Engineer Image - Increased zoom to highlight face and helmet */}
       <img
         ref={imageRef}
         src={jadsonHero}
         alt="Engenheiro Jádson Castro"
-        className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+        className="h-full w-full object-cover object-[center_12%] scale-110 transition-transform duration-700 group-hover:scale-[1.15]"
       />
 
       {/* Decorative Blueprint Lines Overlay */}
       <svg
         ref={linesRef}
-        viewBox="0 0 400 400"
+        viewBox="0 0 400 500"
         className="pointer-events-none absolute inset-0 h-full w-full"
         xmlns="http://www.w3.org/2000/svg"
       >
         {/* Main framing lines */}
         <path
-          d="M 40,40 L 360,40 M 360,40 L 360,360 M 360,360 L 40,360 M 40,360 L 40,40"
+          d="M 30,30 L 370,30 L 370,470 L 30,470 Z"
           fill="none"
           stroke="rgba(0, 242, 255, 0.4)"
           strokeWidth="1"
@@ -90,22 +90,18 @@ export default function HeroImage() {
         />
         
         {/* Technical crosshairs/marks */}
-        <path d="M 20,40 L 60,40 M 40,20 L 40,60" stroke="rgba(0, 242, 255, 0.6)" strokeWidth="0.5" strokeDasharray="400" />
-        <path d="M 340,40 L 380,40 M 360,20 L 360,60" stroke="rgba(0, 242, 255, 0.6)" strokeWidth="0.5" strokeDasharray="400" />
-        <path d="M 20,360 L 60,360 M 40,340 L 40,380" stroke="rgba(0, 242, 255, 0.6)" strokeWidth="0.5" strokeDasharray="400" />
-        <path d="M 340,360 L 380,360 M 360,340 L 360,380" stroke="rgba(0, 242, 255, 0.6)" strokeWidth="0.5" strokeDasharray="400" />
-        
-        {/* Architectural dimension lines */}
-        <path d="M 80,60 L 320,60" stroke="rgba(255, 255, 255, 0.3)" strokeWidth="0.5" strokeDasharray="5,5" />
-        <path d="M 340,100 L 340,300" stroke="rgba(255, 255, 255, 0.3)" strokeWidth="0.5" strokeDasharray="5,5" />
+        <path d="M 15,30 L 45,30 M 30,15 L 30,45" stroke="rgba(0, 242, 255, 0.6)" strokeWidth="0.5" strokeDasharray="400" />
+        <path d="M 355,30 L 385,30 M 370,15 L 370,45" stroke="rgba(0, 242, 255, 0.6)" strokeWidth="0.5" strokeDasharray="400" />
+        <path d="M 15,470 L 45,470 M 30,455 L 30,485" stroke="rgba(0, 242, 255, 0.6)" strokeWidth="0.5" strokeDasharray="400" />
+        <path d="M 355,470 L 385,470 M 370,455 L 370,485" stroke="rgba(0, 242, 255, 0.6)" strokeWidth="0.5" strokeDasharray="400" />
       </svg>
 
-      {/* Measures labels */}
+      {/* Measures labels - Repositioned to avoid face */}
       <div ref={measuresRef} className="pointer-events-none absolute inset-0">
-        <div className="absolute left-[35%] top-[12%] rounded-sm border border-cyan-400/30 bg-black/60 px-1.5 py-0.5 backdrop-blur-sm">
+        <div className="absolute left-[10%] bottom-[20%] rounded-sm border border-cyan-400/30 bg-black/60 px-1.5 py-0.5 backdrop-blur-sm">
           <span className="text-[10px] font-mono font-bold text-cyan-300">12.00m</span>
         </div>
-        <div className="absolute right-[8%] top-[45%] rounded-sm border border-cyan-400/30 bg-black/60 px-1.5 py-0.5 backdrop-blur-sm origin-center" style={{ transform: 'rotate(90deg)' }}>
+        <div className="absolute right-[10%] top-[40%] rounded-sm border border-cyan-400/30 bg-black/60 px-1.5 py-0.5 backdrop-blur-sm origin-center" style={{ transform: 'rotate(90deg)' }}>
           <span className="text-[10px] font-mono font-bold text-cyan-300">8.50m</span>
         </div>
       </div>
