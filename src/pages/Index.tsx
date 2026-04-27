@@ -1,6 +1,5 @@
 import Header from "@/components/sections/Header";
 import Hero from "@/components/sections/Hero";
-import ScrollStory3D from "@/components/sections/ScrollStory3D";
 import StatsBar from "@/components/StatsBar";
 import TrustSignals from "@/components/sections/TrustSignals";
 import Problem from "@/components/sections/Problem";
@@ -45,7 +44,6 @@ const Index = () => (
     <Header />
     <main>
       <Hero />
-      <ScrollStory3D />
       <StatsBar />
       <TrustSignals />
       <Problem />

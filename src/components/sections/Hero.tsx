@@ -1,6 +1,6 @@
 import { consultLink } from "@/lib/contact";
 import { ArrowRight, MessageCircle, ShieldCheck, GraduationCap } from "lucide-react";
-import HeroAnimation from "@/components/HeroAnimation";
+import Hero3D from "@/components/Hero3D";
 
 const Hero = () => (
   <section id="hero" className="relative overflow-hidden pt-20 sm:pt-24" aria-labelledby="hero-heading">
@@ -92,9 +92,9 @@ const Hero = () => (
           </div>
         </div>
 
-        {/* Right — GSAP Animation (hidden on mobile to prioritize CTA) */}
+        {/* Right — 3D Scroll Animation (hidden on mobile to prioritize CTA) */}
         <div className="hidden lg:block">
-          <HeroAnimation />
+          <Hero3D />
 
           {/* Specialization badge */}
           <div className="mt-4 flex justify-center">
