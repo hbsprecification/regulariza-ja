@@ -41,7 +41,6 @@ import BlueprintBackground from "@/components/BlueprintBackground";
  */
 const Index = () => (
   <div className="min-h-screen bg-background">
-    <BlueprintBackground />
     <PromoBanner />
     <Header />
     <main>

@@ -1,4 +1,5 @@
 import { CheckCircle2, Star } from "lucide-react";
+import BlueprintBackground from "@/components/BlueprintBackground";
 
 const items = [
   { emoji: "🎯", text: "Comunicação clara e objetiva, sem jargões técnicos" },
@@ -10,7 +11,8 @@ const items = [
 ];
 
 const Differentials = () => (
-  <section className="py-20 lg:py-28" aria-labelledby="differentials-heading">
+  <section className="relative overflow-hidden py-20 lg:py-28" aria-labelledby="differentials-heading">
+    <BlueprintBackground />
     <div className="container">
       <div className="mx-auto max-w-3xl text-center">
         <span className="text-xs font-semibold uppercase tracking-wider text-accent">Diferenciais</span>

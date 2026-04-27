@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { consultLink, whatsappLink } from "@/lib/contact";
 import { ArrowRight, MessageCircle } from "lucide-react";
+import BlueprintBackground from "@/components/BlueprintBackground";
 
 const CTA = () => (
-  <section className="py-20 lg:py-28" aria-labelledby="cta-heading">
+  <section className="relative overflow-hidden py-20 lg:py-28" aria-labelledby="cta-heading">
+    <BlueprintBackground />
     <div className="container">
       <div className="relative overflow-hidden rounded-3xl gradient-hero px-6 py-16 text-center text-primary-foreground shadow-elegant sm:px-12 lg:py-20">
         {/* Texture */}

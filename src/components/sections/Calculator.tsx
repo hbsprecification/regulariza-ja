@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { consultLink } from "@/lib/contact";
 import { Calculator as CalcIcon, ArrowRight, RotateCcw, AlertTriangle, CheckCircle2, FileSearch, MessageCircle } from "lucide-react";
+import BlueprintBackground from "@/components/BlueprintBackground";
 
 type Answer = "sim" | "nao" | "nao-sei";
 
@@ -145,7 +146,8 @@ const Calculator = () => {
   };
 
   return (
-    <section id="calculadora" className="py-20 lg:py-28" aria-labelledby="calc-heading">
+    <section id="calculadora" className="relative overflow-hidden py-20 lg:py-28" aria-labelledby="calc-heading">
+      <BlueprintBackground />
       <div className="container">
         <div className="mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent">

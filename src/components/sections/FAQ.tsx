@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { consultLink } from "@/lib/contact";
 import { ChevronDown, MessageCircle } from "lucide-react";
+import BlueprintBackground from "@/components/BlueprintBackground";
 
 const faqs = [
   {
@@ -38,7 +39,8 @@ const FAQ = () => {
   const toggle = (i: number) => setOpen(open === i ? null : i);
 
   return (
-    <section id="faq" className="py-20 lg:py-28" aria-labelledby="faq-heading">
+    <section id="faq" className="relative overflow-hidden py-20 lg:py-28" aria-labelledby="faq-heading">
+      <BlueprintBackground />
       <div className="container">
         <div className="mx-auto max-w-3xl text-center">
           <span className="text-xs font-semibold uppercase tracking-wider text-accent">
