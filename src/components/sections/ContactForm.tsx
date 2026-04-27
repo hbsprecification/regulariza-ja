@@ -83,14 +83,22 @@ const ContactForm = () => {
           </a>
 
           {/* Localização */}
-          <div className="mt-4 flex items-center gap-4 rounded-xl border border-border bg-card p-4">
+          <div className="mt-4 flex flex-col gap-4 rounded-xl border border-border bg-card p-5 shadow-sm sm:flex-row sm:items-start">
             <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
               <MapPin className="h-6 w-6" />
             </div>
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Área de atuação</p>
-              <p className="font-display font-bold text-primary">Itabuna, Ilhéus e Sul da Bahia</p>
-              <p className="text-xs text-muted-foreground mt-0.5">Regularização de imóveis urbanos</p>
+            <div className="space-y-3">
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Atendimento</p>
+                <p className="font-display text-lg font-bold text-accent">Todo o Brasil</p>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Consultoria técnica especializada em regularização de imóveis urbanos.
+              </p>
+              <div className="pt-2 border-t border-border/50">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">Base operacional</p>
+                <p className="text-sm font-semibold text-primary/80">Itabuna — BA</p>
+              </div>
             </div>
           </div>
 

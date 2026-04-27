@@ -100,9 +100,17 @@ const Hero = () => (
 
           {/* Specialization badge */}
           <div className="mt-6 flex justify-center">
-            <div className="rounded-xl border border-white/10 bg-white/5 px-5 py-2.5 text-center backdrop-blur-sm lg:mt-4">
-              <p className="text-[10px] font-semibold uppercase tracking-widest text-primary-foreground/40">Base de Operação</p>
-              <p className="font-display text-sm font-bold text-primary-foreground uppercase tracking-tight">Itabuna & Região Sul da Bahia</p>
+            <div className="rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-center backdrop-blur-sm lg:mt-4">
+              <div className="flex flex-col gap-2 sm:flex-row sm:divide-x sm:divide-white/10">
+                <div className="sm:pr-5">
+                  <p className="text-[10px] font-semibold uppercase tracking-widest text-primary-foreground/40">Base de Operação</p>
+                  <p className="font-display text-sm font-bold text-primary-foreground">Itabuna — BA</p>
+                </div>
+                <div className="sm:pl-5">
+                  <p className="text-[10px] font-semibold uppercase tracking-widest text-primary-foreground/40">Atendimento</p>
+                  <p className="font-display text-sm font-bold text-accent">Todo o Brasil</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
