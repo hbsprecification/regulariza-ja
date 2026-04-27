@@ -104,23 +104,23 @@ const StatsBar = () => {
       {/* Blueprint background — section-scoped */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <svg
-          className="absolute inset-0 h-full w-full opacity-[0.07]"
+          className="absolute inset-0 h-full w-full opacity-[0.04]"
           viewBox="0 0 1600 600"
           preserveAspectRatio="xMidYMid slice"
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
             <pattern id="sb-grid" width="32" height="32" patternUnits="userSpaceOnUse">
-              <path d="M 32 0 L 0 0 0 32" fill="none" stroke="hsl(var(--accent))" strokeWidth="0.4" />
+              <path d="M 32 0 L 0 0 0 32" fill="none" stroke="hsl(0 0% 55%)" strokeWidth="0.5" />
             </pattern>
             <pattern id="sb-grid-major" width="160" height="160" patternUnits="userSpaceOnUse">
-              <path d="M 160 0 L 0 0 0 160" fill="none" stroke="hsl(var(--accent))" strokeWidth="0.8" />
+              <path d="M 160 0 L 0 0 0 160" fill="none" stroke="hsl(0 0% 45%)" strokeWidth="1" />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#sb-grid)" />
           <rect width="100%" height="100%" fill="url(#sb-grid-major)" opacity="0.6" />
 
-          <g stroke="hsl(var(--accent))" fill="none" strokeWidth="1.2">
+          <g stroke="hsl(0 0% 50%)" fill="none" strokeWidth="1">
             <rect x="160" y="120" width="260" height="180" className="sb-draw sb-draw-1" />
             <line x1="290" y1="120" x2="290" y2="220" className="sb-draw sb-draw-1" />
             <line x1="160" y1="220" x2="290" y2="220" className="sb-draw sb-draw-1" />
@@ -134,19 +134,16 @@ const StatsBar = () => {
             <line x1="800" y1="380" x2="800" y2="500" className="sb-draw sb-draw-3" />
           </g>
 
-          <g stroke="hsl(var(--accent))" strokeWidth="0.7" strokeDasharray="5 8" opacity="0.55" fill="none">
+          <g stroke="hsl(0 0% 50%)" strokeWidth="0.6" strokeDasharray="5 9" opacity="0.45" fill="none">
             <line x1="0" y1="300" x2="1600" y2="300" className="sb-dash" />
             <line x1="800" y1="0" x2="800" y2="600" className="sb-dash sb-dash-2" />
           </g>
 
-          <g fill="hsl(var(--accent))" className="sb-nodes">
-            {[
-              [160, 120], [420, 120], [160, 300], [420, 300], [290, 220],
-              [1180, 140], [1420, 140], [1420, 300], [1100, 360], [1280, 300],
-              [700, 380], [900, 380], [700, 500], [900, 500], [800, 440],
-            ].map(([cx, cy], i) => (
-              <circle key={i} cx={cx} cy={cy} r="2.4" style={{ animationDelay: `${(i * 0.5) % 6}s` }} />
-            ))}
+          {/* Measurement circles — very subtle */}
+          <g stroke="hsl(0 0% 50%)" fill="none" opacity="0.35">
+            <circle cx="160" cy="210" r="40" strokeWidth="0.5" strokeDasharray="3 5" />
+            <circle cx="800" cy="300" r="55" strokeWidth="0.5" strokeDasharray="3 5" />
+            <circle cx="1300" cy="220" r="45" strokeWidth="0.5" strokeDasharray="3 5" />
           </g>
         </svg>
         <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 via-transparent to-secondary/30" />
@@ -196,9 +193,9 @@ const StatsBar = () => {
         .sb-draw-3 { animation-delay: 9s; }
         @keyframes sb-draw-anim {
           0%   { stroke-dashoffset: 1400; opacity: 0; }
-          10%  { opacity: 1; }
-          45%  { stroke-dashoffset: 0; opacity: 1; }
-          100% { stroke-dashoffset: 0; opacity: 0.85; }
+          10%  { opacity: 0.7; }
+          45%  { stroke-dashoffset: 0; opacity: 0.7; }
+          100% { stroke-dashoffset: 0; opacity: 0.55; }
         }
         .sb-dash { animation: sb-dash-anim 24s linear infinite; }
         .sb-dash-2 { animation-duration: 32s; animation-direction: reverse; }
@@ -206,19 +203,11 @@ const StatsBar = () => {
           from { stroke-dashoffset: 0; }
           to   { stroke-dashoffset: -80; }
         }
-        .sb-nodes circle {
-          opacity: 0;
-          animation: sb-node-pulse 5s ease-in-out infinite;
-        }
-        @keyframes sb-node-pulse {
-          0%, 100% { opacity: 0; }
-          50%      { opacity: 0.85; }
-        }
         @media (prefers-reduced-motion: reduce) {
-          .sb-draw, .sb-dash, .sb-nodes circle {
+          .sb-draw, .sb-dash {
             animation: none !important;
             stroke-dashoffset: 0 !important;
-            opacity: 0.6 !important;
+            opacity: 0.5 !important;
           }
         }
       `}</style>
