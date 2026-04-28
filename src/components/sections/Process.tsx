@@ -1,169 +1,147 @@
 import { Button } from "@/components/ui/button";
 import { consultLink } from "@/lib/contact";
-import { MessageCircle, ArrowRight } from "lucide-react";
+import { MessageCircle, ArrowRight, MessageSquare, Search, FileCog, CheckCircle2 } from "lucide-react";
+import { useInView } from "@/hooks/useInView";
 
 const steps = [
   {
     n: "01",
-    emoji: "💬",
-    title: "Você explica sua situação",
-    desc: "Me conta sobre o imóvel pelo WhatsApp. Sem formulários complexos, sem documentos ainda.",
+    Icon: MessageSquare,
+    title: "Análise Inicial",
+    desc: "Explique a situação do imóvel. Sem formulários complexos, iniciamos via contato direto.",
     free: true,
     freeLabel: "Gratuita",
   },
   {
     n: "02",
-    emoji: "🔍",
-    title: "Identifico as irregularidades",
-    desc: "Faço o levantamento técnico das pendências e verifico as exigências para regularização.",
+    Icon: Search,
+    title: "Diagnóstico Técnico",
+    desc: "Levantamento das pendências, avaliação do zoneamento e verificação das exigências legais.",
     free: false,
     freeLabel: null,
   },
   {
     n: "03",
-    emoji: "🗺️",
-    title: "Planejamento do processo",
-    desc: "Definimos juntos o caminho técnico e documental mais adequado para o seu imóvel.",
+    Icon: FileCog,
+    title: "Engenharia Legal",
+    desc: "Desenvolvimento do plano técnico, documentação e projetos necessários para adequação.",
     free: false,
     freeLabel: null,
   },
   {
     n: "04",
-    emoji: "✅",
-    title: "Execução e acompanhamento",
-    desc: "Elaboro os documentos técnicos e conduzo o processo junto aos órgãos competentes.",
+    Icon: CheckCircle2,
+    title: "Aprovação & Registro",
+    desc: "Acompanhamento protocolar nos órgãos públicos até a emissão do certificado de regularidade.",
     free: false,
     freeLabel: null,
   },
 ];
 
-const Process = () => (
-  <section
-    id="processo"
-    className="relative overflow-hidden bg-primary py-20 text-primary-foreground lg:py-28"
-    aria-labelledby="process-heading"
-  >
-    {/* Subtle grid texture */}
-    <div
-      className="absolute inset-0 opacity-[0.04]"
-      aria-hidden
-      style={{
-        backgroundImage:
-          "linear-gradient(hsl(0 0% 100%) 1px, transparent 1px), linear-gradient(90deg, hsl(0 0% 100%) 1px, transparent 1px)",
-        backgroundSize: "56px 56px",
-      }}
-    />
-    {/* Accent glows */}
-    <div className="absolute left-0 top-0 h-72 w-72 -translate-x-1/3 -translate-y-1/3 rounded-full bg-accent/20 blur-3xl" aria-hidden />
-    <div className="absolute bottom-0 right-0 h-72 w-72 translate-x-1/3 translate-y-1/3 rounded-full bg-accent/10 blur-3xl" aria-hidden />
+const Process = () => {
+  const headingRef = useInView<HTMLDivElement>(0.2);
+  const gridRef = useInView<HTMLDivElement>(0.2);
 
-    <div className="container relative">
-      {/* Header */}
-      <div className="mx-auto max-w-3xl text-center">
-        <span className="text-xs font-semibold uppercase tracking-widest text-accent">
-          Processo
-        </span>
-        <h2
-          id="process-heading"
-          className="mt-3 font-display text-3xl font-extrabold sm:text-4xl"
-        >
-          Como funciona o processo completo
-        </h2>
-        <p className="mt-4 text-primary-foreground/75">
-          Um caminho estruturado em 4 etapas com clareza e segurança técnica em cada fase.{" "}
-          <strong className="font-bold text-accent">
-            A primeira é gratuita.
-          </strong>
-        </p>
-      </div>
-
-      {/* Cards grid */}
-      <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-        {steps.map((s, i) => (
-          <div
-            key={s.n}
-            className={`group relative flex flex-col overflow-hidden rounded-2xl border p-6 pt-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_32px_-8px_rgba(0,0,0,0.5)] ${
-              s.free
-                ? "border-accent/60 bg-accent/10 shadow-[0_0_0_1px_hsl(24_80%_27%/0.4)] hover:bg-accent/15"
-                : "border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/10"
-            }`}
+  return (
+    <section
+      id="processo"
+      className="blueprint-bg relative overflow-hidden py-24 lg:py-32"
+      aria-labelledby="process-heading"
+    >
+      <div className="container relative z-10">
+        {/* Header */}
+        <div ref={headingRef} className="reveal mx-auto max-w-3xl text-center">
+          <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-accent">
+            <span className="h-px w-6 bg-accent" aria-hidden />
+            Metodologia
+            <span className="h-px w-6 bg-accent" aria-hidden />
+          </span>
+          <h2
+            id="process-heading"
+            className="mt-4 font-display text-3xl font-extrabold text-primary sm:text-4xl"
           >
-            {/* Free badge */}
-            {s.free && (
-              <div className="absolute right-4 top-4 flex items-center gap-1 rounded-full bg-accent px-3 py-0.5 text-[11px] font-extrabold uppercase tracking-wider text-accent-foreground shadow-sm">
-                {s.freeLabel}
-              </div>
-            )}
+            Processo Técnico de Regularização
+          </h2>
+          <p className="mt-4 text-muted-foreground sm:text-lg">
+            Um fluxo de trabalho estruturado para garantir a legalidade do seu ativo imobiliário,
+            com precisão em cada fase e mitigação de riscos burocráticos.
+          </p>
+        </div>
 
-            {/* Step number — large, high-contrast */}
+        {/* Cards grid */}
+        <div ref={gridRef} className="reveal-stagger mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {steps.map((s, i) => (
             <div
-              className={`font-display text-7xl font-extrabold leading-none tracking-tighter transition-all duration-300 ${
-                s.free
-                  ? "text-accent"
-                  : "text-white/20 group-hover:text-white/35"
+              key={s.n}
+              className={`glass-card group relative flex flex-col overflow-hidden rounded-2xl p-7 ${
+                s.free ? "ring-1 ring-accent/30" : ""
               }`}
             >
-              {s.n}
-            </div>
+              {/* Free badge */}
+              {s.free && (
+                <div className="absolute right-5 top-5 flex items-center gap-1 rounded-full bg-accent/10 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-accent ring-1 ring-accent/20">
+                  {s.freeLabel}
+                </div>
+              )}
 
-            {/* Emoji */}
-            <div className="mt-3 text-2xl">{s.emoji}</div>
-
-            {/* Title */}
-            <h3
-              className={`mt-3 font-display text-lg font-bold leading-snug ${
-                s.free ? "text-white" : "text-primary-foreground"
-              }`}
-            >
-              {s.title}
-            </h3>
-
-            {/* Description */}
-            <p
-              className={`mt-2 text-sm leading-relaxed ${
-                s.free ? "text-primary-foreground/85" : "text-primary-foreground/65"
-              }`}
-            >
-              {s.desc}
-            </p>
-
-            {/* Connector arrow — desktop only */}
-            {i < steps.length - 1 && (
-              <div
-                className="absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 lg:block"
-                aria-hidden
-              >
-                <ArrowRight className="h-5 w-5 text-white/30" />
+              {/* Step number */}
+              <div className="font-display text-5xl font-extrabold tracking-tighter text-muted-foreground/15 transition-colors group-hover:text-accent/20">
+                {s.n}
               </div>
-            )}
 
-            {/* Bottom accent bar for step 1 */}
-            {s.free && (
-              <div className="absolute inset-x-0 bottom-0 h-1 rounded-b-2xl bg-accent" aria-hidden />
-            )}
+              {/* Icon */}
+              <div className="glass-icon mt-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-secondary text-primary shadow-sm ring-1 ring-border group-hover:text-accent">
+                <s.Icon className="h-6 w-6 stroke-[1.5]" />
+              </div>
+
+              {/* Title */}
+              <h3 className="mt-5 font-display text-lg font-bold text-primary">
+                {s.title}
+              </h3>
+
+              {/* Description */}
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {s.desc}
+              </p>
+
+              {/* Connector arrow — desktop only */}
+              {i < steps.length - 1 && (
+                <div
+                  className="hidden lg:absolute lg:-right-3 lg:top-1/2 lg:-translate-y-1/2 lg:text-border lg:block"
+                  aria-hidden
+                >
+                  <ArrowRight className="h-6 w-6" />
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div className="reveal reveal-delay-3 mt-16 flex flex-col items-center gap-4">
+          <Button
+            asChild
+            size="lg"
+            className="btn-glow group w-full bg-accent px-8 py-6 text-base font-bold text-white transition-all hover:bg-accent/90 sm:w-auto"
+            id="process-cta"
+          >
+            <a href={consultLink()} target="_blank" rel="noopener noreferrer">
+              <MessageCircle className="mr-2 h-5 w-5 transition-transform group-hover:-translate-y-0.5" />
+              Solicitar diagnóstico gratuito
+            </a>
+          </Button>
+          <div className="flex items-center gap-3 text-xs text-muted-foreground">
+            <span className="flex items-center gap-1">
+              <CheckCircle2 className="h-3.5 w-3.5 text-accent" /> Análise sem custo
+            </span>
+            <span className="flex items-center gap-1">
+              <CheckCircle2 className="h-3.5 w-3.5 text-accent" /> Sigilo documental
+            </span>
           </div>
-        ))}
+        </div>
       </div>
-
-      {/* CTA */}
-      <div className="mt-14 flex flex-col items-center gap-4">
-        <Button
-          asChild
-          size="lg"
-          className="group w-full bg-accent px-8 py-6 text-base font-extrabold text-accent-foreground shadow-[0_4px_24px_-4px_rgba(122,62,14,0.6)] transition-all duration-300 hover:scale-[1.03] hover:bg-accent/90 hover:shadow-[0_8px_32px_-4px_rgba(122,62,14,0.7)] sm:w-auto"
-          id="process-cta"
-        >
-          <a href={consultLink()} target="_blank" rel="noopener noreferrer">
-            <MessageCircle className="mr-2 h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
-            Começar pela consultoria gratuita
-          </a>
-        </Button>
-        <p className="text-xs text-primary-foreground/50">
-          Sem compromisso · Análise inicial gratuita · Resposta rápida
-        </p>
-      </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Process;
