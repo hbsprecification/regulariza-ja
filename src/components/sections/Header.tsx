@@ -34,9 +34,8 @@ const Header = () => {
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
         <a href="#hero" className="group flex items-center gap-3" aria-label="HBS Engenharia — Início">
-          <div className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 p-1.5 shadow-[0_0_15px_rgba(255,255,255,0.03)] backdrop-blur-md transition-all group-hover:border-white/20 group-hover:bg-white/10 group-hover:shadow-[0_0_20px_rgba(255,255,255,0.08)]">
-            <div className="absolute inset-0 rounded-xl bg-white/10 opacity-50 blur-lg transition-opacity group-hover:opacity-100" />
-            <img src={logo} alt="HBS Engenharia" className="relative z-10 h-full w-auto object-contain brightness-110 drop-shadow-md" />
+          <div className="relative flex h-10 w-auto shrink-0 items-center justify-center rounded-lg bg-white p-1.5 shadow-md transition-transform duration-300 group-hover:scale-105">
+            <img src={logo} alt="HBS Engenharia" className="relative z-10 h-full w-auto object-contain" />
           </div>
           <div className="hidden leading-tight sm:block">
             <p className={`font-display text-sm font-bold transition-colors ${scrolled ? "text-white" : "text-white"}`}>

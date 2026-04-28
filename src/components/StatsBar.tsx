@@ -66,8 +66,8 @@ const StatsBar = () => {
       <div className="absolute inset-0 gradient-subtle" aria-hidden />
       <div className="absolute inset-0 blueprint-bg" aria-hidden />
 
-      <div className="container relative z-10" ref={sectionRef}>
-        <div className="reveal-stagger grid grid-cols-1 gap-5 xs:grid-cols-2 lg:grid-cols-4">
+      <div className="container relative z-10">
+        <div ref={sectionRef} className="reveal-stagger grid grid-cols-1 gap-5 xs:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat, i) => (
             <div
               key={i}

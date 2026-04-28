@@ -37,7 +37,7 @@ const pillars = [
 
 const About = () => {
   const pillarsRef = useRef<HTMLDivElement>(null);
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -59,12 +59,11 @@ const About = () => {
   return (
     <section
       id="sobre"
-      ref={sectionRef}
       className="blueprint-bg relative overflow-hidden gradient-dark-surface py-16 lg:py-20"
       aria-labelledby="about-heading"
     >
       <div className="container">
-        <div className="reveal grid gap-12 lg:grid-cols-5 lg:items-stretch">
+        <div ref={sectionRef} className="reveal grid gap-12 lg:grid-cols-5 lg:items-stretch">
 
           {/* ── Photo column ─────────────────────────────── */}
           <div className="flex lg:col-span-2">

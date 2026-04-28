@@ -36,6 +36,7 @@ const FAQ = () => {
 
   const headerRef = useInView<HTMLDivElement>(0.2);
   const listRef = useInView<HTMLDivElement>(0.15);
+  const boxRef = useInView<HTMLDivElement>(0.2);
 
   return (
     <section id="faq" className="relative overflow-hidden py-16 lg:py-20" aria-labelledby="faq-heading">
@@ -87,7 +88,7 @@ const FAQ = () => {
           ))}
         </div>
 
-        <div className="reveal reveal-delay-3 mx-auto mt-12 max-w-3xl rounded-xl border border-accent/20 bg-accent/[0.04] p-6 text-center ring-1 ring-accent/10">
+        <div ref={boxRef} className="reveal reveal-delay-3 mx-auto mt-12 max-w-3xl rounded-xl border border-accent/20 bg-accent/[0.04] p-6 text-center ring-1 ring-accent/10">
           <p className="text-sm text-white font-semibold drop-shadow-sm">
             Sua dúvida envolve um caso mais complexo?
           </p>

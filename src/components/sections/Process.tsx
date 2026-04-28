@@ -41,6 +41,7 @@ const steps = [
 const Process = () => {
   const headingRef = useInView<HTMLDivElement>(0.2);
   const gridRef = useInView<HTMLDivElement>(0.2);
+  const ctaRef = useInView<HTMLDivElement>(0.2);
 
   return (
     <section
@@ -121,7 +122,7 @@ const Process = () => {
         </div>
 
         {/* CTA */}
-        <div className="reveal reveal-delay-3 mt-16 flex flex-col items-center gap-4">
+        <div ref={ctaRef} className="reveal reveal-delay-3 mt-16 flex flex-col items-center gap-4">
           <Button
             asChild
             size="lg"
