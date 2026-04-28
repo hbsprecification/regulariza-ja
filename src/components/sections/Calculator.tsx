@@ -145,26 +145,26 @@ const Calculator = () => {
   };
 
   return (
-    <section id="calculadora" className="blueprint-bg relative overflow-hidden py-20 lg:py-28" aria-labelledby="calc-heading">
+    <section id="calculadora" className="blueprint-bg relative overflow-hidden py-16 lg:py-20" aria-labelledby="calc-heading">
       <div className="container">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent">
+           <span className="inline-flex items-center gap-2 rounded-md bg-accent/10 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-accent ring-1 ring-accent/20">
             <CalcIcon className="h-3.5 w-3.5" /> Ferramenta gratuita
           </span>
-          <h2 id="calc-heading" className="mt-4 font-display text-3xl font-bold text-primary sm:text-4xl">
+          <h2 id="calc-heading" className="mt-5 font-display text-3xl font-black text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)] sm:text-4xl">
             Calculadora de Irregularidade do Imóvel
           </h2>
-          <p className="mt-4 text-muted-foreground">
+          <p className="mt-4 text-gray-300 leading-[1.7] drop-shadow-sm sm:text-lg">
             Responda 5 perguntas rápidas e descubra se seu imóvel pode precisar de regularização.
           </p>
         </div>
 
-        <div className="mx-auto mt-10 max-w-2xl rounded-2xl border border-border bg-card shadow-elegant">
+        <div className="mx-auto mt-10 max-w-2xl text-white glass-card">
           {!showResult && current && (
             <div className="p-7 sm:p-10">
               {/* Progress */}
               <div className="mb-7">
-                <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+                <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-2">
                   <span>Pergunta {step + 1} de {total}</span>
                   <span>{progress}% concluído</span>
                 </div>
@@ -180,9 +180,9 @@ const Calculator = () => {
                 </div>
               </div>
 
-              <h3 className="font-display text-xl font-bold text-primary sm:text-2xl">{current.text}</h3>
+              <h3 className="font-display text-xl font-bold text-white drop-shadow-sm sm:text-2xl">{current.text}</h3>
               {current.subtitle && (
-                <p className="mt-1 text-sm text-muted-foreground">{current.subtitle}</p>
+                <p className="mt-2 text-sm text-gray-400 leading-[1.7]">{current.subtitle}</p>
               )}
 
               <div className="mt-6 grid gap-3">
@@ -192,10 +192,10 @@ const Calculator = () => {
                     type="button"
                     id={`calc-opt-${current.id}-${opt.value}`}
                     onClick={() => select(opt.value)}
-                    className="flex items-center gap-4 rounded-xl border border-border bg-background p-4 text-left font-medium transition-all hover:border-accent/50 hover:bg-accent/5 hover:shadow-sm active:scale-[0.99]"
+                    className="flex items-center gap-4 rounded-xl border border-white/10 bg-white/5 p-4 text-left font-bold transition-all hover:border-accent/40 hover:bg-accent/10 hover:shadow-sm active:scale-[0.99]"
                   >
                     <span className="text-xl">{opt.emoji}</span>
-                    <span className="text-sm font-medium text-foreground">{opt.label}</span>
+                    <span className="text-[13px] font-bold text-white drop-shadow-sm">{opt.label}</span>
                     <ArrowRight className="ml-auto h-4 w-4 text-accent opacity-50" />
                   </button>
                 ))}
@@ -233,13 +233,13 @@ const Calculator = () => {
                 </div>
 
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                  <Button asChild size="lg" className="bg-accent font-bold text-accent-foreground hover:bg-accent/90 flex-1" id="calc-result-cta">
+                  <Button asChild size="lg" className="btn-glow bg-gradient-to-r from-accent to-orange-400 font-bold text-white shadow-lg shadow-accent/20 transition-all hover:opacity-90 flex-1" id="calc-result-cta">
                     <a href={consultLink()} target="_blank" rel="noopener noreferrer">
                       <MessageCircle className="mr-2 h-4 w-4" />
                       {cfg.cta}
                     </a>
                   </Button>
-                  <Button type="button" variant="outline" size="lg" onClick={reset} className="font-semibold">
+                  <Button type="button" variant="outline" size="lg" onClick={reset} className="btn-glow border-white/10 bg-white/5 font-semibold text-gray-200 transition-all hover:bg-white/10 hover:border-white/20 hover:text-white">
                     <RotateCcw className="mr-1 h-4 w-4" /> Refazer
                   </Button>
                 </div>

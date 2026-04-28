@@ -17,7 +17,7 @@ const Services = () => {
   const gridRef = useInView<HTMLDivElement>(0.15);
 
   return (
-    <section id="servicos" className="relative overflow-hidden bg-white py-24 lg:py-32" aria-labelledby="services-heading">
+    <section id="servicos" className="relative overflow-hidden py-16 lg:py-20" aria-labelledby="services-heading">
       <div className="absolute inset-0 gradient-surface" aria-hidden />
       <div className="absolute inset-0 blueprint-bg" aria-hidden />
       <div className="container relative z-10">
@@ -27,10 +27,10 @@ const Services = () => {
             Soluções de Engenharia
             <span className="h-px w-6 bg-accent" aria-hidden />
           </span>
-          <h2 id="services-heading" className="mt-4 font-display text-3xl font-bold text-primary sm:text-4xl">
+          <h2 id="services-heading" className="mt-4 font-display text-3xl font-black text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)] sm:text-4xl">
             Inteligência técnica para o seu patrimônio.
           </h2>
-          <p className="mt-4 text-muted-foreground sm:text-lg">
+          <p className="mt-4 text-gray-300 leading-[1.7] drop-shadow-sm sm:text-lg">
             Atuamos em toda a esteira de legalização imobiliária. O primeiro passo da nossa plataforma é uma análise de viabilidade para determinar o roteiro exato de aprovação.
           </p>
         </div>
@@ -41,8 +41,8 @@ const Services = () => {
               <div className="glass-icon mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20">
                 <Icon className="h-6 w-6 stroke-[1.5]" />
               </div>
-              <h3 className="font-display text-base font-bold text-primary">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{desc}</p>
+              <h3 className="font-display text-base font-bold text-white drop-shadow-sm">{title}</h3>
+              <p className="mt-2 text-sm leading-[1.7] text-gray-400">{desc}</p>
             </article>
           ))}
         </div>

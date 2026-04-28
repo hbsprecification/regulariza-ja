@@ -7,7 +7,7 @@ const CTA = () => {
   const containerRef = useInView<HTMLDivElement>(0.2);
 
   return (
-    <section className="relative overflow-hidden py-24 lg:py-32" aria-labelledby="cta-heading">
+    <section className="relative overflow-hidden py-16 lg:py-20" aria-labelledby="cta-heading">
       <div className="container relative z-10 px-4">
         <div
           ref={containerRef}
@@ -58,7 +58,7 @@ const CTA = () => {
               <Button
                 asChild
                 size="lg"
-                className="btn-glow bg-accent px-8 py-6 text-base font-bold text-white shadow-xl shadow-accent/25 transition-all hover:bg-accent/90"
+                className="btn-glow bg-gradient-to-r from-accent to-orange-400 px-8 py-6 text-base font-bold text-white shadow-xl shadow-accent/25 transition-all hover:opacity-90"
                 id="cta-primary"
               >
                 <a href={consultLink()} target="_blank" rel="noopener noreferrer">

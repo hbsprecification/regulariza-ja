@@ -38,7 +38,7 @@ const FAQ = () => {
   const listRef = useInView<HTMLDivElement>(0.15);
 
   return (
-    <section id="faq" className="relative overflow-hidden bg-white py-24 lg:py-32" aria-labelledby="faq-heading">
+    <section id="faq" className="relative overflow-hidden py-16 lg:py-20" aria-labelledby="faq-heading">
       <div className="absolute inset-0 gradient-subtle" aria-hidden />
       <div className="absolute inset-0 blueprint-bg" aria-hidden />
       <div className="container relative z-10 px-4">
@@ -46,10 +46,10 @@ const FAQ = () => {
           <span className="inline-flex items-center gap-2 rounded-md bg-accent/10 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-accent ring-1 ring-accent/20">
             <HelpCircle className="h-3.5 w-3.5" /> Base de Conhecimento
           </span>
-          <h2 id="faq-heading" className="mt-5 font-display text-3xl font-bold text-primary sm:text-4xl">
+          <h2 id="faq-heading" className="mt-5 font-display text-3xl font-black text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)] sm:text-4xl">
             Perguntas Frequentes
           </h2>
-          <p className="mt-4 text-muted-foreground sm:text-lg">
+          <p className="mt-4 text-gray-300 leading-[1.7] drop-shadow-sm sm:text-lg">
             Diretrizes técnicas e operacionais sobre os processos de regularização imobiliária.
           </p>
         </div>
@@ -58,7 +58,7 @@ const FAQ = () => {
           {faqs.map((faq, i) => (
             <div
               key={i}
-              className="glass-card overflow-hidden rounded-xl bg-white"
+              className="glass-card overflow-hidden rounded-xl"
             >
               <button
                 type="button"
@@ -68,7 +68,7 @@ const FAQ = () => {
                 onClick={() => toggle(i)}
                 className="flex w-full items-center justify-between gap-4 p-5 text-left transition-colors hover:bg-accent/[0.02]"
               >
-                <span className="font-display text-sm font-semibold text-primary sm:text-base">
+                <span className="font-display text-sm font-bold text-white drop-shadow-sm sm:text-base">
                   {faq.q}
                 </span>
                 <div className={`flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${open === i ? "border-accent bg-accent text-white" : "border-border text-muted-foreground"}`}>
@@ -79,7 +79,7 @@ const FAQ = () => {
                 id={`faq-answer-${i}`}
                 className={`overflow-hidden transition-all duration-300 ease-in-out ${open === i ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}
               >
-                <div className="border-t border-border px-5 pb-6 pt-4 text-[13px] leading-relaxed text-muted-foreground">
+                <div className="border-t border-white/10 px-5 pb-6 pt-4 text-[13px] leading-[1.7] text-gray-400">
                   {faq.a}
                 </div>
               </div>
@@ -88,7 +88,7 @@ const FAQ = () => {
         </div>
 
         <div className="reveal reveal-delay-3 mx-auto mt-12 max-w-3xl rounded-xl border border-accent/20 bg-accent/[0.04] p-6 text-center ring-1 ring-accent/10">
-          <p className="text-sm text-primary font-medium">
+          <p className="text-sm text-white font-semibold drop-shadow-sm">
             Sua dúvida envolve um caso mais complexo?
           </p>
           <a
@@ -96,7 +96,7 @@ const FAQ = () => {
             target="_blank"
             rel="noopener noreferrer"
             id="faq-cta"
-            className="mt-4 inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-bold text-white shadow-lg shadow-accent/20 transition-all hover:bg-accent/90"
+            className="btn-glow mt-4 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-accent to-orange-400 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-accent/20 transition-all hover:opacity-90"
           >
             <MessageCircle className="h-4 w-4" />
             Falar diretamente com engenheiro

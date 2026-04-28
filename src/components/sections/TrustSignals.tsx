@@ -37,7 +37,7 @@ const trustCards = [
 const TrustSignals = () => (
   <section
     id="confianca"
-    className="bg-secondary/50 py-20 lg:py-28"
+    className="py-16 lg:py-20"
     aria-labelledby="trust-heading"
   >
     <div className="container">
@@ -47,11 +47,11 @@ const TrustSignals = () => (
         </span>
         <h2
           id="trust-heading"
-          className="mt-3 font-display text-3xl font-bold text-primary sm:text-4xl"
+          className="mt-3 font-display text-3xl font-black text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)] sm:text-4xl"
         >
           Por que confiar na Regulariza Já?
         </h2>
-        <p className="mt-4 text-muted-foreground">
+        <p className="mt-4 text-gray-300 leading-[1.7] drop-shadow-sm">
           Regularizar um imóvel exige conhecimento técnico, responsabilidade profissional e clareza.
           Veja por que dezenas de proprietários escolhem orientação especializada.
         </p>
@@ -62,37 +62,37 @@ const TrustSignals = () => (
         {trustCards.map(({ icon: Icon, title, desc }) => (
           <div
             key={title}
-            className="group flex gap-4 rounded-2xl border border-border bg-card p-6 shadow-card transition-all duration-300 hover:border-accent/30 hover:shadow-elegant"
+            className="group flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md shadow-lg transition-all duration-300 hover:border-white/20 hover:bg-white/10"
           >
-            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent transition-transform duration-300 group-hover:scale-110">
+            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-accent/20 text-accent transition-transform duration-300 group-hover:scale-110">
               <Icon className="h-6 w-6" />
             </div>
             <div>
-              <h3 className="font-display text-base font-bold text-primary">{title}</h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{desc}</p>
+              <h3 className="font-display text-base font-bold text-white drop-shadow-sm">{title}</h3>
+              <p className="mt-1.5 text-sm leading-[1.7] text-gray-400">{desc}</p>
             </div>
           </div>
         ))}
       </div>
 
       {/* Aviso de autoridade — destaque */}
-      <div className="mt-12 overflow-hidden rounded-2xl border border-accent/20 bg-accent/5">
+      <div className="mt-12 overflow-hidden rounded-2xl border border-accent/20 bg-accent/10 backdrop-blur-md">
         <div className="grid lg:grid-cols-5">
           <div className="flex items-center gap-4 border-b border-accent/10 p-6 lg:col-span-3 lg:border-b-0 lg:border-r">
-            <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl gradient-accent">
+            <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-accent to-orange-400">
               <Star className="h-7 w-7 text-white" />
             </div>
             <div>
-              <p className="font-display text-lg font-bold text-primary">
+              <p className="font-display text-lg font-bold text-white drop-shadow-sm">
                 Análise inicial gratuita e sem compromisso
               </p>
-              <p className="mt-1 text-sm text-muted-foreground">
+              <p className="mt-1 text-sm text-gray-400">
                 O maior risco é descobrir tarde demais que o imóvel está irregular. A análise inicial não custa nada — e pode evitar prejuízos maiores.
               </p>
             </div>
           </div>
           <div className="flex flex-col items-center justify-center gap-3 p-6 text-center lg:col-span-2">
-            <p className="text-sm font-semibold text-foreground">
+            <p className="text-sm font-bold text-white">
               Fale agora e descubra a situação do seu imóvel
             </p>
             <a
@@ -100,12 +100,12 @@ const TrustSignals = () => (
               target="_blank"
               rel="noopener noreferrer"
               id="trust-cta"
-              className="flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-bold text-accent-foreground shadow-md transition-all hover:scale-[1.02] hover:bg-accent/90"
+              className="btn-glow flex items-center gap-2 rounded-xl bg-gradient-to-r from-accent to-orange-400 px-6 py-3 text-sm font-bold text-white shadow-lg transition-all hover:opacity-90"
             >
               <MessageCircle className="h-4 w-4" />
               Quero minha consultoria gratuita
             </a>
-            <p className="text-[11px] text-muted-foreground">
+            <p className="text-[11px] text-gray-500 uppercase tracking-widest font-bold">
               Via WhatsApp · Resposta rápida
             </p>
           </div>

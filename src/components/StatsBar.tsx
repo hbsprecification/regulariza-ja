@@ -60,7 +60,7 @@ const StatsBar = () => {
   return (
     <section
       id="stats-trigger"
-      className="relative overflow-hidden bg-white py-20 lg:py-28 text-primary"
+      className="relative overflow-hidden py-16 lg:py-20 text-white"
       aria-label="Autoridade Técnica"
     >
       <div className="absolute inset-0 gradient-subtle" aria-hidden />
@@ -71,16 +71,16 @@ const StatsBar = () => {
           {stats.map((stat, i) => (
             <div
               key={i}
-              className="glass-card flex flex-col items-center justify-center rounded-2xl bg-white/70 p-8 text-center"
+              className="glass-card flex flex-col items-center justify-center p-8 text-center"
             >
-              <div className="font-display text-[3.5rem] font-extrabold leading-none tracking-tighter text-primary lg:text-[4rem]">
+              <div className="font-display text-[3.5rem] font-black leading-none tracking-tighter text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)] lg:text-[4rem]">
                 {stat.value !== null ? (
                   <Counter target={stat.value} suffix={stat.suffix} started={started} />
                 ) : (
                   <span className="text-4xl lg:text-[2.8rem]">{stat.stringValue}</span>
                 )}
               </div>
-              <p className="mt-4 text-sm font-medium leading-relaxed text-muted-foreground uppercase tracking-widest text-[10px]">
+              <p className="mt-4 text-sm font-bold leading-[1.6] text-gray-400 uppercase tracking-widest text-[10px] drop-shadow-sm">
                 {stat.label}
               </p>
             </div>

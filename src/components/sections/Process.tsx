@@ -45,7 +45,7 @@ const Process = () => {
   return (
     <section
       id="processo"
-      className="relative overflow-hidden bg-white py-24 lg:py-32"
+      className="relative overflow-hidden py-16 lg:py-20"
       aria-labelledby="process-heading"
     >
       <div className="absolute inset-0 gradient-surface" aria-hidden />
@@ -61,11 +61,11 @@ const Process = () => {
           </span>
           <h2
             id="process-heading"
-            className="mt-4 font-display text-3xl font-extrabold text-primary sm:text-4xl"
+            className="mt-4 font-display text-3xl font-black text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)] sm:text-4xl"
           >
             Processo Técnico de Regularização
           </h2>
-          <p className="mt-4 text-muted-foreground sm:text-lg">
+          <p className="mt-4 text-gray-300 leading-[1.7] drop-shadow-sm sm:text-lg">
             Um fluxo de trabalho estruturado para garantir a legalidade do seu ativo imobiliário,
             com precisão em cada fase e mitigação de riscos burocráticos.
           </p>
@@ -98,12 +98,12 @@ const Process = () => {
               </div>
 
               {/* Title */}
-              <h3 className="mt-5 font-display text-lg font-bold text-primary">
+              <h3 className="mt-5 font-display text-lg font-bold text-white drop-shadow-sm">
                 {s.title}
               </h3>
 
               {/* Description */}
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-2 text-sm leading-[1.7] text-gray-400">
                 {s.desc}
               </p>
 
@@ -125,7 +125,7 @@ const Process = () => {
           <Button
             asChild
             size="lg"
-            className="btn-glow group w-full bg-accent px-8 py-6 text-base font-bold text-white transition-all hover:bg-accent/90 sm:w-auto"
+            className="btn-glow group w-full bg-gradient-to-r from-accent to-orange-400 px-8 py-6 text-base font-bold text-white shadow-xl shadow-accent/25 transition-all hover:opacity-90 sm:w-auto"
             id="process-cta"
           >
             <a href={consultLink()} target="_blank" rel="noopener noreferrer">

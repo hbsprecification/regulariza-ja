@@ -53,15 +53,15 @@ const ContactForm = () => {
     setForm({ ...form, [k]: e.target.value });
 
   return (
-    <section id="contato" className="blueprint-bg relative overflow-hidden py-20 lg:py-28" aria-labelledby="contact-heading">
+    <section id="contato" className="blueprint-bg relative overflow-hidden py-16 lg:py-20" aria-labelledby="contact-heading">
       <div className="container grid gap-12 lg:grid-cols-2 lg:items-start">
         <div>
           <span className="text-xs font-semibold uppercase tracking-wider text-accent">Contato</span>
-          <h2 id="contact-heading" className="mt-3 font-display text-3xl font-bold text-primary sm:text-4xl">
+          <h2 id="contact-heading" className="mt-3 font-display text-3xl font-black text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)] sm:text-4xl">
             Solicite sua análise técnica gratuita
           </h2>
-          <p className="mt-4 text-muted-foreground leading-relaxed">
-            Descreva a situação do seu imóvel e receba uma orientação técnica inicial. <strong className="text-foreground">Sem compromisso, sem custo.</strong>
+          <p className="mt-4 text-gray-300 leading-[1.7] drop-shadow-sm">
+            Descreva a situação do seu imóvel e receba uma orientação técnica inicial. <strong className="text-white drop-shadow-md">Sem compromisso, sem custo.</strong>
           </p>
 
           {/* WhatsApp direto */}
@@ -76,28 +76,28 @@ const ContactForm = () => {
               <MessageCircle className="h-6 w-6" />
             </div>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Prefere o WhatsApp?</p>
-              <p className="font-display font-bold text-primary">Falar diretamente com Jádson</p>
-              <p className="text-xs text-muted-foreground mt-0.5">Clique aqui para iniciar a conversa</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-gray-400">Prefere o WhatsApp?</p>
+              <p className="font-display font-bold text-white drop-shadow-sm">Falar diretamente com Jádson</p>
+              <p className="text-xs text-gray-500 mt-0.5">Clique aqui para iniciar a conversa</p>
             </div>
           </a>
 
           {/* Localização */}
-          <div className="mt-4 flex flex-col gap-4 rounded-xl border border-border bg-card p-5 shadow-sm sm:flex-row sm:items-start">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
+          <div className="glass-card mt-4 flex flex-col gap-4 rounded-xl border border-white/10 bg-white/5 p-5 shadow-sm sm:flex-row sm:items-start">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/20 text-accent">
               <MapPin className="h-6 w-6" />
             </div>
             <div className="space-y-3">
               <div>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Atendimento</p>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Atendimento</p>
                 <p className="font-display text-lg font-bold text-accent">Todo o Brasil</p>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-sm text-gray-400 leading-[1.7]">
                 Consultoria técnica especializada em regularização de imóveis urbanos.
               </p>
-              <div className="pt-2 border-t border-border/50">
-                <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">Base operacional</p>
-                <p className="text-sm font-semibold text-primary/80">Itabuna — BA</p>
+              <div className="pt-2 border-t border-white/10">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-gray-500">Base operacional</p>
+                <p className="text-sm font-bold text-gray-200">Itabuna — BA</p>
               </div>
             </div>
           </div>
@@ -105,35 +105,35 @@ const ContactForm = () => {
           {/* Trust signals */}
           <div className="mt-6 grid grid-cols-3 gap-3">
             {trustItems.map(({ icon: Icon, text }) => (
-              <div key={text} className="flex flex-col items-center gap-1.5 rounded-lg border border-border bg-card p-3 text-center">
+              <div key={text} className="flex flex-col items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 p-3 text-center">
                 <Icon className="h-4 w-4 text-accent" />
-                <p className="text-[11px] font-medium text-muted-foreground leading-tight">{text}</p>
+                <p className="text-[11px] font-bold text-gray-400 leading-tight">{text}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Formulário */}
-        <form onSubmit={handleSubmit} className="rounded-2xl border border-border bg-card p-6 shadow-elegant sm:p-8" noValidate>
-          <p className="font-display text-lg font-bold text-primary mb-5">Preencha e envie pelo WhatsApp</p>
-          <div className="space-y-5">
+        <form onSubmit={handleSubmit} className="glass-card rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md shadow-xl sm:p-8" noValidate>
+          <p className="font-display text-lg font-bold text-white drop-shadow-sm mb-5">Preencha e envie pelo WhatsApp</p>
+          <div className="space-y-5 text-gray-200">
             <div>
-              <Label htmlFor="contact-nome">Seu nome completo</Label>
-              <Input id="contact-nome" value={form.nome} onChange={update("nome")} placeholder="Ex: Maria Silva" maxLength={100} className="mt-1" />
-              {errors.nome && <p className="mt-1 text-xs text-destructive">{errors.nome}</p>}
+              <Label htmlFor="contact-nome" className="text-gray-300">Seu nome completo</Label>
+              <Input id="contact-nome" value={form.nome} onChange={update("nome")} placeholder="Ex: Maria Silva" maxLength={100} className="mt-1 border-white/10 bg-white/5 placeholder:text-gray-600 focus:border-accent/50 focus:bg-white/10" />
+              {errors.nome && <p className="mt-1 text-xs text-red-400">{errors.nome}</p>}
             </div>
             <div>
-              <Label htmlFor="contact-telefone">WhatsApp / Telefone</Label>
-              <Input id="contact-telefone" value={form.telefone} onChange={update("telefone")} placeholder="(73) 99999-9999" maxLength={20} className="mt-1" />
-              {errors.telefone && <p className="mt-1 text-xs text-destructive">{errors.telefone}</p>}
+              <Label htmlFor="contact-telefone" className="text-gray-300">WhatsApp / Telefone</Label>
+              <Input id="contact-telefone" value={form.telefone} onChange={update("telefone")} placeholder="(73) 99999-9999" maxLength={20} className="mt-1 border-white/10 bg-white/5 placeholder:text-gray-600 focus:border-accent/50 focus:bg-white/10" />
+              {errors.telefone && <p className="mt-1 text-xs text-red-400">{errors.telefone}</p>}
             </div>
             <div>
-              <Label htmlFor="contact-cidade">Cidade do imóvel</Label>
-              <Input id="contact-cidade" value={form.cidade} onChange={update("cidade")} placeholder="Ex: Itabuna — BA" maxLength={80} className="mt-1" />
-              {errors.cidade && <p className="mt-1 text-xs text-destructive">{errors.cidade}</p>}
+              <Label htmlFor="contact-cidade" className="text-gray-300">Cidade do imóvel</Label>
+              <Input id="contact-cidade" value={form.cidade} onChange={update("cidade")} placeholder="Ex: Itabuna — BA" maxLength={80} className="mt-1 border-white/10 bg-white/5 placeholder:text-gray-600 focus:border-accent/50 focus:bg-white/10" />
+              {errors.cidade && <p className="mt-1 text-xs text-red-400">{errors.cidade}</p>}
             </div>
             <div>
-              <Label htmlFor="contact-descricao">Situação do imóvel</Label>
+              <Label htmlFor="contact-descricao" className="text-gray-300">Situação do imóvel</Label>
               <Textarea
                 id="contact-descricao"
                 value={form.descricao}
@@ -141,14 +141,14 @@ const ContactForm = () => {
                 placeholder="Descreva brevemente: tem projeto aprovado? Está averbado? Passou por reformas? Qual é o problema principal?"
                 rows={5}
                 maxLength={1000}
-                className="mt-1"
+                className="mt-1 border-white/10 bg-white/5 placeholder:text-gray-600 focus:border-accent/50 focus:bg-white/10"
               />
-              {errors.descricao && <p className="mt-1 text-xs text-destructive">{errors.descricao}</p>}
+              {errors.descricao && <p className="mt-1 text-xs text-red-400">{errors.descricao}</p>}
             </div>
             <Button
               type="submit"
               size="lg"
-              className="w-full bg-accent font-bold text-accent-foreground hover:bg-accent/90 transition-all hover:scale-[1.01]"
+              className="btn-glow w-full bg-gradient-to-r from-accent to-orange-400 font-bold text-white hover:opacity-90 transition-all hover:-translate-y-0.5 shadow-lg shadow-accent/20"
               disabled={loading}
               id="contact-submit"
             >
@@ -156,7 +156,7 @@ const ContactForm = () => {
                 <>Enviar pelo WhatsApp <Send className="ml-2 h-4 w-4" /></>
               )}
             </Button>
-            <p className="text-center text-xs text-muted-foreground">
+            <p className="text-center text-xs text-gray-500 font-medium">
               Ao clicar, você será direcionado ao WhatsApp com as informações preenchidas.
             </p>
           </div>

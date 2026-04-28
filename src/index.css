@@ -8,29 +8,29 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* HBS Engenharia — Proptech / Engineering platform palette */
-    --background: 0 0% 100%;            /* #FFFFFF */
-    --foreground: 222 47% 9%;           /* near-black navy */
+    /* HBS Engenharia — SaaS Dark Proptech palette */
+    --background: 222 47% 7%;           /* Deep navy */
+    --foreground: 0 0% 100%;            /* Pure white */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 9%;
+    --card: 222 47% 10%;
+    --card-foreground: 210 20% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 9%;
+    --popover: 222 47% 10%;
+    --popover-foreground: 210 20% 98%;
 
-    --primary: 222 47% 9%;              /* #0F172A deep navy */
-    --primary-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;               /* White text for titles */
+    --primary-foreground: 222 47% 9%;
     --primary-glow: 221 39% 18%;
 
-    --secondary: 213 27% 96%;           /* #F1F5F9 cool gray */
-    --secondary-foreground: 222 47% 9%;
+    --secondary: 222 47% 11%;
+    --secondary-foreground: 210 20% 85%; /* Muted slate */
 
-    --muted: 214 20% 96%;
-    --muted-foreground: 215 16% 47%;    /* #64748B */
+    --muted: 222 47% 11%;
+    --muted-foreground: 215 16% 65%;    /* #9CA3AF - Descriptions */
 
-    --accent: 217 91% 60%;              /* #2563EB electric blue */
+    --accent: 24 95% 53%;               /* #F97316 Orange accent */
     --accent-foreground: 0 0% 100%;
-    --accent-glow: 214 100% 67%;        /* #38BDF8 sky blue */
+    --accent-glow: 24 95% 63%;          /* Brighter orange */
 
     --whatsapp: 142 70% 45%;
     --whatsapp-foreground: 0 0% 100%;
@@ -46,11 +46,11 @@ All colors MUST be HSL.
 
     /* Dark Engineering gradients (Deep blue to graphite / Navy to steel blue) */
     --gradient-hero: linear-gradient(135deg, hsl(222 47% 7%) 0%, hsl(215 30% 15%) 60%, hsl(210 25% 22%) 100%);
-    --gradient-dark-surface: linear-gradient(180deg, hsl(222 47% 9%) 0%, hsl(217 35% 12%) 100%);
+    --gradient-dark-surface: linear-gradient(180deg, hsl(222 47% 7%) 0%, hsl(217 35% 10%) 100%);
     
-    /* White section gradients (Subtle tech depth) */
-    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 20% 98%) 100%);
-    --gradient-surface: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(214 20% 97%) 100%);
+    /* Subtle tech depth gradients for section separation */
+    --gradient-subtle: linear-gradient(180deg, hsl(222 47% 7%) 0%, hsl(215 30% 11%) 100%);
+    --gradient-surface: linear-gradient(145deg, hsl(222 47% 8%) 0%, hsl(217 25% 12%) 100%);
     
     --gradient-accent: linear-gradient(135deg, hsl(217 91% 55%), hsl(214 100% 67%));
 
@@ -282,9 +282,9 @@ All colors MUST be HSL.
 .corner-bracket.tl { top: 10px; left: 10px; }
 .corner-bracket.br { bottom: 10px; right: 10px; transform: rotate(180deg); }
 
-/* ── 6. Blueprint section background (Ultra-subtle 3-5% opacity) ─── */
+/* ── 6. Blueprint section background (Ultra-subtle 3-5% opacity, light lines on dark bg) ─── */
 .blueprint-bg {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3C!-- fine 20px grid (3% opacity) --%3E%3Cpath d='M 20 0 V 200 M 40 0 V 200 M 60 0 V 200 M 80 0 V 200 M 100 0 V 200 M 120 0 V 200 M 140 0 V 200 M 160 0 V 200 M 180 0 V 200 M 0 20 H 200 M 0 40 H 200 M 0 60 H 200 M 0 80 H 200 M 0 100 H 200 M 0 120 H 200 M 0 140 H 200 M 0 160 H 200 M 0 180 H 200' stroke='rgba(37,99,235,0.025)' stroke-width='0.5' fill='none'/%3E%3C!-- major 100px grid (4% opacity) --%3E%3Cpath d='M 100 0 V 200 M 0 100 H 200' stroke='rgba(37,99,235,0.04)' stroke-width='0.8' fill='none'/%3E%3C!-- tile border --%3E%3Crect x='0.5' y='0.5' width='199' height='199' stroke='rgba(37,99,235,0.03)' stroke-width='0.5' fill='none'/%3E%3C!-- dashed measurement arcs (5% opacity) --%3E%3Ccircle cx='0' cy='0' r='48' stroke='rgba(37,99,235,0.05)' stroke-width='0.5' stroke-dasharray='4 8' fill='none'/%3E%3Ccircle cx='200' cy='200' r='48' stroke='rgba(37,99,235,0.05)' stroke-width='0.5' stroke-dasharray='4 8' fill='none'/%3E%3C!-- crosshair and structural corners (5% opacity) --%3E%3Cpath d='M 90 100 H 110 M 100 90 V 110' stroke='rgba(37,99,235,0.05)' stroke-width='0.5' fill='none'/%3E%3Cpath d='M 0 0 H 12 M 0 0 V 12' stroke='rgba(37,99,235,0.06)' stroke-width='0.8' fill='none'/%3E%3Cpath d='M 200 0 H 188 M 200 0 V 12' stroke='rgba(37,99,235,0.06)' stroke-width='0.8' fill='none'/%3E%3Cpath d='M 0 200 H 12 M 0 200 V 188' stroke='rgba(37,99,235,0.06)' stroke-width='0.8' fill='none'/%3E%3Cpath d='M 200 200 H 188 M 200 200 V 188' stroke='rgba(37,99,235,0.06)' stroke-width='0.8' fill='none'/%3E%3C!-- nodes (4-6% opacity) --%3E%3Ccircle cx='100' cy='100' r='2' fill='rgba(37,99,235,0.06)'/%3E%3Ccircle cx='100' cy='0' r='1.5' fill='rgba(37,99,235,0.03)'/%3E%3Ccircle cx='0' cy='100' r='1.5' fill='rgba(37,99,235,0.03)'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3C!-- fine 20px grid (3% opacity) --%3E%3Cpath d='M 20 0 V 200 M 40 0 V 200 M 60 0 V 200 M 80 0 V 200 M 100 0 V 200 M 120 0 V 200 M 140 0 V 200 M 160 0 V 200 M 180 0 V 200 M 0 20 H 200 M 0 40 H 200 M 0 60 H 200 M 0 80 H 200 M 0 100 H 200 M 0 120 H 200 M 0 140 H 200 M 0 160 H 200 M 0 180 H 200' stroke='rgba(255,255,255,0.025)' stroke-width='0.5' fill='none'/%3E%3C!-- major 100px grid (4% opacity) --%3E%3Cpath d='M 100 0 V 200 M 0 100 H 200' stroke='rgba(255,255,255,0.04)' stroke-width='0.8' fill='none'/%3E%3C!-- tile border --%3E%3Crect x='0.5' y='0.5' width='199' height='199' stroke='rgba(255,255,255,0.03)' stroke-width='0.5' fill='none'/%3E%3C!-- dashed measurement arcs (5% opacity) --%3E%3Ccircle cx='0' cy='0' r='48' stroke='rgba(255,255,255,0.05)' stroke-width='0.5' stroke-dasharray='4 8' fill='none'/%3E%3Ccircle cx='200' cy='200' r='48' stroke='rgba(255,255,255,0.05)' stroke-width='0.5' stroke-dasharray='4 8' fill='none'/%3E%3C!-- crosshair and structural corners (5% opacity) --%3E%3Cpath d='M 90 100 H 110 M 100 90 V 110' stroke='rgba(255,255,255,0.05)' stroke-width='0.5' fill='none'/%3E%3Cpath d='M 0 0 H 12 M 0 0 V 12' stroke='rgba(255,255,255,0.06)' stroke-width='0.8' fill='none'/%3E%3Cpath d='M 200 0 H 188 M 200 0 V 12' stroke='rgba(255,255,255,0.06)' stroke-width='0.8' fill='none'/%3E%3Cpath d='M 0 200 H 12 M 0 200 V 188' stroke='rgba(255,255,255,0.06)' stroke-width='0.8' fill='none'/%3E%3Cpath d='M 200 200 H 188 M 200 200 V 188' stroke='rgba(255,255,255,0.06)' stroke-width='0.8' fill='none'/%3E%3C!-- nodes (4-6% opacity) --%3E%3Ccircle cx='100' cy='100' r='2' fill='rgba(255,255,255,0.06)'/%3E%3Ccircle cx='100' cy='0' r='1.5' fill='rgba(255,255,255,0.03)'/%3E%3Ccircle cx='0' cy='100' r='1.5' fill='rgba(255,255,255,0.03)'/%3E%3C/svg%3E");
   background-size: 200px 200px;
   background-repeat: repeat;
 }
@@ -299,20 +299,25 @@ All colors MUST be HSL.
 
 /* ── Startup Glass Card & Elevate Micro-interactions ─── */
 .glass-card {
-  background: var(--gradient-surface);
-  border: 1px solid hsl(214 20% 90% / 0.8);
-  box-shadow: 0 2px 10px -4px hsl(222 47% 9% / 0.05);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   transition:
-    transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
-    box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
-    border-color 0.3s ease;
+    transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+    background-color 0.4s ease,
+    border-color 0.4s ease;
 }
 .glass-card:hover {
-  transform: translateY(-8px);
-  border-color: hsl(var(--accent) / 0.3);
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: hsl(var(--accent) / 0.5);
   box-shadow:
-    0 24px 50px -12px hsl(222 47% 9% / 0.12),
-    0 0 0 1px hsl(var(--accent) / 0.1);
+    0 24px 50px -12px rgba(0, 0, 0, 0.8),
+    0 0 0 1px hsl(var(--accent) / 0.2);
 }
 .glass-card:hover .glass-icon {
   transform: scale(1.1) translateY(-2px);

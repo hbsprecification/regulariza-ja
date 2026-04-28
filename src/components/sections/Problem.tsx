@@ -24,26 +24,26 @@ const Problem = () => {
   const contentRef = useInView<HTMLDivElement>(0.15);
 
   return (
-    <section id="problemas" className="relative overflow-hidden bg-secondary/30 py-24 lg:py-32" aria-labelledby="problems-heading">
+    <section id="problemas" className="relative overflow-hidden py-16 lg:py-20" aria-labelledby="problems-heading">
       <div className="absolute inset-0 gradient-subtle opacity-70" aria-hidden />
       <div className="container relative z-10">
         <div ref={headerRef} className="reveal mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 rounded-md bg-accent/10 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-accent ring-1 ring-accent/20">
             <AlertCircle className="h-3.5 w-3.5" /> Auditoria Preliminar
           </span>
-          <h2 id="problems-heading" className="mt-5 font-display text-3xl font-bold text-primary sm:text-4xl">
+          <h2 id="problems-heading" className="mt-5 font-display text-3xl font-black text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)] sm:text-4xl">
             Sintomas de Irregularidade Imobiliária
           </h2>
-          <p className="mt-4 text-muted-foreground sm:text-lg">
+          <p className="mt-4 text-gray-300 leading-[1.7] drop-shadow-sm sm:text-lg">
             A conformidade do seu patrimônio é essencial para sua valorização e segurança jurídica. 
             Selecione as ocorrências abaixo para uma pré-avaliação do seu caso.
           </p>
         </div>
 
-        <div ref={contentRef} className="reveal-stagger mx-auto mt-12 max-w-4xl rounded-2xl border border-border bg-card p-6 shadow-soft sm:p-8">
-          <div className="mb-6 border-b border-border pb-4">
-            <h3 className="font-display text-sm font-semibold text-primary uppercase tracking-wider">Painel de Diagnóstico</h3>
-            <p className="text-xs text-muted-foreground mt-1">Clique para sinalizar os problemas identificados no seu imóvel.</p>
+        <div ref={contentRef} className="reveal-stagger glass-card mx-auto mt-12 max-w-4xl p-6 sm:p-8">
+          <div className="mb-6 border-b border-white/10 pb-4">
+            <h3 className="font-display text-sm font-bold text-white uppercase tracking-wider drop-shadow-sm">Painel de Diagnóstico</h3>
+            <p className="text-xs text-gray-400 mt-1">Clique para sinalizar os problemas identificados no seu imóvel.</p>
           </div>
 
           <ul className="grid gap-3 sm:grid-cols-2">
@@ -57,16 +57,16 @@ const Problem = () => {
                     id={`problem-item-${i}`}
                     className={`group relative flex w-full items-start gap-4 rounded-xl border p-4 text-left transition-all duration-200 ${
                       isOn
-                        ? "border-accent bg-accent/[0.03] shadow-sm"
-                        : "border-border bg-background hover:border-accent/40"
+                        ? "border-accent bg-accent/10 shadow-[0_0_15px_rgba(249,115,22,0.15)]"
+                        : "border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/10"
                     }`}
                   >
                     <div className={`mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg border transition-colors ${
-                      isOn ? "border-accent/30 bg-accent/10 text-accent" : "border-border bg-secondary text-muted-foreground"
+                      isOn ? "border-accent/40 bg-accent/20 text-accent" : "border-white/10 bg-white/5 text-gray-400"
                     }`}>
                       <item.icon className="h-4 w-4 stroke-[1.5]" />
                     </div>
-                    <span className="text-[13px] font-medium leading-relaxed text-foreground mt-1 pr-6">{item.text}</span>
+                    <span className="text-[13px] font-bold leading-[1.7] text-white drop-shadow-sm mt-1 pr-6">{item.text}</span>
                     
                     <div className={`absolute right-4 top-1/2 -translate-y-1/2 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded border transition-all ${
                       isOn ? "border-accent bg-accent text-white" : "border-muted-foreground/30 bg-white"
@@ -86,13 +86,13 @@ const Problem = () => {
                   <AlertCircle className="h-5 w-5 text-accent" />
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-primary">
+                  <p className="text-sm font-bold text-white drop-shadow-sm">
                     Alerta Sistêmico: {count} {count === 1 ? "inconformidade detectada" : "inconformidades detectadas"}.
                   </p>
-                  <p className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
+                  <p className="mt-1 text-[13px] leading-[1.7] text-gray-400">
                     A presença destes fatores gera passivo documental e desvalorização estrutural do ativo. Recomendamos uma consulta técnica imediata para traçar um plano de mitigação.
                   </p>
-                  <Button asChild size="sm" className="mt-5 bg-accent font-bold text-white transition-all hover:bg-accent/90" id="problem-cta">
+                  <Button asChild size="sm" className="btn-glow mt-5 bg-gradient-to-r from-accent to-orange-400 font-bold text-white shadow-lg shadow-accent/20 transition-all hover:opacity-90" id="problem-cta">
                     <a href={consultLink()} target="_blank" rel="noopener noreferrer">
                       Protocolar Diagnóstico <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
                     </a>

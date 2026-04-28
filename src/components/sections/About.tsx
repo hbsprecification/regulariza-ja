@@ -60,7 +60,7 @@ const About = () => {
     <section
       id="sobre"
       ref={sectionRef}
-      className="blueprint-bg relative overflow-hidden bg-secondary/50 py-20 lg:py-28"
+      className="blueprint-bg relative overflow-hidden gradient-dark-surface py-16 lg:py-20"
       aria-labelledby="about-heading"
     >
       <div className="container">
@@ -90,10 +90,10 @@ const About = () => {
               <div
                 className="absolute bottom-4 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-xl border border-white/30 bg-white/80 px-5 py-2.5 text-center shadow-lg backdrop-blur-md"
               >
-                <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-gray-500">
                   CREA-BA
                 </p>
-                <p className="font-display text-sm font-extrabold text-primary">
+                <p className="font-display text-sm font-black text-gray-900">
                   051598661-5
                 </p>
               </div>
@@ -117,12 +117,12 @@ const About = () => {
             {/* Name heading */}
             <h2
               id="about-heading"
-              className="mt-4 font-display text-4xl font-extrabold leading-tight text-primary sm:text-5xl"
+              className="mt-4 font-display text-4xl font-black leading-tight text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)] sm:text-5xl"
             >
               Jádson Castro{" "}
-              <span className="text-accent">Santana</span>
+              <span className="bg-gradient-to-r from-accent to-[hsl(var(--accent-glow))] bg-clip-text text-transparent">Santana</span>
             </h2>
-            <p className="mt-2 text-base font-semibold text-muted-foreground">
+            <p className="mt-2 text-base font-bold text-gray-400">
               Engenheiro Civil — Especialista em Regularização de Imóveis Urbanos
             </p>
 
@@ -131,7 +131,7 @@ const About = () => {
               {credentials.map(({ icon: Icon, text }) => (
                 <div
                   key={text}
-                  className="flex items-center gap-2 rounded-full border border-border bg-card/80 px-3.5 py-1.5 text-xs font-medium text-foreground shadow-sm backdrop-blur-sm"
+                  className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-bold text-gray-200 shadow-sm backdrop-blur-sm transition-all hover:bg-white/10"
                 >
                   <Icon className="h-3.5 w-3.5 flex-shrink-0 text-accent" />
                   {text}
@@ -140,7 +140,7 @@ const About = () => {
             </div>
 
             {/* Bio text */}
-            <div className="mt-6 space-y-3 text-[0.95rem] leading-relaxed text-foreground/75">
+            <div className="mt-6 space-y-3 text-[0.95rem] leading-[1.7] text-gray-300 drop-shadow-sm">
               <p>
                 Engenheiro civil especializado em regularização de imóveis urbanos em Itabuna,
                 Ilhéus e toda a região sul da Bahia.
@@ -166,8 +166,8 @@ const About = () => {
                   <div className={`glass-icon mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl ${iconBg}`}>
                     <Icon className={`h-5 w-5 ${iconColor}`} strokeWidth={1.8} />
                   </div>
-                  <p className="font-display text-sm font-bold text-primary">{title}</p>
-                  <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{desc}</p>
+                  <p className="font-display text-sm font-bold text-white drop-shadow-sm">{title}</p>
+                  <p className="mt-1 text-xs leading-[1.7] text-gray-400">{desc}</p>
                 </div>
               ))}
             </div>
@@ -176,7 +176,7 @@ const About = () => {
             <Button
               asChild
               size="lg"
-              className="btn-glow mt-8 w-fit bg-accent font-bold text-accent-foreground hover:bg-accent/90"
+              className="btn-glow mt-8 w-fit bg-gradient-to-r from-accent to-orange-400 font-bold text-white hover:opacity-90 shadow-xl shadow-accent/25"
               id="about-cta"
             >
               <a href={consultLink()} target="_blank" rel="noopener noreferrer">

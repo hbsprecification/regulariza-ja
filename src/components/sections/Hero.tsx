@@ -16,7 +16,7 @@ const Hero = () => {
   const cardRef   = useInView<HTMLDivElement>(0.2);
 
   return (
-    <section id="hero" className="relative overflow-hidden pt-20 sm:pt-24" aria-labelledby="hero-heading">
+    <section id="hero" className="relative overflow-hidden pt-16 sm:pt-20" aria-labelledby="hero-heading">
 
       {/* ── Deep engineering navy gradient background ── */}
       <div className="absolute inset-0 gradient-hero" aria-hidden />
@@ -63,7 +63,7 @@ const Hero = () => {
         </div>
 
         {/* ── Two-column layout ── */}
-        <div className="grid items-center gap-10 pb-16 pt-8 lg:grid-cols-2 lg:gap-16 lg:pb-28 lg:pt-12">
+        <div className="grid items-center gap-10 pb-12 pt-6 lg:grid-cols-2 lg:gap-14 lg:pb-20 lg:pt-8">
 
           {/* Left — Copy */}
           <div className="text-center lg:text-left">
@@ -77,10 +77,10 @@ const Hero = () => {
             <h1
               ref={headingRef}
               id="hero-heading"
-              className="reveal font-display text-4xl font-extrabold leading-[1.06] tracking-tight text-white sm:text-5xl lg:text-[3.5rem]"
+              className="reveal font-display text-5xl font-extrabold leading-[1.1] tracking-tight text-white drop-shadow-[0_2px_12px_rgba(255,255,255,0.15)] sm:text-6xl lg:text-[4rem]"
             >
               Regularize seu imóvel com{" "}
-              <span className="bg-gradient-to-r from-accent to-[hsl(var(--accent-glow))] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-accent to-[hsl(var(--accent-glow))] bg-clip-text text-transparent drop-shadow-sm">
                 clareza técnica
               </span>{" "}
               e autoridade.
@@ -88,7 +88,7 @@ const Hero = () => {
 
             <p
               ref={subRef}
-              className="reveal reveal-delay-1 mx-auto mt-6 max-w-xl text-base leading-relaxed text-white/65 sm:text-lg lg:mx-0"
+              className="reveal reveal-delay-1 mx-auto mt-6 max-w-xl text-base leading-[1.7] text-gray-300 drop-shadow-sm sm:text-lg lg:mx-0"
             >
               Uma abordagem de engenharia profissional para a legalização de imóveis e conformidade urbana.
               Análise técnica gratuita. Atendimento em todo o Brasil.
@@ -101,7 +101,7 @@ const Hero = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 id="hero-cta-primary"
-                className="btn-glow flex w-full items-center justify-center gap-2 rounded-xl bg-accent px-7 py-4 text-base font-bold text-white shadow-xl shadow-accent/25 transition-all hover:bg-accent/90 sm:w-auto"
+                className="btn-glow flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-accent to-orange-400 px-7 py-4 text-base font-bold text-white shadow-xl shadow-accent/25 transition-all hover:opacity-90 sm:w-auto"
               >
                 <MessageCircle className="h-5 w-5 flex-shrink-0" />
                 Iniciar regularização
@@ -109,7 +109,7 @@ const Hero = () => {
               <a
                 href="#processo"
                 id="hero-cta-secondary"
-                className="flex w-full items-center justify-center gap-2 rounded-xl border border-white/20 px-7 py-4 text-sm font-semibold text-white/80 backdrop-blur-sm transition-all hover:border-white/40 hover:bg-white/5 hover:text-white sm:w-auto"
+                className="btn-glow flex w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-7 py-4 text-sm font-semibold text-gray-200 backdrop-blur-md shadow-[0_4px_24px_-8px_rgba(0,0,0,0.5)] transition-all hover:border-white/20 hover:bg-white/10 hover:text-white sm:w-auto"
               >
                 Ver como funciona <ArrowRight className="h-4 w-4" />
               </a>
