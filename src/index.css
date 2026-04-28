@@ -261,3 +261,21 @@ All colors MUST be HSL.
 .corner-bracket.tl { top: 10px; left: 10px; }
 .corner-bracket.br { bottom: 10px; right: 10px; transform: rotate(180deg); }
 
+/* ── 6. Blueprint section background pattern ─────────────────── */
+/*
+ * Tileable SVG pattern: fine engineering grid + measurement arcs +
+ * corner brackets + intersection dots. Applied as background-image
+ * so it never adds DOM nodes. Works on any bg color.
+ * Target opacity feel: ~6-8% (colors baked into the SVG).
+ */
+.blueprint-bg {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3C!-- fine 20px grid --%3E%3Cpath d='M 20 0 V 200 M 40 0 V 200 M 60 0 V 200 M 80 0 V 200 M 100 0 V 200 M 120 0 V 200 M 140 0 V 200 M 160 0 V 200 M 180 0 V 200 M 0 20 H 200 M 0 40 H 200 M 0 60 H 200 M 0 80 H 200 M 0 100 H 200 M 0 120 H 200 M 0 140 H 200 M 0 160 H 200 M 0 180 H 200' stroke='%23D4D4D4' stroke-width='0.35' fill='none'/%3E%3C!-- major 100px grid --%3E%3Cpath d='M 100 0 V 200 M 0 100 H 200' stroke='%23C0C0C0' stroke-width='0.55' fill='none'/%3E%3C!-- tile border --%3E%3Crect x='0.25' y='0.25' width='199.5' height='199.5' stroke='%23C8C8C8' stroke-width='0.4' fill='none'/%3E%3C!-- dashed measurement arc corner 0,0 --%3E%3Ccircle cx='0' cy='0' r='52' stroke='%23C8C8C8' stroke-width='0.45' stroke-dasharray='4 7' fill='none'/%3E%3C!-- dashed arc corner 200,200 --%3E%3Ccircle cx='200' cy='200' r='52' stroke='%23C8C8C8' stroke-width='0.45' stroke-dasharray='4 7' fill='none'/%3E%3C!-- center crosshair --%3E%3Cpath d='M 88 100 H 112 M 100 88 V 112' stroke='%23BBBBBB' stroke-width='0.5' fill='none'/%3E%3C!-- corner L-brackets --%3E%3Cpath d='M 0 0 H 13 M 0 0 V 13' stroke='%23BBBBBB' stroke-width='0.7' fill='none'/%3E%3Cpath d='M 200 0 H 187 M 200 0 V 13' stroke='%23BBBBBB' stroke-width='0.7' fill='none'/%3E%3Cpath d='M 0 200 H 13 M 0 200 V 187' stroke='%23BBBBBB' stroke-width='0.7' fill='none'/%3E%3Cpath d='M 200 200 H 187 M 200 200 V 187' stroke='%23BBBBBB' stroke-width='0.7' fill='none'/%3E%3C!-- dots at corners and center --%3E%3Ccircle cx='0' cy='0' r='1.4' fill='%23C0C0C0'/%3E%3Ccircle cx='100' cy='0' r='1.4' fill='%23C0C0C0'/%3E%3Ccircle cx='200' cy='0' r='1.4' fill='%23C0C0C0'/%3E%3Ccircle cx='0' cy='100' r='1.4' fill='%23C0C0C0'/%3E%3Ccircle cx='100' cy='100' r='1.8' fill='%23B8B8B8'/%3E%3Ccircle cx='200' cy='100' r='1.4' fill='%23C0C0C0'/%3E%3Ccircle cx='0' cy='200' r='1.4' fill='%23C0C0C0'/%3E%3Ccircle cx='100' cy='200' r='1.4' fill='%23C0C0C0'/%3E%3Ccircle cx='200' cy='200' r='1.4' fill='%23C0C0C0'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  background-repeat: repeat;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blueprint-bg {
+    background-image: none;
+  }
+}

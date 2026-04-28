@@ -1,5 +1,4 @@
 import { ClipboardCheck, FileSignature, LandPlot, Ruler, FileSearch, Users, FileText, Compass } from "lucide-react";
-import BlueprintBackground from "@/components/BlueprintBackground";
 
 const services = [
   { icon: ClipboardCheck, title: "Regularização de obras e construções", desc: "Condução técnica completa para regularizar imóveis junto à prefeitura e órgãos competentes." },
@@ -13,8 +12,7 @@ const services = [
 ];
 
 const Services = () => (
-  <section id="servicos" className="relative overflow-hidden py-20 lg:py-28" aria-labelledby="services-heading">
-    <BlueprintBackground />
+  <section id="servicos" className="blueprint-bg relative overflow-hidden py-20 lg:py-28" aria-labelledby="services-heading">
     <div className="container">
       <div className="mx-auto max-w-3xl text-center">
         <span className="text-xs font-semibold uppercase tracking-wider text-accent">Serviços</span>

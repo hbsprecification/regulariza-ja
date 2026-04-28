@@ -1,5 +1,4 @@
 import { useState } from "react";
-import BlueprintBackground from "@/components/BlueprintBackground";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -54,8 +53,7 @@ const ContactForm = () => {
     setForm({ ...form, [k]: e.target.value });
 
   return (
-    <section id="contato" className="relative overflow-hidden py-20 lg:py-28" aria-labelledby="contact-heading">
-      <BlueprintBackground />
+    <section id="contato" className="blueprint-bg relative overflow-hidden py-20 lg:py-28" aria-labelledby="contact-heading">
       <div className="container grid gap-12 lg:grid-cols-2 lg:items-start">
         <div>
           <span className="text-xs font-semibold uppercase tracking-wider text-accent">Contato</span>
