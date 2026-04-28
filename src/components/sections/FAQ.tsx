@@ -38,8 +38,10 @@ const FAQ = () => {
   const listRef = useInView<HTMLDivElement>(0.15);
 
   return (
-    <section id="faq" className="blueprint-bg relative overflow-hidden py-24 lg:py-32" aria-labelledby="faq-heading">
-      <div className="container px-4">
+    <section id="faq" className="relative overflow-hidden bg-white py-24 lg:py-32" aria-labelledby="faq-heading">
+      <div className="absolute inset-0 gradient-subtle" aria-hidden />
+      <div className="absolute inset-0 blueprint-bg" aria-hidden />
+      <div className="container relative z-10 px-4">
         <div ref={headerRef} className="reveal mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 rounded-md bg-accent/10 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-accent ring-1 ring-accent/20">
             <HelpCircle className="h-3.5 w-3.5" /> Base de Conhecimento

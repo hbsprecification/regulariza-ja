@@ -17,8 +17,10 @@ const Services = () => {
   const gridRef = useInView<HTMLDivElement>(0.15);
 
   return (
-    <section id="servicos" className="blueprint-bg relative overflow-hidden py-24 lg:py-32" aria-labelledby="services-heading">
-      <div className="container">
+    <section id="servicos" className="relative overflow-hidden bg-white py-24 lg:py-32" aria-labelledby="services-heading">
+      <div className="absolute inset-0 gradient-surface" aria-hidden />
+      <div className="absolute inset-0 blueprint-bg" aria-hidden />
+      <div className="container relative z-10">
         <div ref={headerRef} className="reveal mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-accent">
             <span className="h-px w-6 bg-accent" aria-hidden />

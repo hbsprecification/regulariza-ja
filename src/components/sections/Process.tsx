@@ -45,9 +45,12 @@ const Process = () => {
   return (
     <section
       id="processo"
-      className="blueprint-bg relative overflow-hidden py-24 lg:py-32"
+      className="relative overflow-hidden bg-white py-24 lg:py-32"
       aria-labelledby="process-heading"
     >
+      <div className="absolute inset-0 gradient-surface" aria-hidden />
+      <div className="absolute inset-0 blueprint-bg" aria-hidden />
+
       <div className="container relative z-10">
         {/* Header */}
         <div ref={headingRef} className="reveal mx-auto max-w-3xl text-center">

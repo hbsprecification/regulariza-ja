@@ -24,8 +24,9 @@ const Problem = () => {
   const contentRef = useInView<HTMLDivElement>(0.15);
 
   return (
-    <section id="problemas" className="bg-secondary/50 py-24 lg:py-32" aria-labelledby="problems-heading">
-      <div className="container">
+    <section id="problemas" className="relative overflow-hidden bg-secondary/30 py-24 lg:py-32" aria-labelledby="problems-heading">
+      <div className="absolute inset-0 gradient-subtle opacity-70" aria-hidden />
+      <div className="container relative z-10">
         <div ref={headerRef} className="reveal mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 rounded-md bg-accent/10 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-accent ring-1 ring-accent/20">
             <AlertCircle className="h-3.5 w-3.5" /> Auditoria Preliminar
