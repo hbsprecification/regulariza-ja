@@ -1,4 +1,4 @@
-import { TrendingUp, Banknote, ScaleIcon, FileCheck2, HeartHandshake, ArrowRight, MessageCircle } from "lucide-react";
+import { TrendingUp, Banknote, Scale, FileCheck2, HeartHandshake, ArrowRight, MessageCircle } from "lucide-react";
 import { consultLink } from "@/lib/contact";
 import { useInView } from "@/hooks/useInView";
 
@@ -14,7 +14,7 @@ const benefits = [
     desc: "Bancos só financiam imóveis com averbação e habite-se em dia.",
   },
   {
-    icon: ScaleIcon,
+    icon: Scale,
     title: "Segurança jurídica",
     desc: "Sem risco de notificação, multa ou embargo da prefeitura.",
   },
