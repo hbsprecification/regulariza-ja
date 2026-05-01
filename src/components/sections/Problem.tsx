@@ -5,14 +5,14 @@ import { AlertCircle, ArrowRight, Activity, MessageCircle, FileWarning, SearchX,
 import { useInView } from "@/hooks/useInView";
 
 const items = [
-  { icon: Building, text: "Construção de fato divergente do projeto aprovado." },
-  { icon: Map, text: "Expansão de área não autorizada pelos órgãos licenciadores." },
-  { icon: FileWarning, text: "Falta de averbação da edificação na matrícula de registro." },
-  { icon: Home, text: "Imóvel erguido sem os devidos alvarás e licenças prévias." },
-  { icon: Ban, text: "Bloqueios ou insegurança jurídica para venda do ativo." },
-  { icon: SearchX, text: "Notificações de irregularidade emitidas pela prefeitura." },
-  { icon: Activity, text: "Restrições de conformidade que impedem financiamentos." },
   { icon: FileWarning, text: "Ausência do Habite-se (Certificado de Conclusão de Obra)." },
+  { icon: FileWarning, text: "Construção não averbada na matrícula do imóvel." },
+  { icon: Home, text: "Casa ampliada ou reformada sem aprovação da prefeitura." },
+  { icon: Ban, text: "Dificuldade para vender ou financiar o imóvel pelo banco." },
+  { icon: Map, text: "Divergência de área entre o IPTU e a construção real." },
+  { icon: Building, text: "Construção de fato divergente do projeto aprovado." },
+  { icon: SearchX, text: "Notificações de irregularidade emitidas pela prefeitura." },
+  { icon: Activity, text: "Restrições de conformidade que impedem o financiamento." },
 ];
 
 const Problem = () => {

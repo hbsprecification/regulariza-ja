@@ -9,6 +9,8 @@ import Calculator from "@/components/sections/Calculator";
 import About from "@/components/sections/About";
 import Differentials from "@/components/sections/Differentials";
 import Process from "@/components/sections/Process";
+import Testimonials from "@/components/sections/Testimonials";
+import Benefits from "@/components/sections/Benefits";
 import CTA from "@/components/sections/CTA";
 import FAQ from "@/components/sections/FAQ";
 import Structure from "@/components/sections/Structure";
@@ -49,11 +51,13 @@ const Index = () => (
       <TrustSignals />
       <Problem />
       <InitialAnalysis />
-      <Calculator />
       <Services />
       <About />
+      <Testimonials />
       <Differentials />
       <Process />
+      <Benefits />
+      <Calculator />
       <CTA />
       <FAQ />
       <Structure />
