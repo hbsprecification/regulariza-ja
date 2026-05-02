@@ -33,13 +33,13 @@ const Header = () => {
     >
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
-        <a href="#hero" className="group flex items-center gap-3" aria-label="HBS Engenharia — Início">
+        <a href="#hero" className="group flex items-center gap-3" aria-label="HBS Soluções em Engenharia — Início">
           <div className="relative flex h-10 w-auto shrink-0 items-center justify-center rounded-lg bg-white p-1.5 shadow-md transition-transform duration-300 group-hover:scale-105">
-            <img src={logo} alt="HBS Engenharia" className="relative z-10 h-full w-auto object-contain" />
+            <img src={logo} alt="HBS Soluções em Engenharia" className="relative z-10 h-full w-auto object-contain" />
           </div>
           <div className="hidden leading-tight sm:block">
             <p className={`font-display text-sm font-bold transition-colors ${scrolled ? "text-white" : "text-white"}`}>
-              HBS Engenharia
+              HBS Soluções em Engenharia
             </p>
             <p className="text-[11px] text-white/50">Regularização de Imóveis Urbanos</p>
           </div>

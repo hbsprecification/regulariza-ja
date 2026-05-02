@@ -28,11 +28,10 @@ const Footer = () => (
         {/* ── Corporate Column ── */}
         <div className="lg:col-span-4">
           <div className="inline-block rounded-xl bg-white p-3 shadow-md">
-            <img src={logo} alt="HBS Engenharia" className="h-9 w-auto" />
+            <img src={logo} alt="HBS Soluções em Engenharia" className="h-9 w-auto" />
           </div>
           <p className="mt-6 text-sm leading-relaxed text-white/50">
-            Plataforma de engenharia legal e conformidade imobiliária. 
-            Atuamos com tecnologia e inteligência técnica para legalizar patrimônios em nível nacional.
+            HBS Soluções em Engenharia — especialistas em regularização de imóveis, averbação de construção e consultoria técnica. Atendimento em todo o Brasil.
           </p>
           <div className="mt-8 flex items-center gap-3">
             {socials.map(({ name, url, icon: Icon }) => (
@@ -98,7 +97,7 @@ const Footer = () => (
               <li className="flex items-center gap-3">
                 <Mail className="h-4 w-4 flex-shrink-0 text-white/30" />
                 <a href="#contato" className="text-[13px] text-white/60 hover:text-white transition-colors">
-                  contato@regularizaja.com.br
+                  contato@jadsoncastro.com.br
                 </a>
               </li>
             </ul>
@@ -119,7 +118,7 @@ const Footer = () => (
 
       <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
         <p className="text-xs text-white/40">
-          © {new Date().getFullYear()} HBS Engenharia Legal. Todos os direitos reservados.
+          © {new Date().getFullYear()} HBS Soluções em Engenharia. Todos os direitos reservados.
         </p>
         <div className="flex gap-4">
           <a href="#" className="text-xs text-white/30 hover:text-white">Termos de Uso</a>

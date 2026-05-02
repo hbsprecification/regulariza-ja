@@ -49,7 +49,7 @@ const TrustSignals = () => (
           id="trust-heading"
           className="mt-3 font-display text-3xl font-black text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)] sm:text-4xl"
         >
-          Por que confiar na Regulariza Já?
+          Por que confiar na HBS Soluções em Engenharia?
         </h2>
         <p className="mt-4 text-gray-300 leading-[1.7] drop-shadow-sm">
           Regularizar um imóvel exige conhecimento técnico, responsabilidade profissional e clareza.

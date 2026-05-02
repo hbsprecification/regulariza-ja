@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HBS Soluções em Engenharia</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#0a0f1e;--blue:#00d4ff;--orange:#ff6b35;--dark:#0d1525;--card:#111827}
+body{font-family:'Inter',sans-serif;background:var(--navy);color:#fff;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,15,30,0.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,212,255,0.1)}
+.logo{font-size:1.4rem;font-weight:900;background:linear-gradient(135deg,#fff,var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.logo span{font-size:.7rem;font-weight:400;display:block;color:rgba(255,255,255,0.5);-webkit-text-fill-color:rgba(255,255,255,0.5)}
+nav ul{list-style:none;display:flex;gap:2rem}
+nav ul a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:.9rem;transition:.3s}
+nav ul a:hover{color:var(--blue)}
+.nav-cta{background:linear-gradient(135deg,var(--orange),#ff4500);color:#fff!important;padding:.5rem 1.2rem;border-radius:8px;font-weight:600}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:6rem 2rem 4rem}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 70% 50%,rgba(0,212,255,0.08),transparent),radial-gradient(ellipse 50% 80% at 10% 80%,rgba(255,107,53,0.06),transparent)}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(0,212,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.04) 1px,transparent 1px);background-size:50px 50px}
+.hero-content{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;width:100%;position:relative;z-index:1}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);border-radius:50px;padding:.4rem 1rem;font-size:.75rem;font-weight:600;color:var(--blue);margin-bottom:1.5rem;letter-spacing:.1em}
+.badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+h1{font-size:3.5rem;font-weight:900;line-height:1.1;margin-bottom:1.5rem}
+h1 span{background:linear-gradient(135deg,var(--blue),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{font-size:1.1rem;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:2.5rem;max-width:480px}
+.cta-group{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--orange),#e55a2b);color:#fff;padding:.9rem 2rem;border-radius:12px;font-weight:700;text-decoration:none;font-size:1rem;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;transition:.3s;box-shadow:0 8px 32px rgba(255,107,53,0.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(255,107,53,0.4)}
+.btn-secondary{border:1px solid rgba(255,255,255,0.2);color:#fff;padding:.9rem 2rem;border-radius:12px;font-weight:600;text-decoration:none;font-size:1rem;background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);display:inline-flex;align-items:center;gap:.5rem;transition:.3s}
+.btn-secondary:hover{border-color:var(--blue);color:var(--blue)}
+.trust-badges{display:flex;gap:1.5rem;margin-top:2rem;flex-wrap:wrap}
+.trust-badge{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:rgba(255,255,255,0.5)}
+.trust-badge svg{color:var(--blue)}
+
+/* HERO VISUAL */
+.hero-visual{position:relative;display:flex;justify-content:center}
+.hero-card{background:rgba(255,255,255,0.03);border:1px solid rgba(0,212,255,0.15);border-radius:24px;padding:2rem;backdrop-filter:blur(20px);animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.metric-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.metric{background:rgba(0,212,255,0.05);border:1px solid rgba(0,212,255,0.1);border-radius:12px;padding:1rem;text-align:center}
+.metric-val{font-size:2rem;font-weight:900;background:linear-gradient(135deg,var(--blue),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.metric-lbl{font-size:.7rem;color:rgba(255,255,255,0.4);margin-top:.2rem}
+.crea{background:linear-gradient(135deg,rgba(0,212,255,0.1),rgba(255,107,53,0.1));border:1px solid rgba(0,212,255,0.2);border-radius:12px;padding:1rem;text-align:center}
+.crea strong{display:block;font-size:1rem;color:var(--blue)}
+.crea span{font-size:.75rem;color:rgba(255,255,255,0.5)}
+.floating-tag{position:absolute;top:-20px;right:-20px;background:rgba(255,107,53,0.9);border-radius:12px;padding:.6rem 1rem;font-size:.8rem;font-weight:700;animation:float 4s ease-in-out infinite reverse}
+
+/* STATS */
+.stats{padding:4rem 2rem;border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05)}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.stat-num{font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,var(--blue),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-lbl{font-size:.85rem;color:rgba(255,255,255,0.5);margin-top:.3rem}
+
+/* SECTIONS */
+section{padding:6rem 2rem}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:.15em;color:var(--blue);text-transform:uppercase;margin-bottom:1rem}
+.section-title{font-size:2.5rem;font-weight:900;line-height:1.2;margin-bottom:1rem}
+.section-sub{font-size:1rem;color:rgba(255,255,255,0.5);max-width:500px;line-height:1.7}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem}
+.service-card{background:var(--card);border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:2rem;transition:.3s;position:relative;overflow:hidden;cursor:pointer}
+.service-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,212,255,0.03),transparent);opacity:0;transition:.3s}
+.service-card:hover{border-color:rgba(0,212,255,0.3);transform:translateY(-4px)}
+.service-card:hover::before{opacity:1}
+.service-icon{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,rgba(0,212,255,0.15),rgba(0,212,255,0.05));border:1px solid rgba(0,212,255,0.2);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.5rem}
+.service-card h3{font-size:1.2rem;font-weight:700;margin-bottom:.8rem}
+.service-card p{font-size:.9rem;color:rgba(255,255,255,0.5);line-height:1.6}
+.service-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;color:var(--blue);font-weight:600;margin-top:1rem;text-decoration:none}
+
+/* ABOUT */
+.about{background:linear-gradient(135deg,rgba(0,212,255,0.02),transparent)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:3rem}
+.about-img{background:var(--card);border:1px solid rgba(255,255,255,0.06);border-radius:24px;padding:2.5rem;text-align:center}
+.engineer-name{font-size:1.5rem;font-weight:800;margin:.5rem 0 .2rem}
+.engineer-title{font-size:.85rem;color:var(--blue)}
+.creds{margin-top:1.5rem;display:flex;flex-direction:column;gap:.8rem}
+.cred{background:rgba(0,212,255,0.05);border:1px solid rgba(0,212,255,0.1);border-radius:10px;padding:.8rem 1rem;display:flex;align-items:center;gap:.7rem;font-size:.85rem}
+.cred-dot{width:8px;height:8px;border-radius:50%;background:var(--orange);flex-shrink:0}
+.about-text p{color:rgba(255,255,255,0.6);line-height:1.8;margin-bottom:1rem;font-size:.95rem}
+.highlight-list{margin-top:1.5rem;display:flex;flex-direction:column;gap:.8rem}
+.hl{display:flex;align-items:center;gap:.8rem;font-size:.9rem}
+.hl::before{content:'✓';color:var(--blue);font-weight:700;font-size:1rem}
+
+/* CONTACT */
+.contact{background:var(--dark)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem;align-items:start}
+.whatsapp-btn{display:flex;align-items:center;gap:1rem;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;padding:1.2rem 2rem;border-radius:16px;font-weight:700;font-size:1.1rem;text-decoration:none;margin-bottom:2rem;transition:.3s}
+.whatsapp-btn:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(37,211,102,0.3)}
+.contact-info{display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem}
+.info-item{display:flex;align-items:center;gap:1rem;font-size:.9rem;color:rgba(255,255,255,0.6)}
+.info-icon{width:40px;height:40px;border-radius:10px;background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.2);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+form{display:flex;flex-direction:column;gap:1rem}
+input,textarea{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1rem 1.2rem;color:#fff;font-family:'Inter',sans-serif;font-size:.9rem;outline:none;transition:.3s}
+input:focus,textarea:focus{border-color:var(--blue);background:rgba(0,212,255,0.05)}
+input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.3)}
+textarea{resize:vertical;min-height:130px}
+.submit-btn{background:linear-gradient(135deg,var(--orange),#e55a2b);color:#fff;padding:1rem;border-radius:12px;font-weight:700;font-size:1rem;border:none;cursor:pointer;transition:.3s}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(255,107,53,0.3)}
+
+/* FOOTER */
+footer{background:rgba(0,0,0,0.5);border-top:1px solid rgba(255,255,255,0.05);padding:2rem;text-align:center}
+footer p{font-size:.85rem;color:rgba(255,255,255,0.3)}
+footer strong{color:var(--blue)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero-content,.about-grid,.contact-grid,.services-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  h1{font-size:2.2rem}
+  .section-title{font-size:1.8rem}
+  nav ul{display:none}
+  .floating-tag{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">HBS Engenharia<span>CREA-BA 051598661-5</span></div>
+  <ul>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#contato">Contato</a></li>
+    <li><a href="#contato" class="nav-cta">Consultoria Gratuita</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="grid-bg"></div>
+  <div class="hero-content">
+    <div>
+      <div class="badge">🏗️ HBS SOLUÇÕES EM ENGENHARIA</div>
+      <h1>Regularize seu imóvel com <span>precisão técnica</span> e autoridade.</h1>
+      <p class="subtitle">Especialistas em regularização de imóveis, averbação de construção e consultoria técnica. Atendimento em todo o Brasil com orientação do Engenheiro Jádson Castro, CREA-BA.</p>
+      <div class="cta-group">
+        <a href="https://wa.me/5573981365245" class="btn-primary">💬 Falar no WhatsApp</a>
+        <a href="#servicos" class="btn-secondary">Ver Serviços →</a>
+      </div>
+      <div class="trust-badges">
+        <span class="trust-badge">✅ Consulta gratuita</span>
+        <span class="trust-badge">✅ Atendimento remoto</span>
+        <span class="trust-badge">✅ CREA-BA registrado</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="floating-tag">🏠 Imóvel Regularizado!</div>
+      <div class="hero-card">
+        <div class="metric-row">
+          <div class="metric"><div class="metric-val">+200</div><div class="metric-lbl">Imóveis Regularizados</div></div>
+          <div class="metric"><div class="metric-val">8+</div><div class="metric-lbl">Anos de Experiência</div></div>
+        </div>
+        <div class="metric-row">
+          <div class="metric"><div class="metric-val">100%</div><div class="metric-lbl">Análise Técnica</div></div>
+          <div class="metric"><div class="metric-val">BR</div><div class="metric-lbl">Atendimento Nacional</div></div>
+        </div>
+        <div class="crea"><strong>CREA-BA 051598661-5</strong><span>Engenheiro Civil Registrado</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div><div class="stat-num">+200</div><div class="stat-lbl">Imóveis Regularizados</div></div>
+    <div><div class="stat-num">8+</div><div class="stat-lbl">Anos de Experiência</div></div>
+    <div><div class="stat-num">100%</div><div class="stat-lbl">Análise Técnica</div></div>
+    <div><div class="stat-num">BR</div><div class="stat-lbl">Atendimento em Todo o Brasil</div></div>
+  </div>
+</div>
+
+<section id="servicos">
+  <div class="section-inner">
+    <div class="section-label">O que fazemos</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:end">
+      <div>
+        <h2 class="section-title">Inteligência técnica para o seu patrimônio.</h2>
+      </div>
+      <div>
+        <p class="section-sub">Atuamos em toda a esteira da legalização imobiliária com foco em precisão técnica e conformidade jurídica.</p>
+      </div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h3>Regularização Técnica e Legal</h3>
+        <p>Condução e aprovação de projetos arquitetônicos e adequação técnica junto a prefeituras e órgãos licenciadores.</p>
+        <a href="#contato" class="service-link">Saiba mais →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📝</div>
+        <h3>Averbação de Construção</h3>
+        <p>Produção de acervo técnico para o correto registro de construções diretamente na matrícula do Registro de Imóveis.</p>
+        <a href="#contato" class="service-link">Saiba mais →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🗺️</div>
+        <h3>Desmembramento de Terreno</h3>
+        <p>Estudos de viabilidade, projetos urbanísticos e regularização de fracionamento do solo urbano.</p>
+        <a href="#contato" class="service-link">Saiba mais →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <h3>Consultoria Técnica</h3>
+        <p>Diagnóstico completo da situação documental e técnica do imóvel, com roteiro personalizado para regularização.</p>
+        <a href="#contato" class="service-link">Saiba mais →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sobre" class="about">
+  <div class="section-inner">
+    <div class="section-label">Sobre nós</div>
+    <div class="about-grid">
+      <div class="about-img">
+        <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--orange));margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-size:2rem">👷</div>
+        <div class="engineer-name">Jádson Castro Santana</div>
+        <div class="engineer-title">Engenheiro Civil — CREA-BA 051598661-5</div>
+        <div class="creds">
+          <div class="cred"><div class="cred-dot"></div>Pós-grad. Arquitetura e Engenharia Legal</div>
+          <div class="cred"><div class="cred-dot"></div>Pós-graduando — Master BIM</div>
+          <div class="cred"><div class="cred-dot"></div>Especialista em Regularização Imobiliária</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <h2 class="section-title">HBS Soluções em Engenharia</h2>
+        <p>A HBS Soluções em Engenharia é especializada em regularização de imóveis urbanos, oferecendo uma abordagem técnica, precisa e personalizada para cada cliente.</p>
+        <p>Com base em Itabuna-BA e atendimento remoto para todo o Brasil, levamos segurança jurídica e tranquilidade para proprietários de imóveis irregulares.</p>
+        <div class="highlight-list">
+          <div class="hl">Análise técnica gratuita na primeira consulta</div>
+          <div class="hl">Acompanhamento completo do processo</div>
+          <div class="hl">Atendimento 100% remoto via WhatsApp</div>
+          <div class="hl">Engenheiro registrado no CREA-BA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="contact">
+  <div class="section-inner">
+    <div class="section-label">Fale conosco</div>
+    <h2 class="section-title">Inicie sua regularização hoje.</h2>
+    <div class="contact-grid">
+      <div>
+        <a href="https://wa.me/5573981365245" class="whatsapp-btn" target="_blank">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chamar no WhatsApp
+        </a>
+        <div class="contact-info">
+          <div class="info-item"><div class="info-icon">📍</div><span>Itabuna — BA | Atendimento em todo o Brasil</span></div>
+          <div class="info-item"><div class="info-icon">📱</div><span>(73) 98136-5245</span></div>
+          <div class="info-item"><div class="info-icon">🕐</div><span>Seg–Sex, 8h–18h</span></div>
+        </div>
+      </div>
+      <form onsubmit="return false">
+        <input type="text" placeholder="Seu nome completo">
+        <input type="tel" placeholder="WhatsApp com DDD">
+        <input type="text" placeholder="Cidade e Estado do imóvel">
+        <textarea placeholder="Descreva brevemente a situação do seu imóvel..."></textarea>
+        <button type="submit" class="submit-btn">Enviar mensagem →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 <strong>HBS Soluções em Engenharia</strong> — Jádson Castro Santana — CREA-BA 051598661-5 | Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>
