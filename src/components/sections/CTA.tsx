@@ -41,9 +41,10 @@ const CTA = () => {
           <div className="absolute left-1/2 top-0 h-64 w-[600px] -translate-x-1/2 rounded-full bg-accent/20 blur-[100px]" aria-hidden />
 
           <div className="relative mx-auto max-w-2xl">
-            <span className="inline-flex items-center gap-2 rounded-md bg-accent/20 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-white ring-1 ring-accent/40 backdrop-blur-sm">
-              <FileCheck2 className="h-3 w-3" /> Análise Técnica Gratuita
+            <span className="inline-flex items-center gap-2 rounded-md bg-accent/20 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-widest text-white ring-1 ring-accent/40 backdrop-blur-sm">
+              <FileCheck2 className="h-3 w-3" /> SYS.CTA · ANÁLISE TÉCNICA GRATUITA
             </span>
+            <div className="beam-divider mx-auto mt-6 max-w-xs" aria-hidden />
             
             <h2 id="cta-heading" className="mt-8 font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
               Pronto para colocar seu ativo em{" "}

@@ -108,10 +108,7 @@ const About = () => {
           {/* ── Text column ──────────────────────────────── */}
           <div className="flex flex-col justify-center lg:col-span-3">
             {/* Section label */}
-            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-accent">
-              <span className="inline-block h-px w-6 bg-accent" aria-hidden />
-              Sobre o responsável técnico
-            </span>
+            <span className="tech-tag">SYS.03 · RESPONSÁVEL TÉCNICO</span>
 
             {/* Name heading */}
             <h2

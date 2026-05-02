@@ -22,26 +22,30 @@ const Services = () => {
       <div className="absolute inset-0 blueprint-bg" aria-hidden />
       <div className="container relative z-10">
         <div ref={headerRef} className="reveal mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-accent">
-            <span className="h-px w-6 bg-accent" aria-hidden />
-            Soluções de Engenharia
-            <span className="h-px w-6 bg-accent" aria-hidden />
-          </span>
+          <span className="tech-tag justify-center">SYS.02 · SOLUÇÕES DE ENGENHARIA</span>
           <h2 id="services-heading" className="mt-4 font-display text-3xl font-black text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)] sm:text-4xl">
             Inteligência técnica para o seu patrimônio.
           </h2>
           <p className="mt-4 text-gray-300 leading-[1.7] drop-shadow-sm sm:text-lg">
             Atuamos em toda a esteira de legalização imobiliária. O primeiro passo da nossa plataforma é uma análise de viabilidade para determinar o roteiro exato de aprovação.
           </p>
+          <div className="beam-divider mx-auto mt-8 max-w-md" aria-hidden />
         </div>
 
         <div ref={gridRef} className="reveal-stagger mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map(({ icon: Icon, title, desc }) => (
-            <article key={title} className="glass-card group relative overflow-hidden rounded-2xl p-6">
-              <div className="glass-icon mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20">
-                <Icon className="h-6 w-6 stroke-[1.5]" />
+          {services.map(({ icon: Icon, title, desc }, i) => (
+            <article key={title} className="holo-card group relative p-6">
+              <span className="hud-corner tl" aria-hidden />
+              <span className="hud-corner br" aria-hidden />
+              <div className="flex items-center justify-between">
+                <div className="glass-icon inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20 transition-shadow group-hover:shadow-[0_0_24px_-4px_hsl(var(--accent)/0.6)]">
+                  <Icon className="h-6 w-6 stroke-[1.5]" />
+                </div>
+                <span className="font-mono text-[10px] font-medium tracking-widest text-white/30">
+                  {String(i + 1).padStart(2, "0")}/{String(services.length).padStart(2, "0")}
+                </span>
               </div>
-              <h3 className="font-display text-base font-bold text-white drop-shadow-sm">{title}</h3>
+              <h3 className="mt-5 font-display text-base font-bold text-white drop-shadow-sm">{title}</h3>
               <p className="mt-2 text-sm leading-[1.7] text-gray-400">{desc}</p>
             </article>
           ))}

@@ -54,13 +54,18 @@ const Hero = () => {
 
       <div className="container relative">
 
-        {/* ── CREA verified badge ── */}
-        <div className="flex justify-center pt-10 sm:justify-start">
-          <div className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 text-xs font-semibold text-accent backdrop-blur-sm">
+        {/* ── HUD top bar ── */}
+        <div className="flex flex-col gap-3 pt-10 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <span className="tech-tag">SYS.HBS / REV.2026</span>
+            <span className="tech-tag-mono hidden md:inline">LAT —14.7912 · LNG —39.2853</span>
+          </div>
+          <div className="inline-flex items-center gap-2 self-start rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 text-xs font-semibold text-accent backdrop-blur-sm sm:self-auto">
             <ShieldCheck className="h-3.5 w-3.5" />
-            CREA-BA 051598661-5 — Engenheiro Registrado
+            Resp. Técnico CREA-BA 051598661-5
           </div>
         </div>
+        <div className="beam-divider mt-6" aria-hidden />
 
         {/* ── Two-column layout ── */}
         <div className="grid items-center gap-10 pb-12 pt-6 lg:grid-cols-2 lg:gap-14 lg:pb-20 lg:pt-8">
