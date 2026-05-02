@@ -55,11 +55,7 @@ const Process = () => {
       <div className="container relative z-10">
         {/* Header */}
         <div ref={headingRef} className="reveal mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-accent">
-            <span className="h-px w-6 bg-accent" aria-hidden />
-            Metodologia
-            <span className="h-px w-6 bg-accent" aria-hidden />
-          </span>
+          <span className="tech-tag justify-center">SYS.04 · METODOLOGIA</span>
           <h2
             id="process-heading"
             className="mt-4 font-display text-3xl font-black text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)] sm:text-4xl"
@@ -70,6 +66,7 @@ const Process = () => {
             Um fluxo de trabalho estruturado para garantir a legalidade do seu ativo imobiliário,
             com precisão em cada fase e mitigação de riscos burocráticos.
           </p>
+          <div className="beam-divider mx-auto mt-8 max-w-md" aria-hidden />
         </div>
 
         {/* Cards grid */}
@@ -77,10 +74,12 @@ const Process = () => {
           {steps.map((s, i) => (
             <div
               key={s.n}
-              className={`glass-card group relative flex flex-col overflow-hidden rounded-2xl p-7 ${
+              className={`holo-card group relative flex flex-col p-7 ${
                 s.free ? "ring-1 ring-accent/30" : ""
               }`}
             >
+              <span className="hud-corner tl" aria-hidden />
+              <span className="hud-corner br" aria-hidden />
               {/* Free badge */}
               {s.free && (
                 <div className="absolute right-5 top-5 flex items-center gap-1 rounded-full bg-accent/10 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-accent ring-1 ring-accent/20">
@@ -89,7 +88,7 @@ const Process = () => {
               )}
 
               {/* Step number */}
-              <div className="font-display text-5xl font-extrabold tracking-tighter text-muted-foreground/15 transition-colors group-hover:text-accent/20">
+              <div className="font-mono text-5xl font-bold tracking-tighter text-white/10 transition-colors group-hover:text-accent/30">
                 {s.n}
               </div>
 

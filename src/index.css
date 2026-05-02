@@ -383,3 +383,183 @@ All colors MUST be HSL.
   pointer-events: none;
   z-index: 2;
 }
+
+/* ================================================================
+   FUTURISTIC ENGINEERING / HUD LAYER
+   ================================================================ */
+
+/* Technical mono tag — e.g. "SYS.01 / REV.A" */
+.tech-tag {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: hsl(192 100% 70% / 0.75);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.tech-tag::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: hsl(192 100% 65%);
+  box-shadow: 0 0 8px hsl(192 100% 65% / 0.8);
+  animation: tech-blink 1.6s ease-in-out infinite;
+}
+.tech-tag-mono {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: hsl(0 0% 100% / 0.4);
+}
+
+/* HUD corner brackets — accent color (orange) variant */
+.hud-corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+}
+.hud-corner::before,
+.hud-corner::after {
+  content: '';
+  position: absolute;
+  background: hsl(var(--accent) / 0.7);
+}
+.hud-corner::before { width: 100%; height: 1.5px; top: 0; left: 0; }
+.hud-corner::after  { width: 1.5px; height: 100%; top: 0; left: 0; }
+.hud-corner.tl { top: 0; left: 0; }
+.hud-corner.tr { top: 0; right: 0; transform: scaleX(-1); }
+.hud-corner.bl { bottom: 0; left: 0; transform: scaleY(-1); }
+.hud-corner.br { bottom: 0; right: 0; transform: scale(-1, -1); }
+
+/* Animated beam divider — horizontal scan line traveling across a row */
+.beam-divider {
+  position: relative;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    hsl(var(--accent) / 0.25) 20%,
+    hsl(var(--accent) / 0.45) 50%,
+    hsl(var(--accent) / 0.25) 80%,
+    transparent 100%
+  );
+  overflow: hidden;
+}
+.beam-divider::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  height: 5px;
+  width: 30%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    hsl(192 100% 70% / 0.95),
+    transparent
+  );
+  filter: blur(1px);
+  animation: beam-slide 3.5s linear infinite;
+}
+
+/* Glow text — tech accent */
+.glow-text {
+  text-shadow:
+    0 0 18px hsl(var(--accent) / 0.45),
+    0 0 38px hsl(var(--accent) / 0.18);
+}
+
+/* Holographic card — futuristic glass with accent edge glow */
+.holo-card {
+  position: relative;
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0.015) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition:
+    transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.45s ease,
+    box-shadow 0.45s ease;
+  overflow: hidden;
+}
+.holo-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      600px circle at var(--mx, 50%) var(--my, 0%),
+      hsl(var(--accent) / 0.10),
+      transparent 40%
+    );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.holo-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    hsl(var(--accent) / 0.5) 50%,
+    transparent 100%
+  );
+  opacity: 0.5;
+}
+.holo-card:hover {
+  transform: translateY(-4px);
+  border-color: hsl(var(--accent) / 0.4);
+  box-shadow:
+    0 24px 60px -16px rgba(0, 0, 0, 0.7),
+    0 0 0 1px hsl(var(--accent) / 0.2),
+    0 0 40px -10px hsl(var(--accent) / 0.25);
+}
+.holo-card:hover::before { opacity: 1; }
+
+/* Mono ticker — infinite scrolling technical strip */
+.tech-ticker {
+  display: flex;
+  gap: 3rem;
+  white-space: nowrap;
+  animation: ticker 40s linear infinite;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: hsl(0 0% 100% / 0.32);
+}
+.tech-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.tech-ticker-item::before {
+  content: '◆';
+  color: hsl(var(--accent) / 0.6);
+  font-size: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .beam-divider::after,
+  .tech-ticker,
+  .tech-tag::before { animation: none; }
+}
