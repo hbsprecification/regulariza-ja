@@ -7,11 +7,11 @@ const CTA = () => {
   const containerRef = useInView<HTMLDivElement>(0.2);
 
   return (
-    <section className="relative overflow-hidden pb-16 lg:pb-20" aria-labelledby="cta-heading">
+    <section className="relative overflow-hidden py-16 lg:py-20" aria-labelledby="cta-heading">
       <div className="container relative z-10 px-4">
         <div
           ref={containerRef}
-          className="reveal relative overflow-hidden rounded-[2.5rem] gradient-hero px-6 py-12 text-center text-white shadow-2xl sm:px-12 lg:py-16"
+          className="reveal relative overflow-hidden rounded-[2.5rem] gradient-hero px-6 py-20 text-center text-white shadow-2xl sm:px-12 lg:py-24"
         >
           {/* ── Blueprint grid overlay ── */}
           <div

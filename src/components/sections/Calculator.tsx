@@ -145,7 +145,7 @@ const Calculator = () => {
   };
 
   return (
-    <section id="calculadora" className="relative overflow-hidden py-16 lg:py-20" aria-labelledby="calc-heading">
+    <section id="calculadora" className="blueprint-bg relative overflow-hidden py-16 lg:py-20" aria-labelledby="calc-heading">
       <div className="container">
         <div className="mx-auto max-w-3xl text-center">
            <span className="inline-flex items-center gap-2 rounded-md bg-accent/10 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-accent ring-1 ring-accent/20">

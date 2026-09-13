@@ -9,7 +9,6 @@ import Calculator from "@/components/sections/Calculator";
 import About from "@/components/sections/About";
 import Differentials from "@/components/sections/Differentials";
 import Process from "@/components/sections/Process";
-import ScrollCinematicBackground from "@/components/ScrollCinematicBackground";
 import Testimonials from "@/components/sections/Testimonials";
 import Benefits from "@/components/sections/Benefits";
 import CTA from "@/components/sections/CTA";
@@ -56,11 +55,9 @@ const Index = () => (
       <About />
       <Testimonials />
       <Differentials />
-      <ScrollCinematicBackground>
-        <Process />
-        <Benefits />
-        <Calculator />
-      </ScrollCinematicBackground>
+      <Process />
+      <Benefits />
+      <Calculator />
       <CTA />
       <FAQ />
       <Structure />
