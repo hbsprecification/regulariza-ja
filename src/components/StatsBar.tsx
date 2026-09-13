@@ -31,7 +31,7 @@ function Counter({ target, prefix = "", suffix = "", started }: { target: number
 
 const stats = [
   { value: 170, suffix: "+", stringValue: null, label: "ARTs registradas" },
-  { value: 9, suffix: "+", stringValue: null, label: "anos de experiência" },
+  { value: 10, suffix: "+", stringValue: null, label: "anos de experiência" },
   { value: null, stringValue: "Brasil", label: "Atendimento em todo o território nacional" },
   { value: null, stringValue: "CREA", label: "Profissional com registro ativo validado" },
 ];
