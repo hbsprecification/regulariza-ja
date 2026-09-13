@@ -211,10 +211,19 @@ export default function ScrollCinematicBackground({ children }: Props) {
             style={{ backgroundColor: BACKDROP_COLOR }}
           >
             <canvas ref={canvasRef} aria-hidden="true" className="absolute inset-0 h-full w-full" />
-            <div className="pointer-events-none absolute inset-0 bg-black/45" />
+
+            {/* Color grade: a single stronger wash of the site's own navy
+                over the footage, so the photographic frames read as one
+                cohesive blue film instead of a raw photo dropped on top
+                of a flat-UI site. */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/55 via-black/30 to-black/70"
+              className="pointer-events-none absolute inset-0 bg-[hsl(222_47%_28%)] mix-blend-multiply opacity-60"
+            />
+            {/* Light top/bottom vignette purely for text legibility. */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/35 via-transparent to-black/45"
             />
           </div>
         </div>
