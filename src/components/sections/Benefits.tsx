@@ -40,7 +40,6 @@ const Benefits = () => {
       className="relative overflow-hidden py-16 lg:py-20"
       aria-labelledby="benefits-heading"
     >
-      <div className="absolute inset-0 gradient-surface" aria-hidden />
       <div className="container relative z-10">
         <div ref={headerRef} className="reveal mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-accent">

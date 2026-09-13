@@ -1,11 +1,11 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { CheckCircle2 } from "lucide-react";
-import jadsonHero from "@/assets/jadson-hero-2.jpg";
+import jadsonHeroVideo from "@/assets/jadson-hero-video.mp4";
 
 export default function HeroImage() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const linesRef = useRef<SVGSVGElement>(null);
   const measuresRef = useRef<HTMLDivElement>(null);
   const badgeRef = useRef<HTMLDivElement>(null);
@@ -17,7 +17,7 @@ export default function HeroImage() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power2.out", duration: 0.4 } });
 
-      tl.from(imageRef.current, { scale: 1.2, opacity: 0, duration: 0.6 });
+      tl.from(videoRef.current, { scale: 1.2, opacity: 0, duration: 0.6 });
 
       const paths = linesRef.current?.querySelectorAll("path");
       if (paths) {
@@ -41,11 +41,15 @@ export default function HeroImage() {
       ref={containerRef}
       className="group relative aspect-[4/5] w-full max-w-[420px] mx-auto overflow-hidden rounded-2xl bg-primary/20 shadow-2xl ring-1 ring-white/10 lg:max-w-none"
     >
-      {/* Engineer Photo */}
-      <img
-        ref={imageRef}
-        src={jadsonHero}
-        alt="Engenheiro Jádson Castro"
+      {/* Engineer Video */}
+      <video
+        ref={videoRef}
+        src={jadsonHeroVideo}
+        autoPlay
+        muted
+        playsInline
+        preload="auto"
+        aria-label="Engenheiro Jádson Castro colocando capacete"
         className="h-full w-full object-cover object-[center_12%] scale-110 transition-transform duration-700 group-hover:scale-[1.15]"
       />
 
